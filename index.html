@@ -1,370 +1,288 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soluciones Informáticas Perú</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertos en Ingeniería de Sistemas y Soluciones IT</title>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+        /* Paleta Tech: Slate, Blue e Indigo */
+        body { background:#f8fafc; color:#1e293b; line-height:1.6; }
 
-body{
-background:#f5f7fa;
-color:#333;
-line-height:1.6;
-}
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e40af);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-header{
-background:linear-gradient(135deg,#0d6efd,#00c6ff);
-color:white;
-padding:100px 20px;
-text-align:center;
-}
+        header::after {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-header h1{
-font-size:3rem;
-margin-bottom:15px;
-}
+        header h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
+        header p { font-size: 1.25rem; max-width: 800px; margin: auto; color: #94a3b8; }
 
-header p{
-font-size:1.2rem;
-max-width:700px;
-margin:auto;
-}
+        .btn {
+            display: inline-block; margin-top: 30px; padding: 14px 30px;
+            background: #06b6d4; color: white; text-decoration: none;
+            border-radius: 8px; font-weight: 600; transition: .3s ease;
+            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+        }
 
-.btn{
-display:inline-block;
-margin-top:25px;
-padding:12px 25px;
-background:white;
-color:#0d6efd;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
-transition:.3s;
-}
+        .btn:hover { transform: translateY(-2px); background: #0891b2; box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6); }
 
-.btn:hover{
-transform:translateY(-3px);
-}
+        section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+        .title { text-align: center; margin-bottom: 60px; }
+        .title h2 { font-size: 2.2rem; color: #0f172a; position: relative; display: inline-block; padding-bottom: 15px; }
+        .title h2::after { content:''; position: absolute; bottom:0; left:50%; transform:translateX(-50%); width:60px; height:4px; background:#06b6d4; border-radius:2px; }
 
-section{
-padding:70px 20px;
-max-width:1200px;
-margin:auto;
-}
+        /* Grilla de Servicios de Computación */
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .card {
+            background: white; padding: 35px 25px; border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: .3s transform, .3s box-shadow;
+            border: 1px solid #f1f5f9;
+        }
 
-.title{
-text-align:center;
-margin-bottom:50px;
-}
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .card i { font-size: 2.5rem; color: #1e40af; margin-bottom: 20px; display: inline-block; }
+        .card h3 { font-size: 1.35rem; margin-bottom: 12px; color: #0f172a; }
+        .card p { color: #64748b; font-size: 0.95rem; }
 
-.title h2{
-font-size:2rem;
-color:#0d6efd;
-}
+        /* Beneficios Corporativos */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center; }
+        .feature { background: white; padding: 30px 20px; border-radius: 12px; border: 1px solid #f1f5f9; }
+        .feature i { font-size: 2rem; color: #06b6d4; margin-bottom: 15px; }
+        .feature h3 { font-size: 1.15rem; margin-bottom: 8px; }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+        /* Tabla de Soluciones / Planes */
+        .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .price-card {
+            background: white; padding: 40px 30px; border-radius: 16px; text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
+            display: flex; flex-direction: column; justify-content: space-between;
+            position: relative;
+        }
 
-.card{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-transition:.3s;
-}
+        .price-card.featured { border: 2px solid #1e40af; }
+        .badge { position: absolute; top: 15px; right: 15px; background: #1e40af; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
 
-.card:hover{
-transform:translateY(-8px);
-}
+        .price-card h3 { color: #0f172a; font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 700; color: #1e40af; margin: 20px 0; }
+        .price span { font-size: 1rem; color: #64748b; font-weight: 400; }
+        
+        .price-card ul { text-align: left; list-style: none; margin-bottom: 30px; color: #475569; font-size: 0.9rem; }
+        .price-card ul li { margin-bottom: 12px; display: flex; items-center: center; gap: 10px; }
+        .price-card ul li i { color: #06b6d4; }
 
-.card h3{
-margin-bottom:10px;
-color:#0d6efd;
-}
+        .btn-price { background: #0f172a; color: white; width: 100%; padding: 12px; border-radius: 6px; box-shadow: none; margin-top: auto;}
+        .btn-price:hover { background: #1e40af; }
 
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-text-align:center;
-}
+        /* Contacto */
+        .contact { text-align: center; background: white; border-radius: 16px; padding: 50px 40px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 30px 0; }
+        .contact-item { font-size: 1.1rem; color: #475569; display: flex; align-items: center; gap: 10px; }
+        .contact-item i { color: #1e40af; }
 
-.feature{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
+        footer { background: #0f172a; color: #748094; text-align: center; padding: 30px; margin-top: 60px; font-size: 0.9rem; border-top: 1px solid #1e293b; }
 
-.portfolio{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
-}
+        .whatsapp {
+            position: fixed; right: 25px; bottom: 25px; width: 60px; height: 60px;
+            background: #25D366; border-radius: 50%; display: flex; justify-content: center;
+            align-items: center; font-size: 32px; text-decoration: none; color: white;
+            box-shadow: 0 10px 20px rgba(37,211,102,0.4); z-index: 999; transition: .3s;
+        }
+        .whatsapp:hover { transform: scale(1.1) translateY(-3px); }
 
-.project{
-background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-.project img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.project div{
-padding:20px;
-}
-
-.pricing{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.price-card{
-background:white;
-padding:30px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-.price-card h3{
-color:#0d6efd;
-margin-bottom:10px;
-}
-
-.price{
-font-size:2rem;
-font-weight:bold;
-margin:15px 0;
-}
-
-.contact{
-text-align:center;
-background:white;
-border-radius:15px;
-padding:40px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-footer{
-background:#0d6efd;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:50px;
-}
-
-.whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-width:60px;
-height:60px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-text-decoration:none;
-color:white;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-z-index:999;
-}
-
-@media(max-width:768px){
-header h1{
-font-size:2rem;
-}
-}
-</style>
+        @media(max-width:768px){
+            header h1 { font-size: 2.2rem; }
+            section { padding: 50px 20px; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-<h1>💻 Soluciones Informáticas Perú</h1>
-<p>
-Soporte técnico, diseño web, diseño gráfico, edición multimedia
-y soluciones tecnológicas para personas y empresas.
-</p>
-
-<a href="#contacto" class="btn">Solicitar Cotización</a>
+    <h1>Infraestructura Tecnológica y Sistemas Inteligentes</h1>
+    <p>Garantizamos la continuidad operativa, seguridad informática y transformación digital de tu negocio con soluciones de ingeniería avanzadas.</p>
+    <a href="#contacto" class="btn">Solicitar Auditoría IT</a>
 </header>
 
-<section>
-<div class="title">
-<h2>Nuestros Servicios</h2>
-</div>
+<main>
+    <!-- SERVICIOS TECNOLÓGICOS -->
+    <section id="servicios">
+        <div class="title">
+            <h2>Especialidades en Computación y Sistemas</h2>
+        </div>
 
-<div class="services">
+        <div class="services">
+            <div class="card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>Redes y Conectividad corporativa</h3>
+                <p>Diseño e implementación de redes cableadas/inalámbricas de alta velocidad, optimización de enrutadores y estructuración de redes LAN/WAN.</p>
+            </div>
 
-<div class="card">
-<h3>🖥️ Soporte Técnico</h3>
-<p>Formateo, instalación de Windows, eliminación de virus y optimización de equipos.</p>
-</div>
+            <div class="card">
+                <i class="fa-solid fa-shield-cat"></i>
+                <h3>Ciberseguridad y Respaldo</h3>
+                <p>Auditorías de seguridad, eliminación de exploits, firewalls avanzados y políticas centralizadas de copia de seguridad (Backup automatizado).</p>
+            </div>
 
-<div class="card">
-<h3>🌐 Diseño Web</h3>
-<p>Páginas web modernas, corporativas, tiendas virtuales y landing pages.</p>
-</div>
+            <div class="card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Administración de Servidores y Cloud</h3>
+                <p>Migración a la nube (AWS, Azure, Google Cloud), virtualización de entornos y despliegue de servidores locales Windows/Linux Server.</p>
+            </div>
 
-<div class="card">
-<h3>🎨 Diseño Gráfico</h3>
-<p>Logos, banners, flyers, tarjetas y contenido para redes sociales.</p>
-</div>
+            <div class="card">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>Soporte Técnico de Sistemas</h3>
+                <p>Mantenimiento preventivo y correctivo de hardware de servidores, ordenadores de alto rendimiento y diagnóstico avanzado de sistemas operativos.</p>
+            </div>
 
-<div class="card">
-<h3>🎬 Edición Multimedia</h3>
-<p>Videos para TikTok, Reels, YouTube Shorts y contenido promocional.</p>
-</div>
+            <div class="card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Desarrollo de Software y Base de Datos</h3>
+                <p>Creación de sistemas web internos, automatización de tareas empresariales y optimización/administración de bases de datos SQL y NoSQL.</p>
+            </div>
 
-<div class="card">
-<h3>📱 Aplicaciones Móviles</h3>
-<p>Desarrollo de aplicaciones informativas y empresariales.</p>
-</div>
+            <div class="card">
+                <i class="fa-solid fa-user-gear"></i>
+                <h3>Consultoría y Auditoría Informática</h3>
+                <p>Evaluamos el estado de tus sistemas actuales para diseñar un plan de escalabilidad, reduciendo fallos informáticos a cero.</p>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<h3>☁️ Servicios Digitales</h3>
-<p>Configuración de correos, dominios, hosting y herramientas online.</p>
-</div>
+    <!-- PROPUESTA DE VALOR -->
+    <section id="beneficios">
+        <div class="title">
+            <h2>Garantía de Ingeniería</h2>
+        </div>
 
-</div>
-</section>
+        <div class="features">
+            <div class="feature">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <h3>Alta Disponibilidad</h3>
+                <p>Sistemas estables 24/7.</p>
+            </div>
 
-<section>
-<div class="title">
-<h2>¿Por Qué Elegirnos?</h2>
-</div>
+            <div class="feature">
+                <i class="fa-solid fa-user-shield"></i>
+                <h3>Confidencialidad</h3>
+                <p>Protección estricta de datos NDA.</p>
+            </div>
 
-<div class="features">
+            <div class="feature">
+                <i class="fa-solid fa-award"></i>
+                <h3>SLA Profesional</h3>
+                <p>Tiempos de respuesta garantizados.</p>
+            </div>
 
-<div class="feature">
-<h3>✅ Calidad</h3>
-<p>Trabajos profesionales.</p>
-</div>
+            <div class="feature">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h3>Escalabilidad</h3>
+                <p>Sistemas preparados para crecer.</p>
+            </div>
+        </div>
+    </section>
 
-<div class="feature">
-<h3>⚡ Rapidez</h3>
-<p>Entregas oportunas.</p>
-</div>
+    <!-- PLANES TECNOLÓGICOS -->
+    <section id="precios">
+        <div class="title">
+            <h2>Planes de Soporte y Consultoría</h2>
+        </div>
 
-<div class="feature">
-<h3>🔒 Confianza</h3>
-<p>Atención responsable.</p>
-</div>
+        <div class="pricing">
+            <div class="price-card">
+                <div>
+                    <h3>Incidente IT</h3>
+                    <div class="price">S/ 120 <span>/ ticket</span></div>
+                    <p class="mb-4" style="color:#64748b; font-size:0.85rem;">Ideal para emergencias puntuales.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Soporte técnico especializado</li>
+                        <li><i class="fa-solid fa-check"></i> Eliminación de malware y virus</li>
+                        <li><i class="fa-solid fa-check"></i> Optimización avanzada del OS</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte remoto / Presencial Trujillo</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20necesito%20atender%20un%20incidente%20inform%C3%A1tico%20de%20emergencia." target="_blank" class="btn btn-price">Solicitar Ticket</a>
+            </div>
 
-<div class="feature">
-<h3>💬 Soporte</h3>
-<p>Atención personalizada.</p>
-</div>
+            <div class="price-card featured">
+                <span class="badge">Más Solicitado</span>
+                <div>
+                    <h3>Abono Mensual IT</h3>
+                    <div class="price">S/ 450 <span>/ mes</span></div>
+                    <p class="mb-4" style="color:#64748b; font-size:0.85rem;">Mantenimiento integral para oficinas y pymes.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Hasta 5 computadoras + Red local</li>
+                        <li><i class="fa-solid fa-check"></i> Monitoreo y copias de seguridad de datos</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte técnico prioritario ilimitado</li>
+                        <li><i class="fa-solid fa-check"></i> Mantenimiento físico preventivo regular</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20el%20Abono%20Mensual%20IT%20para%20empresas." target="_blank" class="btn btn-price" style="background:#06b6d4;">Contratar Plan</a>
+            </div>
 
-</div>
-</section>
+            <div class="price-card">
+                <div>
+                    <h3>Proyectos Especiales</h3>
+                    <div class="price">Cotizar</div>
+                    <p class="mb-4" style="color:#64748b; font-size:0.85rem;">Infraestructura e ingeniería desde cero.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Cableado estructurado y servidores</li>
+                        <li><i class="fa-solid fa-check"></i> Implementación de Sistemas ERP / CRM</li>
+                        <li><i class="fa-solid fa-check"></i> Auditorías de Ciberseguridad completas</li>
+                        <li><i class="fa-solid fa-check"></i> Desarrollo de APIs e integraciones de bases de datos</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20necesito%20una%20cotizaci%C3%B3n%20para%20un%20proyecto%20de%20sistemas%20a%20medida." target="_blank" class="btn btn-price">Agendar Reunión</a>
+            </div>
+        </div>
+    </section>
 
-<section>
-<div class="title">
-<h2>Portafolio</h2>
-</div>
+    <!-- CONTACTO B2B -->
+    <section id="contacto">
+        <div class="contact">
+            <h2>Área de Soporte e Ingeniería</h2>
+            <p style="color:#64748b;">¿Tienes un problema de sistemas crítico en este momento? Comunícate directamente.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item"><i class="fa-solid fa-envelope"></i> newcosmo@outlook.es</div>
+                <div class="contact-item"><i class="fa-solid fa-phone"></i> +51 999 999 999</div>
+                <div class="contact-item"><i class="fa-solid fa-location-dot"></i> La Libertad, Perú</div>
+            </div>
 
-<div class="portfolio">
+            <a href="https://wa.me/51999999999?text=Hola,%20deseo%20coordinar%20una%20reuni%C3%B3n%20para%20evaluar%20un%20proyecto%20tecnol%C3%B3gico." target="_blank" class="btn" style="background:#25D366; color:white; border-shadow:none;">
+                <i class="fa-brands fa-whatsapp" style="margin-right:8px;"></i> Hablar con un Ingeniero de Soporte
+            </a>
+        </div>
+    </section>
+</main>
 
-<div class="project">
-<img src="https://picsum.photos/600/400?1">
-<div>
-<h3>Proyecto Web</h3>
-<p>Sitio web corporativo moderno.</p>
-</div>
-</div>
-
-<div class="project">
-<img src="https://picsum.photos/600/400?2">
-<div>
-<h3>Diseño Gráfico</h3>
-<p>Material publicitario profesional.</p>
-</div>
-</div>
-
-<div class="project">
-<img src="https://picsum.photos/600/400?3">
-<div>
-<h3>Aplicación Móvil</h3>
-<p>Aplicación personalizada para clientes.</p>
-</div>
-</div>
-
-</div>
-</section>
-
-<section>
-<div class="title">
-<h2>Planes Referenciales</h2>
-</div>
-
-<div class="pricing">
-
-<div class="price-card">
-<h3>Básico</h3>
-<div class="price">S/ 50+</div>
-<p>Formateo y optimización.</p>
-</div>
-
-<div class="price-card">
-<h3>Profesional</h3>
-<div class="price">S/ 300+</div>
-<p>Diseño web completo.</p>
-</div>
-
-<div class="price-card">
-<h3>Empresarial</h3>
-<div class="price">Consultar</div>
-<p>Soluciones integrales.</p>
-</div>
-
-</div>
-</section>
-
-<section id="contacto">
-<div class="contact">
-<h2>Contacto</h2>
-
-<p><strong>📧 Correo:</strong> www.newcosmo@outlook.es</p>
-<p><strong>📱 WhatsApp:</strong> +51 999 999 999</p>
-<p><strong>📍 Perú</strong></p>
-
-<br>
-
-<a href="https://wa.me/51999999999" class="btn">
-Contactar por WhatsApp
+<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20tengo%20una%20consulta%20técnica%20sobre%20sus%20servicios%20de%20sistemas." target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
 </a>
-
-</div>
-</section>
 
 <footer>
-© 2026 Soluciones Informáticas Perú - Todos los derechos reservados.
+    © 2026 Soluciones de Ingeniería de Sistemas - Todos los derechos reservados.
 </footer>
-
-<a class="whatsapp" href="https://wa.me/51999999999">
-💬
-</a>
 
 </body>
 </html>
