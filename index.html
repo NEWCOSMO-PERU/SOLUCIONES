@@ -3,285 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expertos en Ingeniería de Sistemas y Soluciones IT</title>
+    <title>Soluciones Tecnológicas & Estudio Digital</title>
     
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2 family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         html { scroll-behavior: smooth; }
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-        /* Paleta Tech: Slate, Blue e Indigo */
         body { background:#f8fafc; color:#1e293b; line-height:1.6; }
 
+        /* Encabezado Moderno con toque Tech-Crypto */
         header {
-            background: linear-gradient(135deg, #0f172a, #1e40af);
+            background: linear-gradient(135deg, #0f172a, #2563eb);
             color: white;
-            padding: 120px 20px;
+            padding: 110px 20px;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
-        header::after {
-            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
-            background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        header h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
-        header p { font-size: 1.25rem; max-width: 800px; margin: auto; color: #94a3b8; }
+        header h1 { font-size: 3rem; font-weight: 700; margin-bottom: 15px; }
+        header p { font-size: 1.2rem; max-width: 750px; margin: auto; color: #cbd5e1; }
 
         .btn {
-            display: inline-block; margin-top: 30px; padding: 14px 30px;
-            background: #06b6d4; color: white; text-decoration: none;
-            border-radius: 8px; font-weight: 600; transition: .3s ease;
-            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+            display: inline-block; margin-top: 25px; padding: 12px 28px;
+            background: #00f2fe; color: #0f172a; text-decoration: none;
+            border-radius: 50px; font-weight: 700; transition: .3s ease;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
         }
 
-        .btn:hover { transform: translateY(-2px); background: #0891b2; box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 242, 254, 0.6); }
 
         section { padding: 80px 20px; max-width: 1200px; margin: auto; }
-        .title { text-align: center; margin-bottom: 60px; }
+        
+        .title { text-align: center; margin-bottom: 50px; }
         .title h2 { font-size: 2.2rem; color: #0f172a; position: relative; display: inline-block; padding-bottom: 15px; }
-        .title h2::after { content:''; position: absolute; bottom:0; left:50%; transform:translateX(-50%); width:60px; height:4px; background:#06b6d4; border-radius:2px; }
+        .title h2::after { content:''; position: absolute; bottom:0; left:50%; transform:translateX(-50%); width:50px; height:4px; background:#2563eb; border-radius:2px; }
 
-        /* Grilla de Servicios de Computación */
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        /* Categorías / Grilla de Servicios */
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
         .card {
-            background: white; padding: 35px 25px; border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-            transition: .3s transform, .3s box-shadow;
-            border: 1px solid #f1f5f9;
+            background: white; padding: 30px; border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: .3s ease; border: 1px solid #e2e8f0;
         }
 
         .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .card i { font-size: 2.5rem; color: #1e40af; margin-bottom: 20px; display: inline-block; }
-        .card h3 { font-size: 1.35rem; margin-bottom: 12px; color: #0f172a; }
+        .card i { font-size: 2.3rem; margin-bottom: 15px; display: inline-block; }
+        
+        /* Colores por tipo de servicio */
+        .c-tech { color: #2563eb; }
+        .c-design { color: #ec4899; }
+        .c-crypto { color: #f59e0b; }
+
+        .card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #0f172a; }
         .card p { color: #64748b; font-size: 0.95rem; }
 
-        /* Beneficios Corporativos */
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center; }
-        .feature { background: white; padding: 30px 20px; border-radius: 12px; border: 1px solid #f1f5f9; }
-        .feature i { font-size: 2rem; color: #06b6d4; margin-bottom: 15px; }
-        .feature h3 { font-size: 1.15rem; margin-bottom: 8px; }
-
-        /* Tabla de Soluciones / Planes */
-        .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        /* Planes Referenciales */
+        .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         
         .price-card {
-            background: white; padding: 40px 30px; border-radius: 16px; text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
+            background: white; padding: 35px 25px; border-radius: 16px; text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
             display: flex; flex-direction: column; justify-content: space-between;
-            position: relative;
         }
 
-        .price-card.featured { border: 2px solid #1e40af; }
-        .badge { position: absolute; top: 15px; right: 15px; background: #1e40af; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
-
-        .price-card h3 { color: #0f172a; font-size: 1.5rem; margin-bottom: 10px; }
-        .price { font-size: 2.5rem; font-weight: 700; color: #1e40af; margin: 20px 0; }
-        .price span { font-size: 1rem; color: #64748b; font-weight: 400; }
+        .price-card h3 { color: #0f172a; font-size: 1.4rem; }
+        .price { font-size: 2.3rem; font-weight: 700; color: #0f172a; margin: 15px 0; }
         
-        .price-card ul { text-align: left; list-style: none; margin-bottom: 30px; color: #475569; font-size: 0.9rem; }
-        .price-card ul li { margin-bottom: 12px; display: flex; items-center: center; gap: 10px; }
-        .price-card ul li i { color: #06b6d4; }
+        .price-card ul { text-align: left; list-style: none; margin-bottom: 25px; color: #475569; font-size: 0.9rem; }
+        .price-card ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .price-card ul li i { color: #10b981; }
 
-        .btn-price { background: #0f172a; color: white; width: 100%; padding: 12px; border-radius: 6px; box-shadow: none; margin-top: auto;}
-        .btn-price:hover { background: #1e40af; }
+        .btn-price { background: #0f172a; color: white; width: 100%; padding: 12px; border-radius: 8px; box-shadow: none; }
+        .btn-price:hover { background: #2563eb; }
 
         /* Contacto */
-        .contact { text-align: center; background: white; border-radius: 16px; padding: 50px 40px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .contact-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 30px 0; }
-        .contact-item { font-size: 1.1rem; color: #475569; display: flex; align-items: center; gap: 10px; }
-        .contact-item i { color: #1e40af; }
+        .contact { text-align: center; background: white; border-radius: 16px; padding: 45px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .contact-info { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 25px 0; font-size: 1.05rem; color: #475569; }
+        .contact-info span i { color: #2563eb; margin-right: 5px; }
 
-        footer { background: #0f172a; color: #748094; text-align: center; padding: 30px; margin-top: 60px; font-size: 0.9rem; border-top: 1px solid #1e293b; }
+        footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 25px; margin-top: 60px; font-size: 0.9rem; }
 
+        /* WhatsApp flotante */
         .whatsapp {
             position: fixed; right: 25px; bottom: 25px; width: 60px; height: 60px;
             background: #25D366; border-radius: 50%; display: flex; justify-content: center;
             align-items: center; font-size: 32px; text-decoration: none; color: white;
-            box-shadow: 0 10px 20px rgba(37,211,102,0.4); z-index: 999; transition: .3s;
+            box-shadow: 0 8px 20px rgba(37,211,102,0.3); z-index: 999; transition: .3s;
         }
-        .whatsapp:hover { transform: scale(1.1) translateY(-3px); }
+        .whatsapp:hover { transform: scale(1.1); }
 
         @media(max-width:768px){
             header h1 { font-size: 2.2rem; }
-            section { padding: 50px 20px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Infraestructura Tecnológica y Sistemas Inteligentes</h1>
-    <p>Garantizamos la continuidad operativa, seguridad informática y transformación digital de tu negocio con soluciones de ingeniería avanzadas.</p>
-    <a href="#contacto" class="btn">Solicitar Auditoría IT</a>
+    <h1>Tecnología, Diseño & Web3 Soluciones</h1>
+    <p>Impulsamos tus ideas y resolvemos tus problemas técnicos. Desde el formateo de tus equipos hasta el despliegue de tu propio token digital.</p>
+    <a href="#contacto" class="btn">Solicitar Servicio</a>
 </header>
 
 <main>
-    <!-- SERVICIOS TECNOLÓGICOS -->
+    <!-- NUESTROS SERVICIOS -->
     <section id="servicios">
         <div class="title">
-            <h2>Especialidades en Computación y Sistemas</h2>
+            <h2>Servicios Integrales</h2>
         </div>
 
         <div class="services">
+            <!-- Soporte Técnico -->
             <div class="card">
-                <i class="fa-solid fa-network-wired"></i>
-                <h3>Redes y Conectividad corporativa</h3>
-                <p>Diseño e implementación de redes cableadas/inalámbricas de alta velocidad, optimización de enrutadores y estructuración de redes LAN/WAN.</p>
+                <i class="fa-solid fa-laptop-medical c-tech"></i>
+                <h3>Formateo y Optimización</h3>
+                <p>Instalación limpia de sistemas operativos (Windows/Mac), respaldo de información, eliminación de software malicioso y configuración inicial.</p>
             </div>
 
             <div class="card">
-                <i class="fa-solid fa-shield-cat"></i>
-                <h3>Ciberseguridad y Respaldo</h3>
-                <p>Auditorías de seguridad, eliminación de exploits, firewalls avanzados y políticas centralizadas de copia de seguridad (Backup automatizado).</p>
+                <i class="fa-solid fa-download c-tech"></i>
+                <h3>Instalación de Programas</h3>
+                <p>Configuración de software profesional y herramientas esenciales: suites de diseño, soluciones de oficina, utilitarios y activación segura.</p>
+            </div>
+
+            <!-- Diseño y Multimedia -->
+            <div class="card">
+                <i class="fa-solid fa-code c-design"></i>
+                <h3>Diseño Web Profesional</h3>
+                <p>Desarrollo de páginas web modernas, landing pages de alta conversión y tiendas virtuales autoadministrables adaptadas a dispositivos móviles.</p>
             </div>
 
             <div class="card">
-                <i class="fa-solid fa-server"></i>
-                <h3>Administración de Servidores y Cloud</h3>
-                <p>Migración a la nube (AWS, Azure, Google Cloud), virtualización de entornos y despliegue de servidores locales Windows/Linux Server.</p>
+                <i class="fa-solid fa-pen-nib c-design"></i>
+                <h3>Logos e Identidad Visual</h3>
+                <p>Creación de logotipos únicos, manuales de marca atractivos y diseño de papelería corporativa que destaca frente a tu competencia.</p>
             </div>
 
             <div class="card">
-                <i class="fa-solid fa-microchip"></i>
-                <h3>Soporte Técnico de Sistemas</h3>
-                <p>Mantenimiento preventivo y correctivo de hardware de servidores, ordenadores de alto rendimiento y diagnóstico avanzado de sistemas operativos.</p>
+                <i class="fa-solid fa-address-card c-design"></i>
+                <h3>Tarjetas de Presentación</h3>
+                <p>Diseño de tarjetas personales y comerciales de alto impacto listas para impresión física o formatos digitales interactivos.</p>
             </div>
 
             <div class="card">
-                <i class="fa-solid fa-code"></i>
-                <h3>Desarrollo de Software y Base de Datos</h3>
-                <p>Creación de sistemas web internos, automatización de tareas empresariales y optimización/administración de bases de datos SQL y NoSQL.</p>
+                <i class="fa-solid fa-video c-design"></i>
+                <h3>Edición Multimedia</h3>
+                <p>Montaje y postproducción de video profesional optimizado para redes sociales (TikTok, Reels, Shorts) y contenido publicitario.</p>
             </div>
 
+            <!-- Blockchain / Web3 -->
             <div class="card">
-                <i class="fa-solid fa-user-gear"></i>
-                <h3>Consultoría y Auditoría Informática</h3>
-                <p>Evaluamos el estado de tus sistemas actuales para diseñar un plan de escalabilidad, reduciendo fallos informáticos a cero.</p>
+                <i class="fa-solid fa-coins c-crypto"></i>
+                <h3>Creación de Tokens Cripto</h3>
+                <p>Despliegue y programación de smart contracts para tokens personalizados (ERC-20, BEP-20) en redes como Ethereum, Binance Smart Chain o Polygon.</p>
             </div>
         </div>
     </section>
 
-    <!-- PROPUESTA DE VALOR -->
-    <section id="beneficios">
-        <div class="title">
-            <h2>Garantía de Ingeniería</h2>
-        </div>
-
-        <div class="features">
-            <div class="feature">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <h3>Alta Disponibilidad</h3>
-                <p>Sistemas estables 24/7.</p>
-            </div>
-
-            <div class="feature">
-                <i class="fa-solid fa-user-shield"></i>
-                <h3>Confidencialidad</h3>
-                <p>Protección estricta de datos NDA.</p>
-            </div>
-
-            <div class="feature">
-                <i class="fa-solid fa-award"></i>
-                <h3>SLA Profesional</h3>
-                <p>Tiempos de respuesta garantizados.</p>
-            </div>
-
-            <div class="feature">
-                <i class="fa-solid fa-diagram-project"></i>
-                <h3>Escalabilidad</h3>
-                <p>Sistemas preparados para crecer.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PLANES TECNOLÓGICOS -->
+    <!-- PLANES REFERENCIALES -->
     <section id="precios">
         <div class="title">
-            <h2>Planes de Soporte y Consultoría</h2>
+            <h2>Planes Referenciales</h2>
         </div>
 
         <div class="pricing">
+            <!-- Técnico -->
             <div class="price-card">
                 <div>
-                    <h3>Incidente IT</h3>
-                    <div class="price">S/ 120 <span>/ ticket</span></div>
-                    <p class="mb-4" style="color:#64748b; font-size:0.85rem;">Ideal para emergencias puntuales.</p>
+                    <h3>Soporte Técnico</h3>
+                    <div class="price">S/ 50+</div>
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Soporte técnico especializado</li>
-                        <li><i class="fa-solid fa-check"></i> Eliminación de malware y virus</li>
-                        <li><i class="fa-solid fa-check"></i> Optimización avanzada del OS</li>
-                        <li><i class="fa-solid fa-check"></i> Soporte remoto / Presencial Trujillo</li>
+                        <li><i class="fa-solid fa-check"></i> Formateo completo de PC/Laptop</li>
+                        <li><i class="fa-solid fa-check"></i> Instalación de programas y drivers</li>
+                        <li><i class="fa-solid fa-check"></i> Limpieza de virus y optimización</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20necesito%20atender%20un%20incidente%20inform%C3%A1tico%20de%20emergencia." target="_blank" class="btn btn-price">Solicitar Ticket</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20solicito%20servicio%20de%20Formateo%20e%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="btn btn-price">Solicitar Soporte</a>
             </div>
 
-            <div class="price-card featured">
-                <span class="badge">Más Solicitado</span>
-                <div>
-                    <h3>Abono Mensual IT</h3>
-                    <div class="price">S/ 450 <span>/ mes</span></div>
-                    <p class="mb-4" style="color:#64748b; font-size:0.85rem;">Mantenimiento integral para oficinas y pymes.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-check"></i> Hasta 5 computadoras + Red local</li>
-                        <li><i class="fa-solid fa-check"></i> Monitoreo y copias de seguridad de datos</li>
-                        <li><i class="fa-solid fa-check"></i> Soporte técnico prioritario ilimitado</li>
-                        <li><i class="fa-solid fa-check"></i> Mantenimiento físico preventivo regular</li>
-                    </ul>
-                </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20el%20Abono%20Mensual%20IT%20para%20empresas." target="_blank" class="btn btn-price" style="background:#06b6d4;">Contratar Plan</a>
-            </div>
-
+            <!-- Diseño -->
             <div class="price-card">
                 <div>
-                    <h3>Proyectos Especiales</h3>
+                    <h3>Diseño & Multimedia</h3>
+                    <div class="price">S/ 150+</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Diseño de Logos corporativos</li>
+                        <li><i class="fa-solid fa-check"></i> Tarjetas de presentación premium</li>
+                        <li><i class="fa-solid fa-check"></i> Edición de video publicitario</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Dise%C3%B1o,%20Logos%20y%20Edici%C3%B3n." target="_blank" class="btn btn-price">Cotizar Diseño</a>
+            </div>
+
+            <!-- Crypto / Web -->
+            <div class="price-card">
+                <div>
+                    <h3>Desarrollo & Web3</h3>
                     <div class="price">Cotizar</div>
-                    <p class="mb-4" style="color:#64748b; font-size:0.85rem;">Infraestructura e ingeniería desde cero.</p>
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Cableado estructurado y servidores</li>
-                        <li><i class="fa-solid fa-check"></i> Implementación de Sistemas ERP / CRM</li>
-                        <li><i class="fa-solid fa-check"></i> Auditorías de Ciberseguridad completas</li>
-                        <li><i class="fa-solid fa-check"></i> Desarrollo de APIs e integraciones de bases de datos</li>
+                        <li><i class="fa-solid fa-check"></i> Diseño de Páginas Web completas</li>
+                        <li><i class="fa-solid fa-check"></i> Creación de Tokens Cripto propios</li>
+                        <li><i class="fa-solid fa-check"></i> Despliegue de contratos inteligentes</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20necesito%20una%20cotizaci%C3%B3n%20para%20un%20proyecto%20de%20sistemas%20a%20medida." target="_blank" class="btn btn-price">Agendar Reunión</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20requiero%20informaci%C3%B3n%20para%20Dise%C3%B1o%20Web%20o%20Creaci%C3%B3n%20de%20Tokens%20Cripto." target="_blank" class="btn btn-price">Consultar Proyecto</a>
             </div>
         </div>
     </section>
 
-    <!-- CONTACTO B2B -->
+    <!-- CONTACTO DIRECTO -->
     <section id="contacto">
         <div class="contact">
-            <h2>Área de Soporte e Ingeniería</h2>
-            <p style="color:#64748b;">¿Tienes un problema de sistemas crítico en este momento? Comunícate directamente.</p>
+            <h2>¿Listo para empezar tu proyecto?</h2>
+            <p style="color:#64748b; margin-top: 5px;">Escríbenos directamente para brindarte una atención personalizada inmediata.</p>
             
-            <div class="contact-grid">
-                <div class="contact-item"><i class="fa-solid fa-envelope"></i> newcosmo@outlook.es</div>
-                <div class="contact-item"><i class="fa-solid fa-phone"></i> +51 999 999 999</div>
-                <div class="contact-item"><i class="fa-solid fa-location-dot"></i> La Libertad, Perú</div>
+            <div class="contact-info">
+                <span><i class="fa-solid fa-envelope"></i> newcosmo@outlook.es</span>
+                <span><i class="fa-solid fa-phone"></i> +51 999 999 999</span>
+                <span><i class="fa-solid fa-location-dot"></i> Perú</span>
             </div>
 
-            <a href="https://wa.me/51999999999?text=Hola,%20deseo%20coordinar%20una%20reuni%C3%B3n%20para%20evaluar%20un%20proyecto%20tecnol%C3%B3gico." target="_blank" class="btn" style="background:#25D366; color:white; border-shadow:none;">
-                <i class="fa-brands fa-whatsapp" style="margin-right:8px;"></i> Hablar con un Ingeniero de Soporte
+            <a href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20web%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20general." target="_blank" class="btn" style="background:#25D366; color:white; font-shadow:none;">
+                <i class="fa-brands fa-whatsapp" style="margin-right: 5px;"></i> Contactar por WhatsApp
             </a>
         </div>
     </section>
 </main>
 
-<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20tengo%20una%20consulta%20técnica%20sobre%20sus%20servicios%20de%20sistemas." target="_blank">
+<!-- Botón flotante -->
+<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta." target="_blank">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <footer>
-    © 2026 Soluciones de Ingeniería de Sistemas - Todos los derechos reservados.
+    © 2026 Soluciones Tecnológicas Integrales - Todos los derechos reservados.
 </footer>
 
 </body>
