@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWCOSMO SOLUCIONES</title>
+    <title>Soluciones Tecnológicas & Estudio Digital</title>
     
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,10 +35,12 @@
             background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
-            padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 40px; display: flex; justify-content: space-between; align-items: center;
         }
-        .nav-logo { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-brand { display: flex; align-items: center; gap: 12px; }
+        .nav-logo-img { height: 45px; width: auto; object-fit: contain; }
+        .nav-logo-text { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
 
@@ -47,7 +49,7 @@
             background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 50%),
                         radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent 50%),
                         var(--bg-main);
-            padding: 200px 20px 120px 20px; text-align: center; position: relative;
+            padding: 180px 20px 120px 20px; text-align: center; position: relative;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -55,6 +57,25 @@
             content: ''; position: absolute; inset: 0;
             background: linear-gradient(to bottom, transparent 80%, var(--bg-main));
             pointer-events: none;
+        }
+
+        .hero-logo-container {
+            margin-bottom: 25px;
+            display: inline-block;
+            position: relative;
+        }
+        .hero-logo {
+            height: 140px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.3));
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         header h1 { 
@@ -118,7 +139,6 @@
             align-items: flex-start;
         }
 
-        /* Efecto de luz de seguimiento */
         .card::before {
             content: ''; 
             position: absolute; 
@@ -130,33 +150,19 @@
             transition: opacity 0.5s;
         }
 
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        /* Comportamiento al pasar el cursor (Hover Pro) */
+        .card:hover::before { opacity: 1; }
         .card:hover { 
             transform: translateY(-6px) scale(1.02); 
             background: rgba(17, 28, 58, 0.55);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); 
         }
 
-        /* Variaciones de Bordes de Luz según Categoría */
         .card.tech-card:hover { border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); }
         .card.design-card:hover { border-color: rgba(236, 72, 153, 0.4); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.1); }
         .card.crypto-card:hover { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.1); }
 
-        /* Estilizado de los Iconos */
-        .card i { 
-            font-size: 2.3rem; 
-            margin-bottom: 24px; 
-            display: inline-block; 
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .card:hover i {
-            transform: scale(1.1) translateY(-2px);
-        }
+        .card i { font-size: 2.3rem; margin-bottom: 24px; display: inline-block; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .card:hover i { transform: scale(1.1) translateY(-2px); }
 
         .c-tech { color: var(--tech-color); filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); }
         .c-design { color: var(--design-color); filter: drop-shadow(0 0 10px rgba(236, 72, 147, 0.2)); }
@@ -166,45 +172,24 @@
         .card:hover .c-design { filter: drop-shadow(0 0 20px rgba(236, 72, 147, 0.6)); }
         .card:hover .c-crypto { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6)); }
 
-        /* Textos de Tarjeta */
-        .card h3 { 
-            font-size: 1.35rem; 
-            margin-bottom: 14px; 
-            color: #fff; 
-            font-weight: 600; 
-            letter-spacing: -0.3px;
-        }
-        .card p { 
-            color: var(--text-muted); 
-            font-size: 0.92rem; 
-            line-height: 1.75; 
-        }
-
-        /* Ocultamiento suave para JS */
+        .card h3 { font-size: 1.35rem; margin-bottom: 14px; color: #fff; font-weight: 600; letter-spacing: -0.3px; }
+        .card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.75; }
         .card.hidden { display: none; opacity: 0; transform: scale(0.95); }
 
         /* --- SECCIÓN PLANES REFERENCIALES --- */
         .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
         .price-card {
             background: var(--bg-card); padding: 45px 30px; border-radius: 24px; text-align: center;
             border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;
             transition: var(--transition); position: relative;
         }
-
-        .price-card.featured {
-            border-color: rgba(0, 242, 254, 0.3);
-            background: linear-gradient(180deg, var(--bg-card), #080f21);
-        }
-
+        .price-card.featured { border-color: rgba(0, 242, 254, 0.3); background: linear-gradient(180deg, var(--bg-card), #080f21); }
         .price-card.featured::after {
             content: 'RECOMENDADO'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
             background: linear-gradient(135deg, var(--primary), #2563eb); color: #030712; padding: 4px 16px;
             font-size: 0.75rem; font-weight: 700; border-radius: 20px; letter-spacing: 0.5px;
         }
-
         .price-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.1); }
-
         .price-card h3 { color: #fff; font-size: 1.5rem; font-weight: 600; }
         .price { font-size: 3rem; font-weight: 700; color: #fff; margin: 20px 0; letter-spacing: -1px; }
         .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
@@ -243,11 +228,12 @@
 
         /* Responsive Design */
         @media(max-width:768px){
-            nav { padding: 15px 20px; }
+            nav { padding: 10px 20px; }
             .nav-links { display: none; }
             header { padding: 140px 20px 80px 20px; }
             header h1 { font-size: 2.6rem; }
             header p { font-size: 1.1rem; }
+            .hero-logo { height: 100px; }
             .title h2 { font-size: 2rem; }
             .contact { padding: 40px 20px; }
             .contact-info { gap: 20px; flex-direction: column; align-items: center; }
@@ -258,7 +244,11 @@
 
 <!-- MENÚ DE NAVEGACIÓN FLOTANTE -->
 <nav>
-    <div class="nav-logo">NewCosmo</div>
+    <div class="nav-brand">
+        <!-- Reemplaza 'logo.png' por el archivo de tu logo -->
+        <img src="logo.png" alt="Logo NewCosmo" class="nav-logo-img">
+        <div class="nav-logo-text">NewCosmo</div>
+    </div>
     <ul class="nav-links">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#precios">Precios</a></li>
@@ -268,6 +258,10 @@
 
 <!-- ENCABEZADO CYBER TECH -->
 <header>
+    <div class="hero-logo-container">
+        <!-- Reemplaza 'logo.png' por el archivo de tu logo -->
+        <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
+    </div>
     <h1>Tecnología, Diseño & Web3 Soluciones</h1>
     <p>Impulsamos tus ideas y resolvemos tus problemas técnicos con rendimiento premium. Desde el soporte de tus equipos hasta el despliegue de infraestructura blockchain inteligente.</p>
     <a href="#contacto" class="btn">Solicitar Servicio Directo <i class="fa-solid fa-arrow-right"></i></a>
@@ -281,7 +275,6 @@
             <p>Elige una categoría para filtrar las soluciones a tu medida.</p>
         </div>
 
-        <!-- Botonera de Filtrado Inteligente -->
         <div class="filter-container">
             <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
             <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
@@ -375,7 +368,6 @@
         </div>
 
         <div class="pricing">
-            <!-- Técnico -->
             <div class="price-card">
                 <div>
                     <h3>Soporte Técnico</h3>
@@ -389,7 +381,6 @@
                 <a href="https://wa.me/51999999999?text=Hola,%20solicito%20servicio%20de%20Formateo%20e%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="btn-price">Solicitar Soporte</a>
             </div>
 
-            <!-- Diseño -->
             <div class="price-card featured">
                 <div>
                     <h3>Diseño & Multimedia</h3>
@@ -403,7 +394,6 @@
                 <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Dise%C3%B1o,%20Logos%20y%20Edici%C3%B3n." target="_blank" class="btn-price">Cotizar Diseño</a>
             </div>
 
-            <!-- Crypto / Web -->
             <div class="price-card">
                 <div>
                     <h3>Desarrollo & Web3</h3>
@@ -438,7 +428,6 @@
     </section>
 </main>
 
-<!-- Botón flotante -->
 <a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta." aria-label="Contacto por WhatsApp" target="_blank">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -447,21 +436,15 @@
     © 2026 Soluciones Tecnológicas Integrales - Todos los derechos reservados.
 </footer>
 
-<!-- CONTROLADORES DINÁMICOS OPTIMIZADOS -->
 <script>
-    // 1. Filtrado dinámico con animación fluida
     function filterServices(category, element) {
         const buttons = document.querySelectorAll('.filter-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
-        if (element) {
-            element.classList.add('active');
-        }
+        if (element) element.classList.add('active');
 
         const cards = document.querySelectorAll('.card');
-        
         cards.forEach(card => {
             const isMatch = category === 'all' || card.getAttribute('data-category') === category;
-            
             if (isMatch) {
                 card.classList.remove('hidden');
                 requestAnimationFrame(() => {
@@ -476,13 +459,11 @@
         });
     }
 
-    // 2. Efecto interactivo de luz de neón (Glow) que sigue el mouse por las tarjetas
     document.getElementById('services-grid').onmousemove = e => {
         for(const card of document.getElementsByClassName('card')) {
             const rect = card.getBoundingClientRect(),
                   x = e.clientX - rect.left,
                   y = e.clientY - rect.top;
-
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
         }
