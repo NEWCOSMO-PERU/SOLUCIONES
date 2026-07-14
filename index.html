@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soluciones Tecnológicas & Estudio Digital</title>
     
-    <!-- Google Fonts & FontAwesome (Fixed & Updated) -->
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -25,18 +25,29 @@
         }
 
         html { scroll-behavior: smooth; }
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-        body { background: var(--bg-main); color: var(--text-main); line-height:1.6; overflow-x: hidden; }
+        body { background: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* --- MENÚ DE NAVEGACIÓN PRO --- */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
         /* --- HERO HEADER ULTRA PREMIUM --- */
         header {
             background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 50%),
                         radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent 50%),
                         var(--bg-main);
-            padding: 160px 20px 120px 20px;
-            text-align: center;
-            position: relative;
+            padding: 180px 20px 120px 20px; text-align: center; position: relative;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -89,6 +100,8 @@
             background: var(--bg-card); padding: 35px; border-radius: 24px;
             border: 1px solid var(--border-color); transition: var(--transition);
             position: relative; overflow: hidden;
+            opacity: 1; transform: scale(1);
+            will-change: transform, opacity;
         }
 
         .card::before {
@@ -111,7 +124,7 @@
         .card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; font-weight: 600; }
         .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        /* Ocultamiento suave para JS */
+        /* Desaparición controlada mediante CSS */
         .card.hidden { display: none; opacity: 0; transform: scale(0.9); }
 
         /* --- SECCIÓN PLANES REFERENCIALES --- */
@@ -144,8 +157,8 @@
         .price-card ul li { margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
         .price-card ul li i { color: #10b981; font-size: 1.1rem; }
 
-        .btn-price { background: rgba(255,255,255,0.05); color: #fff; width: 100%; padding: 14px; border-radius: 12px; box-shadow: none; font-weight: 600; border: 1px solid var(--border-color); }
-        .btn-price:hover { background: #fff; color: var(--bg-main); transform: none; }
+        .btn-price { background: rgba(255,255,255,0.05); color: #fff; width: 100%; padding: 14px; border-radius: 12px; box-shadow: none; font-weight: 600; border: 1px solid var(--border-color); cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block; }
+        .btn-price:hover { background: #fff; color: var(--bg-main); }
         .price-card.featured .btn-price { background: var(--text-main); color: var(--bg-main); }
         .price-card.featured .btn-price:hover { background: var(--primary); color: var(--bg-main); }
 
@@ -174,7 +187,9 @@
 
         /* Responsive Design */
         @media(max-width:768px){
-            header { padding: 120px 20px 80px 20px; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; } /* Ocultar links en móviles para evitar colapso visual */
+            header { padding: 140px 20px 80px 20px; }
             header h1 { font-size: 2.6rem; }
             header p { font-size: 1.1rem; }
             .title h2 { font-size: 2rem; }
@@ -185,10 +200,20 @@
 </head>
 <body>
 
+<!-- MENÚ DE NAVEGACIÓN FLOTANTE -->
+<nav>
+    <div class="nav-logo">NewCosmo</div>
+    <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
 <!-- ENCABEZADO CYBER TECH -->
 <header>
     <h1>Tecnología, Diseño & Web3 Soluciones</h1>
-    <p>Impulsamos tus ideas y resolvemos tus problemas técnicos con rendimiento premium. Desde el soporte de tus equipos hasta el despliegue de infraestructura blockchain inteligente[cite: 10].</p>
+    <p>Impulsamos tus ideas y resolvemos tus problemas técnicos con rendimiento premium. Desde el soporte de tus equipos hasta el despliegue de infraestructura blockchain inteligente.</p>
     <a href="#contacto" class="btn">Solicitar Servicio Directo <i class="fa-solid fa-arrow-right"></i></a>
 </header>
 
@@ -200,12 +225,12 @@
             <p>Elige una categoría para filtrar las soluciones a tu medida.</p>
         </div>
 
-        <!-- Botonera de Filtrado Inteligente por JS -->
+        <!-- Botonera de Filtrado Inteligente -->
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterServices('all')">Todos los servicios</button>
-            <button class="filter-btn" onclick="filterServices('tech')">Soporte Técnico</button>
-            <button class="filter-btn" onclick="filterServices('design')">Diseño & Multimedia</button>
-            <button class="filter-btn" onclick="filterServices('crypto')">Web3 & Blockchain</button>
+            <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
+            <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
+            <button class="filter-btn" onclick="filterServices('design', this)">Diseño & Multimedia</button>
+            <button class="filter-btn" onclick="filterServices('crypto', this)">Web3 & Blockchain</button>
         </div>
 
         <div class="services" id="services-grid">
@@ -213,45 +238,45 @@
             <div class="card tech-card" data-category="tech">
                 <i class="fa-solid fa-laptop-medical c-tech"></i>
                 <h3>Formateo y Optimización</h3>
-                <p>Instalación limpia de sistemas operativos avanzados (Windows/Mac), respaldo masivo seguro de información, erradicación de malware y calibración de rendimiento óptimo[cite: 10].</p>
+                <p>Instalación limpia de sistemas operativos avanzados (Windows/Mac), respaldo masivo seguro de información, erradicación de malware y calibración de rendimiento óptimo.</p>
             </div>
 
             <div class="card tech-card" data-category="tech">
                 <i class="fa-solid fa-download c-tech"></i>
                 <h3>Instalación de Programas</h3>
-                <p>Configuración integral de software profesional y entornos productivos de trabajo: suites creativas, ofimática avanzada, utilitarios corporativos y activación nítida[cite: 10].</p>
+                <p>Configuración integral de software profesional y entornos productivos de trabajo: suites creativas, ofimática avanzada, utilitarios corporativos y activación nítida.</p>
             </div>
 
             <!-- Diseño y Multimedia -->
             <div class="card design-card" data-category="design">
                 <i class="fa-solid fa-code c-design"></i>
                 <h3>Diseño Web Profesional</h3>
-                <p>Desarrollo y maquetación de plataformas web sofisticadas, landing pages optimizadas de alta conversión y ecommerce automatizados responsivos[cite: 10].</p>
+                <p>Desarrollo y maquetación de plataformas web sofisticadas, landing pages optimizadas de alta conversión y ecommerce automatizados responsivos.</p>
             </div>
 
             <div class="card design-card" data-category="design">
                 <i class="fa-solid fa-pen-nib c-design"></i>
                 <h3>Logos e Identidad Visual</h3>
-                <p>Construcción de marcas únicas, isotipos de alto impacto, manuales normativos de marca modernos y papelería corporativa premium para destacar en el mercado[cite: 10].</p>
+                <p>Construcción de marcas únicas, isotipos de alto impacto, manuales normativos de marca modernos y papelería corporativa premium para destacar en el mercado.</p>
             </div>
 
             <div class="card design-card" data-category="design">
                 <i class="fa-solid fa-address-card c-design"></i>
                 <h3>Tarjetas de Presentación</h3>
-                <p>Modelado de tarjetas de presentación de alto nivel listas para imprentas offset comerciales de lujo o en formatos digitales inteligentes interactivos[cite: 10].</p>
+                <p>Modelado de tarjetas de presentación de alto nivel listas para imprentas offset comerciales de lujo o en formatos digitales inteligentes interactivos.</p>
             </div>
 
             <div class="card design-card" data-category="design">
                 <i class="fa-solid fa-video c-design"></i>
                 <h3>Edición Multimedia</h3>
-                <p>Postproducción audiovisual cinemática, motion graphics y edición de video vertical dinámica calibrada para retención en redes (TikTok, Reels, Shorts)[cite: 10].</p>
+                <p>Postproducción audiovisual cinemática, motion graphics y edición de video vertical dinámica calibrada para retención en redes (TikTok, Reels, Shorts).</p>
             </div>
 
             <!-- Blockchain / Web3 -->
             <div class="card crypto-card" data-category="crypto">
                 <i class="fa-solid fa-coins c-crypto"></i>
                 <h3>Creación de Tokens Cripto</h3>
-                <p>Programación y despliegue automatizado de contratos inteligentes auditados para tokens estables o personalizados (ERC-20, BEP-20) en Ethereum, BSC o Polygon[cite: 10].</p>
+                <p>Programación y despliegue automatizado de contratos inteligentes auditados para tokens estables o personalizados (ERC-20, BEP-20) en Ethereum, BSC o Polygon.</p>
             </div>
         </div>
     </section>
@@ -270,12 +295,12 @@
                     <h3>Soporte Técnico</h3>
                     <div class="price">S/ 50 <span>/ Base</span></div>
                     <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Formateo limpio de PC/Laptop[cite: 10]</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Instalación de software y controladores[cite: 10]</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Optimización física y lógica completa[cite: 10]</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Formateo limpio de PC/Laptop</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Instalación de software y controladores</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Optimización física y lógica completa</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20solicito%20servicio%20de%20Formateo%20e%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="btn btn-price">Solicitar Soporte</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20solicito%20servicio%20de%20Formateo%20e%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="btn-price">Solicitar Soporte</a>
             </div>
 
             <!-- Diseño -->
@@ -284,12 +309,12 @@
                     <h3>Diseño & Multimedia</h3>
                     <div class="price">S/ 150 <span>/ Base</span></div>
                     <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Branding & Logotipos Corporativos[cite: 10]</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Tarjetas personales de alto impacto[cite: 10]</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Edición publicitaria de alta retención[cite: 10]</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Branding & Logotipos Corporativos</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Tarjetas personales de alto impacto</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Edición publicitaria de alta retención</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Dise%C3%B1o,%20Logos%20y%20Edici%C3%B3n." target="_blank" class="btn btn-price">Cotizar Diseño</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Dise%C3%B1o,%20Logos%20y%20Edici%C3%B3n." target="_blank" class="btn-price">Cotizar Diseño</a>
             </div>
 
             <!-- Crypto / Web -->
@@ -298,12 +323,12 @@
                     <h3>Desarrollo & Web3</h3>
                     <div class="price">Cotizar</div>
                     <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Arquitectura web y landing pages[cite: 10]</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Creación y deploy de tokens cripto[cite: 10]</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Smart Contracts y Web3 DApps[cite: 10]</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Arquitectura web y landing pages</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Creación y deploy de tokens cripto</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Smart Contracts y Web3 DApps</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20requiero%20informaci%C3%B3n%20para%20Dise%C3%B1o%20Web%20o%20Creaci%C3%B3n%20de%20Tokens%20Cripto." target="_blank" class="btn btn-price">Consultar Proyecto</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20requiero%20informaci%C3%B3n%20para%20Dise%C3%B1o%20Web%20o%20Creaci%C3%B3n%20de%20Tokens%20Cripto." target="_blank" class="btn-price">Consultar Proyecto</a>
             </div>
         </div>
     </section>
@@ -315,8 +340,8 @@
             <p style="color: var(--text-muted); margin-top: 5px;">Escríbenos directamente para asignarte un especialista de inmediato.</p>
             
             <div class="contact-info">
-                <span><i class="fa-solid fa-envelope"></i> newcosmo@outlook.es[cite: 10]</span>
-                <span><i class="fa-solid fa-phone"></i> +51 999 999 999[cite: 10]</span>
+                <span><i class="fa-solid fa-envelope"></i> newcosmo@outlook.es</span>
+                <span><i class="fa-solid fa-phone"></i> +51 999 999 999</span>
                 <span><i class="fa-solid fa-location-dot"></i> Trujillo, Perú</span>
             </div>
 
@@ -328,34 +353,41 @@
 </main>
 
 <!-- Botón flotante -->
-<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta." target="_blank">
+<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta." aria-label="Contacto por WhatsApp" target="_blank">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <footer>
-    © 2026 Soluciones Tecnológicas Integrales - Todos los derechos reservados[cite: 10].
+    © 2026 Soluciones Tecnológicas Integrales - Todos los derechos reservados.
 </footer>
 
-<!-- CONTROLADORES DINÁMICOS POR JAVASCRIPT -->
+<!-- CONTROLADORES DINÁMICOS OPTIMIZADOS -->
 <script>
-    function filterServices(category) {
-        // Manejar el estado activo de los botones
+    function filterServices(category, element) {
+        // Manejar el estado activo de los botones de forma segura
         const buttons = document.querySelectorAll('.filter-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
-        event.currentTarget.classList.add('active');
+        if (element) {
+            element.classList.add('active');
+        }
 
-        // Filtrar tarjetas con animaciones visuales fluidas
         const cards = document.querySelectorAll('.card');
+        
         cards.forEach(card => {
-            if (category === 'all' || card.getAttribute('data-category') === category) {
+            // Evaluamos si debe mostrarse
+            const isMatch = category === 'all' || card.getAttribute('data-category') === category;
+            
+            if (isMatch) {
                 card.classList.remove('hidden');
-                // Efecto de entrada micro suave
-                card.style.opacity = '0';
-                setTimeout(() => {
+                // Retraso controlado para permitir renderizado óptimo y efecto de entrada suave
+                requestAnimationFrame(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'scale(1)';
-                }, 50);
+                });
             } else {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                // Se oculta después de terminar la transición de opacidad
                 card.classList.add('hidden');
             }
         });
