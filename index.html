@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soluciones Tecnológicas & Estudio Digital</title>
     
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -92,7 +93,7 @@
             transform: translateY(-2px);
         }
 
-        /* --- GRILLA DE SERVICIOS PREMIUM (ESTILO PRO MODERNO) --- */
+        /* --- GRILLA DE SERVICIOS PREMIUM --- */
         .services { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
@@ -140,7 +141,7 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); 
         }
 
-        /* Variaciones de Bordes de Luz de Neón según Categoría */
+        /* Variaciones de Bordes de Luz según Categoría */
         .card.tech-card:hover { border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); }
         .card.design-card:hover { border-color: rgba(236, 72, 153, 0.4); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.1); }
         .card.crypto-card:hover { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.1); }
@@ -153,7 +154,6 @@
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        /* Animación del icono al Hover */
         .card:hover i {
             transform: scale(1.1) translateY(-2px);
         }
@@ -173,7 +173,6 @@
             color: #fff; 
             font-weight: 600; 
             letter-spacing: -0.3px;
-            transition: color 0.3s;
         }
         .card p { 
             color: var(--text-muted); 
@@ -219,7 +218,7 @@
         .price-card.featured .btn-price { background: var(--text-main); color: var(--bg-main); }
         .price-card.featured .btn-price:hover { background: var(--primary); color: var(--bg-main); }
 
-        /* --- CONTACTO DIRECTO SUPREMO --- */
+        /* --- CONTACTO DIRECTO --- */
         .contact { 
             text-align: center; background: radial-gradient(circle at top left, #0e172c, var(--bg-card)); 
             border-radius: 32px; padding: 60px 40px; border: 1px solid var(--border-color);
@@ -233,7 +232,7 @@
 
         footer { background: #01040a; color: #4b5563; text-align: center; padding: 35px 20px; margin-top: 100px; font-size: 0.9rem; border-top: 1px solid var(--border-color); }
 
-        /* --- WHATSAPP FLOTANTE INTERACTIVO --- */
+        /* --- WHATSAPP FLOTANTE --- */
         .whatsapp {
             position: fixed; right: 30px; bottom: 30px; width: 65px; height: 65px;
             background: #25D366; border-radius: 50%; display: flex; justify-content: center;
@@ -245,7 +244,7 @@
         /* Responsive Design */
         @media(max-width:768px){
             nav { padding: 15px 20px; }
-            .nav-links { display: none; } /* Evita colapsar el menú visual en teléfonos */
+            .nav-links { display: none; }
             header { padding: 140px 20px 80px 20px; }
             header h1 { font-size: 2.6rem; }
             header p { font-size: 1.1rem; }
@@ -257,6 +256,7 @@
 </head>
 <body>
 
+<!-- MENÚ DE NAVEGACIÓN FLOTANTE -->
 <nav>
     <div class="nav-logo">NewCosmo</div>
     <ul class="nav-links">
@@ -266,6 +266,7 @@
     </ul>
 </nav>
 
+<!-- ENCABEZADO CYBER TECH -->
 <header>
     <h1>Tecnología, Diseño & Web3 Soluciones</h1>
     <p>Impulsamos tus ideas y resolvemos tus problemas técnicos con rendimiento premium. Desde el soporte de tus equipos hasta el despliegue de infraestructura blockchain inteligente.</p>
@@ -273,12 +274,14 @@
 </header>
 
 <main>
+    <!-- NUESTROS SERVICIOS -->
     <section id="servicios">
         <div class="title">
             <h2>Servicios Especializados</h2>
             <p>Elige una categoría para filtrar las soluciones a tu medida.</p>
         </div>
 
+        <!-- Botonera de Filtrado Inteligente -->
         <div class="filter-container">
             <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
             <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
@@ -287,6 +290,7 @@
         </div>
 
         <div class="services" id="services-grid">
+            <!-- Soporte Técnico -->
             <div class="card tech-card" data-category="tech">
                 <i class="fa-solid fa-laptop-medical c-tech"></i>
                 <h3>Formateo y Optimización</h3>
@@ -299,6 +303,19 @@
                 <p>Configuración integral de software profesional y entornos productivos de trabajo: suites creativas, ofimática avanzada, utilitarios corporativos y activación nítida.</p>
             </div>
 
+            <div class="card tech-card" data-category="tech">
+                <i class="fa-solid fa-shield-halved c-tech"></i>
+                <h3>Ciberseguridad & Antivirus</h3>
+                <p>Análisis profundo de vulnerabilidades, remoción de ransomware encubierto, firewalls avanzados y auditorías locales para proteger contraseñas y transacciones bancarias.</p>
+            </div>
+
+            <div class="card tech-card" data-category="tech">
+                <i class="fa-solid fa-network-wired c-tech"></i>
+                <h3>Redes & Servidores NAS</h3>
+                <p>Configuración de enrutadores locales, cableado estructurado, repetidores WiFi estables y nubes privadas NAS locales para compartir archivos corporativos.</p>
+            </div>
+
+            <!-- Diseño y Multimedia -->
             <div class="card design-card" data-category="design">
                 <i class="fa-solid fa-code c-design"></i>
                 <h3>Diseño Web Profesional</h3>
@@ -323,14 +340,34 @@
                 <p>Postproducción audiovisual cinemática, motion graphics y edición de video vertical dinámica calibrada para retención en redes (TikTok, Reels, Shorts).</p>
             </div>
 
+            <div class="card design-card" data-category="design">
+                <i class="fa-solid fa-palette c-design"></i>
+                <h3>Diseño UI/UX de Interfaces</h3>
+                <p>Prototipado interactivo de alta fidelidad para aplicaciones móviles y softwares web, centrado en la usabilidad y conversión final del usuario comercial.</p>
+            </div>
+
+            <!-- Desarrollo / Web3 / Blockchain -->
             <div class="card crypto-card" data-category="crypto">
                 <i class="fa-solid fa-coins c-crypto"></i>
                 <h3>Creación de Tokens Cripto</h3>
                 <p>Programación y despliegue automatizado de contratos inteligentes auditados para tokens estables o personalizados (ERC-20, BEP-20) en Ethereum, BSC o Polygon.</p>
             </div>
+
+            <div class="card crypto-card" data-category="crypto">
+                <i class="fa-solid fa-cubes c-crypto"></i>
+                <h3>Colecciones NFT & Arte</h3>
+                <p>Desarrollo de contratos inteligentes ERC-721A optimizados en gas, generación metadata algorítmica y acuñación de colecciones de arte digital exclusivas.</p>
+            </div>
+
+            <div class="card crypto-card" data-category="crypto">
+                <i class="fa-solid fa-server c-crypto"></i>
+                <h3>Integraciones DApps Web3</h3>
+                <p>Desarrollo front-end conectado a billeteras cripto descentralizadas (MetaMask, WalletConnect) para pagos Web3 automatizados sin intermediarios.</p>
+            </div>
         </div>
     </section>
 
+    <!-- PLANES REFERENCIALES -->
     <section id="precios">
         <div class="title">
             <h2>Planes de Inversión</h2>
@@ -338,6 +375,7 @@
         </div>
 
         <div class="pricing">
+            <!-- Técnico -->
             <div class="price-card">
                 <div>
                     <h3>Soporte Técnico</h3>
@@ -351,6 +389,7 @@
                 <a href="https://wa.me/51999999999?text=Hola,%20solicito%20servicio%20de%20Formateo%20e%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="btn-price">Solicitar Soporte</a>
             </div>
 
+            <!-- Diseño -->
             <div class="price-card featured">
                 <div>
                     <h3>Diseño & Multimedia</h3>
@@ -364,6 +403,7 @@
                 <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Dise%C3%B1o,%20Logos%20y%20Edici%C3%B3n." target="_blank" class="btn-price">Cotizar Diseño</a>
             </div>
 
+            <!-- Crypto / Web -->
             <div class="price-card">
                 <div>
                     <h3>Desarrollo & Web3</h3>
@@ -379,6 +419,7 @@
         </div>
     </section>
 
+    <!-- CONTACTO DIRECTO -->
     <section id="contacto">
         <div class="contact">
             <h2>¿Listo para digitalizar tus ideas?</h2>
@@ -397,6 +438,7 @@
     </section>
 </main>
 
+<!-- Botón flotante -->
 <a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta." aria-label="Contacto por WhatsApp" target="_blank">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -405,6 +447,7 @@
     © 2026 Soluciones Tecnológicas Integrales - Todos los derechos reservados.
 </footer>
 
+<!-- CONTROLADORES DINÁMICOS OPTIMIZADOS -->
 <script>
     // 1. Filtrado dinámico con animación fluida
     function filterServices(category, element) {
