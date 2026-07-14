@@ -49,7 +49,7 @@
             background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 50%),
                         radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent 50%),
                         var(--bg-main);
-            padding: 180px 20px 120px 20px; text-align: center; position: relative;
+            padding: 220px 20px 120px 20px; text-align: center; position: relative;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -60,21 +60,21 @@
         }
 
         .hero-logo-container {
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             display: inline-block;
             position: relative;
         }
         .hero-logo {
-            height: 140px;
+            height: 280px; /* Incrementado para resaltar el escudo y las alas */
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.3));
+            filter: drop-shadow(0 0 45px rgba(245, 158, 11, 0.45));
             animation: float 6s ease-in-out infinite;
         }
         
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
 
@@ -230,10 +230,10 @@
         @media(max-width:768px){
             nav { padding: 10px 20px; }
             .nav-links { display: none; }
-            header { padding: 140px 20px 80px 20px; }
+            header { padding: 160px 20px 80px 20px; }
             header h1 { font-size: 2.6rem; }
             header p { font-size: 1.1rem; }
-            .hero-logo { height: 100px; }
+            .hero-logo { height: 180px; } /* Adaptación responsiva proporcional */
             .title h2 { font-size: 2rem; }
             .contact { padding: 40px 20px; }
             .contact-info { gap: 20px; flex-direction: column; align-items: center; }
@@ -245,7 +245,6 @@
 <!-- MENÚ DE NAVEGACIÓN FLOTANTE -->
 <nav>
     <div class="nav-brand">
-        <!-- Reemplaza 'logo.png' por el archivo de tu logo -->
         <img src="logo.png" alt="Logo NewCosmo" class="nav-logo-img">
         <div class="nav-logo-text">NewCosmo</div>
     </div>
@@ -259,7 +258,6 @@
 <!-- ENCABEZADO CYBER TECH -->
 <header>
     <div class="hero-logo-container">
-        <!-- Reemplaza 'logo.png' por el archivo de tu logo -->
         <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
     </div>
     <h1>Tecnología, Diseño & Web3 Soluciones</h1>
