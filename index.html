@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soluciones Tecnológicas & Estudio Digital</title>
     
-    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -21,7 +20,7 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.05);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         html { scroll-behavior: smooth; }
@@ -47,7 +46,7 @@
             background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 50%),
                         radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent 50%),
                         var(--bg-main);
-            padding: 180px 20px 120px 20px; text-align: center; position: relative;
+            padding: 200px 20px 120px 20px; text-align: center; position: relative;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -93,39 +92,97 @@
             transform: translateY(-2px);
         }
 
-        /* --- GRILLA DE SERVICIOS PREMIUM --- */
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* --- GRILLA DE SERVICIOS PREMIUM (ESTILO PRO MODERNO) --- */
+        .services { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+        }
         
         .card {
-            background: var(--bg-card); padding: 35px; border-radius: 24px;
-            border: 1px solid var(--border-color); transition: var(--transition);
-            position: relative; overflow: hidden;
-            opacity: 1; transform: scale(1);
-            will-change: transform, opacity;
+            background: rgba(11, 19, 41, 0.4); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 40px 35px; 
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.04); 
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; 
+            overflow: hidden;
+            opacity: 1; 
+            transform: scale(1);
+            will-change: transform, opacity, border-color;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
+        /* Efecto de luz de seguimiento */
         .card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: transparent; transition: var(--transition);
+            content: ''; 
+            position: absolute; 
+            inset: 0; 
+            background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.06), transparent 40%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
-        .card.tech-card:hover::before { background: var(--tech-color); }
-        .card.design-card:hover::before { background: var(--design-color); }
-        .card.crypto-card:hover::before { background: var(--crypto-color); }
 
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Comportamiento al pasar el cursor (Hover Pro) */
         .card:hover { 
-            transform: translateY(-8px); background: var(--bg-card-hover);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-6px) scale(1.02); 
+            background: rgba(17, 28, 58, 0.55);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); 
         }
-        .card i { font-size: 2.5rem; margin-bottom: 20px; display: inline-block; }
+
+        /* Variaciones de Bordes de Luz de Neón según Categoría */
+        .card.tech-card:hover { border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); }
+        .card.design-card:hover { border-color: rgba(236, 72, 153, 0.4); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.1); }
+        .card.crypto-card:hover { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.1); }
+
+        /* Estilizado de los Iconos */
+        .card i { 
+            font-size: 2.3rem; 
+            margin-bottom: 24px; 
+            display: inline-block; 
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
         
-        .c-tech { color: var(--tech-color); text-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
-        .c-design { color: var(--design-color); text-shadow: 0 0 15px rgba(236, 72, 147, 0.3); }
-        .c-crypto { color: var(--crypto-color); text-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
+        /* Animación del icono al Hover */
+        .card:hover i {
+            transform: scale(1.1) translateY(-2px);
+        }
 
-        .card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; font-weight: 600; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+        .c-tech { color: var(--tech-color); filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); }
+        .c-design { color: var(--design-color); filter: drop-shadow(0 0 10px rgba(236, 72, 147, 0.2)); }
+        .c-crypto { color: var(--crypto-color); filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.2)); }
 
-        /* Desaparición controlada mediante CSS */
-        .card.hidden { display: none; opacity: 0; transform: scale(0.9); }
+        .card:hover .c-tech { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)); }
+        .card:hover .c-design { filter: drop-shadow(0 0 20px rgba(236, 72, 147, 0.6)); }
+        .card:hover .c-crypto { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6)); }
+
+        /* Textos de Tarjeta */
+        .card h3 { 
+            font-size: 1.35rem; 
+            margin-bottom: 14px; 
+            color: #fff; 
+            font-weight: 600; 
+            letter-spacing: -0.3px;
+            transition: color 0.3s;
+        }
+        .card p { 
+            color: var(--text-muted); 
+            font-size: 0.92rem; 
+            line-height: 1.75; 
+        }
+
+        /* Ocultamiento suave para JS */
+        .card.hidden { display: none; opacity: 0; transform: scale(0.95); }
 
         /* --- SECCIÓN PLANES REFERENCIALES --- */
         .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -188,7 +245,7 @@
         /* Responsive Design */
         @media(max-width:768px){
             nav { padding: 15px 20px; }
-            .nav-links { display: none; } /* Ocultar links en móviles para evitar colapso visual */
+            .nav-links { display: none; } /* Evita colapsar el menú visual en teléfonos */
             header { padding: 140px 20px 80px 20px; }
             header h1 { font-size: 2.6rem; }
             header p { font-size: 1.1rem; }
@@ -200,7 +257,6 @@
 </head>
 <body>
 
-<!-- MENÚ DE NAVEGACIÓN FLOTANTE -->
 <nav>
     <div class="nav-logo">NewCosmo</div>
     <ul class="nav-links">
@@ -210,7 +266,6 @@
     </ul>
 </nav>
 
-<!-- ENCABEZADO CYBER TECH -->
 <header>
     <h1>Tecnología, Diseño & Web3 Soluciones</h1>
     <p>Impulsamos tus ideas y resolvemos tus problemas técnicos con rendimiento premium. Desde el soporte de tus equipos hasta el despliegue de infraestructura blockchain inteligente.</p>
@@ -218,14 +273,12 @@
 </header>
 
 <main>
-    <!-- NUESTROS SERVICIOS -->
     <section id="servicios">
         <div class="title">
             <h2>Servicios Especializados</h2>
             <p>Elige una categoría para filtrar las soluciones a tu medida.</p>
         </div>
 
-        <!-- Botonera de Filtrado Inteligente -->
         <div class="filter-container">
             <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
             <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
@@ -234,7 +287,6 @@
         </div>
 
         <div class="services" id="services-grid">
-            <!-- Soporte Técnico -->
             <div class="card tech-card" data-category="tech">
                 <i class="fa-solid fa-laptop-medical c-tech"></i>
                 <h3>Formateo y Optimización</h3>
@@ -247,7 +299,6 @@
                 <p>Configuración integral de software profesional y entornos productivos de trabajo: suites creativas, ofimática avanzada, utilitarios corporativos y activación nítida.</p>
             </div>
 
-            <!-- Diseño y Multimedia -->
             <div class="card design-card" data-category="design">
                 <i class="fa-solid fa-code c-design"></i>
                 <h3>Diseño Web Profesional</h3>
@@ -272,7 +323,6 @@
                 <p>Postproducción audiovisual cinemática, motion graphics y edición de video vertical dinámica calibrada para retención en redes (TikTok, Reels, Shorts).</p>
             </div>
 
-            <!-- Blockchain / Web3 -->
             <div class="card crypto-card" data-category="crypto">
                 <i class="fa-solid fa-coins c-crypto"></i>
                 <h3>Creación de Tokens Cripto</h3>
@@ -281,7 +331,6 @@
         </div>
     </section>
 
-    <!-- PLANES REFERENCIALES -->
     <section id="precios">
         <div class="title">
             <h2>Planes de Inversión</h2>
@@ -289,7 +338,6 @@
         </div>
 
         <div class="pricing">
-            <!-- Técnico -->
             <div class="price-card">
                 <div>
                     <h3>Soporte Técnico</h3>
@@ -303,7 +351,6 @@
                 <a href="https://wa.me/51999999999?text=Hola,%20solicito%20servicio%20de%20Formateo%20e%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="btn-price">Solicitar Soporte</a>
             </div>
 
-            <!-- Diseño -->
             <div class="price-card featured">
                 <div>
                     <h3>Diseño & Multimedia</h3>
@@ -317,7 +364,6 @@
                 <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Dise%C3%B1o,%20Logos%20y%20Edici%C3%B3n." target="_blank" class="btn-price">Cotizar Diseño</a>
             </div>
 
-            <!-- Crypto / Web -->
             <div class="price-card">
                 <div>
                     <h3>Desarrollo & Web3</h3>
@@ -333,7 +379,6 @@
         </div>
     </section>
 
-    <!-- CONTACTO DIRECTO -->
     <section id="contacto">
         <div class="contact">
             <h2>¿Listo para digitalizar tus ideas?</h2>
@@ -352,7 +397,6 @@
     </section>
 </main>
 
-<!-- Botón flotante -->
 <a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta." aria-label="Contacto por WhatsApp" target="_blank">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -361,10 +405,9 @@
     © 2026 Soluciones Tecnológicas Integrales - Todos los derechos reservados.
 </footer>
 
-<!-- CONTROLADORES DINÁMICOS OPTIMIZADOS -->
 <script>
+    // 1. Filtrado dinámico con animación fluida
     function filterServices(category, element) {
-        // Manejar el estado activo de los botones de forma segura
         const buttons = document.querySelectorAll('.filter-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
         if (element) {
@@ -374,12 +417,10 @@
         const cards = document.querySelectorAll('.card');
         
         cards.forEach(card => {
-            // Evaluamos si debe mostrarse
             const isMatch = category === 'all' || card.getAttribute('data-category') === category;
             
             if (isMatch) {
                 card.classList.remove('hidden');
-                // Retraso controlado para permitir renderizado óptimo y efecto de entrada suave
                 requestAnimationFrame(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'scale(1)';
@@ -387,11 +428,22 @@
             } else {
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.95)';
-                // Se oculta después de terminar la transición de opacidad
                 card.classList.add('hidden');
             }
         });
     }
+
+    // 2. Efecto interactivo de luz de neón (Glow) que sigue el mouse por las tarjetas
+    document.getElementById('services-grid').onmousemove = e => {
+        for(const card of document.getElementsByClassName('card')) {
+            const rect = card.getBoundingClientRect(),
+                  x = e.clientX - rect.left,
+                  y = e.clientY - rect.top;
+
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        }
+    };
 </script>
 
 </body>
