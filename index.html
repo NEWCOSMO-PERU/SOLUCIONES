@@ -134,7 +134,7 @@
         .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
         .card.hidden { display: none; }
 
-        /* PLANES */
+        /* PLANES DE COTIZACIÓN */
         .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .price-card {
             background: var(--bg-card); padding: 45px 30px; border-radius: 24px; border: 1px solid var(--border-color);
@@ -142,14 +142,13 @@
         }
         .price-card.featured { border-color: var(--primary); background: linear-gradient(180deg, rgba(0, 242, 254, 0.05), var(--bg-card)); }
         .price-card.featured::after {
-            content: 'MÁS POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            content: 'RECOMENDADO'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
             background: linear-gradient(135deg, var(--primary), #2563eb); color: #030712; padding: 4px 16px;
             font-size: 0.75rem; font-weight: 800; border-radius: 20px;
         }
         .price-card:hover { transform: translateY(-5px); }
-        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 20px 0; }
-        .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-        .price-card ul { list-style: none; margin: 25px 0; color: var(--text-muted); font-size: 0.95rem; }
+        .price-card h3 { font-size: 1.6rem; color: #fff; font-weight: 700; margin-bottom: 10px; }
+        .price-card ul { list-style: none; margin: 25px 0 35px 0; color: var(--text-muted); font-size: 0.95rem; }
         .price-card ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .price-card ul li i { color: #10b981; }
 
@@ -209,7 +208,7 @@
     <button class="mobile-menu-btn" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
     <ul class="nav-links" id="nav-links">
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#precios">Precios</a></li>
+        <li><a href="#cotizacion">Cotización</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -222,10 +221,10 @@
         <div class="hero-logo-container">
             <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
         </div>
-        <h1>Ecosistema Digital de Alto Rendimiento</h1>
-        <p>Aceleramos el crecimiento de tu marca combinando Soporte Técnico especializado, Diseño de Impacto y Soluciones Web3 Blockchain de vanguardia.</p>
+        <h1>Ecosistema Digital & Soluciones Tecnológicas</h1>
+        <p>Potenciamos tus ideas con Soporte Técnico especializado, Diseño Multimedia Creativo y utilitarios digitales avanzados adaptados a tu medida.</p>
         <div class="btn-group">
-            <a href="#contacto" class="btn btn-primary">Iniciar Proyecto <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20personalizada." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Cotizar Directo</a>
             <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
         </div>
     </div>
@@ -236,115 +235,125 @@
     <section id="servicios" class="reveal">
         <div class="title">
             <h2>Servicios Especializados</h2>
-            <p>Selecciona una categoría para filtrar nuestras soluciones profesionales.</p>
+            <p>Filtra las soluciones que mejor se adapten a tu proyecto.</p>
         </div>
 
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterServices('all', this)">Todos</button>
+            <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
             <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
             <button class="filter-btn" onclick="filterServices('design', this)">Diseño & Multimedia</button>
-            <button class="filter-btn" onclick="filterServices('crypto', this)">Web3 & Blockchain</button>
+            <button class="filter-btn" onclick="filterServices('tools', this)">Herramientas Digitales</button>
         </div>
 
         <div class="services">
-            <!-- Técnico -->
+            <!-- Soporte Técnico -->
             <div class="card" data-category="tech">
                 <i class="fa-solid fa-laptop-medical c-tech"></i>
                 <h3>Formateo y Optimización</h3>
-                <p>Instalación limpia de OS (Windows/Mac), respaldo masivo seguro de información, erradicación de malware y calibración de rendimiento óptimo.</p>
+                <p>Instalación limpia de sistemas operativos (Windows/Mac), respaldo masivo seguro de información, eliminación de virus y aceleración de hardware.</p>
             </div>
             <div class="card" data-category="tech">
                 <i class="fa-solid fa-shield-halved c-tech"></i>
                 <h3>Ciberseguridad & Antivirus</h3>
-                <p>Auditoría de vulnerabilidades, eliminación de amenazas avanzadas y configuración de capas de seguridad para tus datos personales.</p>
+                <p>Análisis profundo de vulnerabilidades, remoción de software malicioso y configuración de capas de protección para tus datos.</p>
             </div>
             <div class="card" data-category="tech">
-                <i class="fa-solid fa-network-wired c-tech"></i>
-                <h3>Redes & Servidores NAS</h3>
-                <p>Implementación de redes estables, cableado estructurado y almacenamiento en la nube privada local para tu negocio.</p>
+                <i class="fa-solid fa-download c-tech"></i>
+                <h3>Instalación de Programas</h3>
+                <p>Configuración integral de suites de trabajo, herramientas de diseño, herramientas de oficina corporativa y utilitarios técnicos esenciales.</p>
             </div>
 
-            <!-- Diseño -->
+            <!-- Diseño y Multimedia -->
             <div class="card" data-category="design">
                 <i class="fa-solid fa-code c-design"></i>
                 <h3>Diseño Web Profesional</h3>
-                <p>Plataformas web responsivas de alta conversión, optimizadas para motores de búsqueda (SEO) y con velocidad ultrarrápida.</p>
+                <p>Plataformas web responsivas, landing pages optimizadas para alta conversión e integraciones digitales a la medida de tu marca.</p>
             </div>
             <div class="card" data-category="design">
                 <i class="fa-solid fa-palette c-design"></i>
                 <h3>Branding e Identidad Visual</h3>
-                <p>Diseño de logotipos únicos, manuales de marca completos y elementos visuales clave para consolidar tu presencia en el mercado.</p>
+                <p>Diseño de logotipos únicos, manuales de marca modernos, tarjetas de presentación de alto impacto y papelería corporativa.</p>
             </div>
             <div class="card" data-category="design">
                 <i class="fa-solid fa-video c-design"></i>
                 <h3>Edición Multimedia Pro</h3>
-                <p>Edición audiovisual dinámica y motion graphics para maximizar la retención del usuario en redes sociales (TikTok, Reels, YouTube).</p>
+                <p>Edición audiovisual dinámica y motion graphics adaptados para máxima retención en plataformas digitales (TikTok, Reels, YouTube).</p>
             </div>
 
-            <!-- Cripto -->
-            <div class="card" data-category="crypto">
+            <!-- Herramientas Digitales & Crypto -->
+            <div class="card" data-category="tools">
                 <i class="fa-solid fa-coins c-crypto"></i>
-                <h3>Tokens Cripto & Smart Contracts</h3>
-                <p>Creación y despliegue de contratos inteligentes seguros (ERC-20, BEP-20) en cadenas como Ethereum, BNB Chain o Polygon.</p>
+                <h3>Creación de Tokens Cripto</h3>
+                <p>Programación y despliegue automatizado de contratos inteligentes para tokens estables o personalizados (ERC-20, BEP-20) en blockchain.</p>
             </div>
-            <div class="card" data-category="crypto">
-                <i class="fa-solid fa-cubes c-crypto"></i>
-                <h3>Colecciones NFT</h3>
-                <p>Desarrollo de contratos optimizados para ahorro de gas, generación algorítmica de colecciones e integración en marketplaces.</p>
+            <div class="card" data-category="tools">
+                <i class="fa-solid fa-file-pdf c-crypto"></i>
+                <h3>Conversión de Documentos</h3>
+                <p>Transformación fluida de formatos corporativos manteniendo la maqueta original (PDF a Word, Excel, PowerPoint, ePub y viceversa).</p>
             </div>
-            <div class="card" data-category="crypto">
-                <i class="fa-solid fa-server c-crypto"></i>
-                <h3>Integración DApps Web3</h3>
-                <p>Conexión de tu plataforma web con billeteras digitales (MetaMask, WalletConnect) para procesar pagos y autenticación Web3.</p>
+            <div class="card" data-category="tools">
+                <i class="fa-solid fa-file-image c-crypto"></i>
+                <h3>Conversión de Imágenes</h3>
+                <p>Optimización y cambio masivo de formatos de imagen (PNG, JPG, WEBP, SVG, RAW) con alta calidad y compresión eficiente.</p>
+            </div>
+            <div class="card" data-category="tools">
+                <i class="fa-solid fa-qrcode c-crypto"></i>
+                <h3>Diseño de QR Personalizados</h3>
+                <p>Creación de códigos QR estilizados con tu logo, colores corporativos, alta resolución vectorizada e integración a enlaces estáticos o dinámicos.</p>
+            </div>
+            <div class="card" data-category="tools">
+                <i class="fa-solid fa-key c-crypto"></i>
+                <h3>Enlaces con Contraseña</h3>
+                <p>Generación y encriptación de enlaces protegidos con clave de acceso personalizada para compartir información confidencial de forma segura.</p>
             </div>
         </div>
     </section>
 
-    <!-- PRECIOS -->
-    <section id="precios" class="reveal">
+    <!-- COTIZACIÓN -->
+    <section id="cotizacion" class="reveal">
         <div class="title">
-            <h2>Planes Referenciales</h2>
-            <p>Opciones transparentes diseñadas para adaptarse a tus necesidades específicas.</p>
+            <h2>Solicita tu Cotización</h2>
+            <p>Selecciona la categoría que necesitas y comunícate directamente con nosotros.</p>
         </div>
 
         <div class="pricing">
             <div class="price-card">
                 <div>
                     <h3>Soporte Técnico</h3>
-                    <div class="price">S/ 50 <span>/ Base</span></div>
+                    <p style="color:var(--text-muted); font-size: 0.9rem;">Soluciones físicas y lógicas para tus equipos de cómputo.</p>
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Formateo e instalación de OS</li>
-                        <li><i class="fa-solid fa-check"></i> Drivers & Software esencial</li>
-                        <li><i class="fa-solid fa-check"></i> Limpieza física/lógica</li>
+                        <li><i class="fa-solid fa-check"></i> Formateo e instalación limpia</li>
+                        <li><i class="fa-solid fa-check"></i> Antivirus & Protección</li>
+                        <li><i class="fa-solid fa-check"></i> Optimización y mantenimiento</li>
                     </ul>
                 </div>
-                <a href="#contacto" class="btn btn-secondary" style="width:100%; text-align:center;">Solicitar</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Soporte%20T%C3%A9cnico." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Servicio</a>
             </div>
 
             <div class="price-card featured">
                 <div>
-                    <h3>Diseño & Web</h3>
-                    <div class="price">S/ 150 <span>/ Base</span></div>
+                    <h3>Diseño & Desarrollo</h3>
+                    <p style="color:var(--text-muted); font-size: 0.9rem;">Proyectos creativos y desarrollo digital corporativo.</p>
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Identidad Visual / Branding</li>
-                        <li><i class="fa-solid fa-check"></i> Páginas Web corporativas</li>
-                        <li><i class="fa-solid fa-check"></i> Edición de Video Profesional</li>
+                        <li><i class="fa-solid fa-check"></i> Identidad Visual & Branding</li>
+                        <li><i class="fa-solid fa-check"></i> Páginas Web y Landing Pages</li>
+                        <li><i class="fa-solid fa-check"></i> Edición Audiovisual</li>
                     </ul>
                 </div>
-                <a href="#contacto" class="btn btn-primary" style="width:100%; text-align:center;">Cotizar</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Dise%C3%B1o%20y%20Desarrollo." target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Cotizar Proyecto</a>
             </div>
 
             <div class="price-card">
                 <div>
-                    <h3>Web3 & Cripto</h3>
-                    <div class="price">A medida</div>
+                    <h3>Herramientas Digitales</h3>
+                    <p style="color:var(--text-muted); font-size: 0.9rem;">Servicios utilitarios y creación de contratos blockchain.</p>
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Creación de Tokens & NFT</li>
-                        <li><i class="fa-solid fa-check"></i> Smart Contracts Auditados</li>
-                        <li><i class="fa-solid fa-check"></i> Integración Web3 DApps</li>
+                        <li><i class="fa-solid fa-check"></i> Creación de Tokens Cripto</li>
+                        <li><i class="fa-solid fa-check"></i> Conversión de formatos masivos</li>
+                        <li><i class="fa-solid fa-check"></i> QR de marca & Enlaces seguros</li>
                     </ul>
                 </div>
-                <a href="#contacto" class="btn btn-secondary" style="width:100%; text-align:center;">Consultar</a>
+                <a href="https://wa.me/51999999999?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Herramientas%20Digitales." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Utilitario</a>
             </div>
         </div>
     </section>
@@ -353,21 +362,21 @@
     <section id="faq" class="reveal">
         <div class="title">
             <h2>Preguntas Frecuentes</h2>
-            <p>Resolvemos tus dudas principales de forma directa.</p>
+            <p>Resolvemos tus dudas principales de forma rápida.</p>
         </div>
 
         <div class="faq-accordion">
             <div class="faq-item">
-                <button class="faq-question">¿Cuánto tiempo toma un servicio de soporte técnico? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="faq-answer">La mayoría de optimizaciones y formateos se completan en un plazo de 24 horas laborables.</div>
+                <button class="faq-question">¿Cómo solicito una cotización personalizada? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Simplemente haz clic en el botón "Cotizar" de la sección correspondiente o presiona el botón flotante de WhatsApp para comunicarte con un asesor directo.</div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">¿Ofrecen soporte para proyectos en todo el Perú? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="faq-answer">¡Sí! Los servicios digitales (Desarrollo Web, Diseño y Blockchain) se gestionan 100% de manera remota para cualquier lugar del mundo.</div>
+                <button class="faq-question">¿Hacen conversiones de archivos y herramientas de forma remota? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Sí, todos nuestros servicios digitales (conversión de archivos, enlaces seguros, códigos QR y desarrollo) se realizan 100% en línea con entrega inmediata.</div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">¿Los contratos inteligentes son seguros y auditables? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="faq-answer">Sí, utilizamos estándares optimizados y verificamos los contratos directamente en los exploradores oficiales (Etherscan, BscScan).</div>
+                <button class="faq-question">¿Cuánto tiempo toma la entrega de un trabajo? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Depende del tipo de servicio. La conversión de archivos y diseño de QR se entrega en pocas horas, mientras que el diseño web o mantenimiento técnico se coordinan según la complejidad.</div>
             </div>
         </div>
     </section>
@@ -377,7 +386,7 @@
         <div class="contact-container">
             <div>
                 <h2>Hablemos de tu próximo proyecto</h2>
-                <p style="color: var(--text-muted); margin: 15px 0 30px 0;">Déjanos tus datos o contáctanos por WhatsApp para recibir atención personalizada inmediata.</p>
+                <p style="color: var(--text-muted); margin: 15px 0 30px 0;">Envíanos tus datos o escríbenos directamente por WhatsApp para recibir asistencia inmediata.</p>
                 
                 <div style="display:flex; flex-direction:column; gap:20px; color: var(--text-muted);">
                     <div><i class="fa-solid fa-envelope" style="color:var(--primary)"></i> newcosmo@outlook.es</div>
@@ -389,14 +398,14 @@
             <form class="contact-form" onsubmit="handleFormSubmit(event)">
                 <input type="text" placeholder="Tu Nombre" required>
                 <input type="email" placeholder="Correo Electrónico" required>
-                <textarea rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
-                <button type="submit" class="btn btn-primary" style="justify-content:center;">Enviar Mensaje Directo</button>
+                <textarea rows="4" placeholder="¿Qué servicio te gustaría cotizar?" required></textarea>
+                <button type="submit" class="btn btn-primary" style="justify-content:center;">Enviar Consulta</button>
             </form>
         </div>
     </section>
 </main>
 
-<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20quisiera%20consultar%20sobre%20sus%20servicios." target="_blank" aria-label="WhatsApp">
+<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
@@ -500,7 +509,7 @@
     // ENVÍO DE FORMULARIO DUMMY
     function handleFormSubmit(e) {
         e.preventDefault();
-        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en breve.');
+        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en breve para brindarte tu cotización.');
         e.target.reset();
     }
 </script>
