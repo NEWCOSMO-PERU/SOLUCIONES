@@ -3,426 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluciones Tecnológicas & Estudio Digital</title>
+    <title>NewCosmo | Soluciones Tecnológicas & Estudio Digital Pro</title>
     
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --bg-main: #030712;
-            --bg-card: #0b1329;
-            --bg-card-hover: #111c3a;
+            --bg-card: rgba(11, 19, 41, 0.6);
+            --bg-card-hover: rgba(17, 28, 58, 0.85);
             --primary: #00f2fe;
             --tech-color: #3b82f6;
             --design-color: #ec4899;
             --crypto-color: #f59e0b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 242, 254, 0.3);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body { background: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-        /* --- SPLASH DE BIENVENIDA CON MENSAJE --- */
+        /* --- SPLASH SCREEN ULTRAPREMIUM --- */
         #splash-screen {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-main);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.6s ease, visibility 0.6s;
+            position: fixed; inset: 0; background: var(--bg-main); z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
         }
         .splash-logo {
-            height: 160px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.3));
+            height: 160px; width: auto; object-fit: contain;
+            filter: drop-shadow(0 0 35px rgba(0, 242, 254, 0.4));
             animation: pulse-scale 2s infinite ease-in-out;
         }
         .splash-message {
-            margin-top: 20px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            margin-top: 20px; font-size: 1.6rem; font-weight: 800; letter-spacing: 1px;
             background: linear-gradient(135deg, #fff 30%, var(--primary), var(--design-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeIn 1.2s ease forwards;
-            opacity: 0;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             text-align: center;
         }
         .splash-loader {
-            margin-top: 25px;
-            width: 35px;
-            height: 35px;
-            border: 3px solid rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s linear infinite;
+            margin-top: 25px; width: 40px; height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.05); border-radius: 50%;
+            border-top-color: var(--primary); animation: spin 0.8s linear infinite;
         }
         @keyframes pulse-scale {
             0%, 100% { transform: scale(0.98); opacity: 0.85; }
-            50% { transform: scale(1.02); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 1; }
         }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* --- MENÚ DE NAVEGACIÓN PRO --- */
+        /* --- MENÚ DE NAVEGACIÓN --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 10px 40px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(3, 7, 18, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color); padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .nav-brand { display: flex; align-items: center; gap: 12px; }
-        .nav-logo-img { height: 45px; width: auto; object-fit: contain; }
-        .nav-logo-text { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: var(--transition); }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo-img { height: 42px; width: auto; }
+        .nav-logo-text { font-weight: 800; font-size: 1.4rem; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- HERO HEADER ULTRA PREMIUM --- */
+        /* --- HERO HEADER CON CANVAS INTERACTIVO --- */
         header {
-            background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.2), transparent 50%),
-                        radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent 50%),
-                        var(--bg-main);
-            padding: 220px 20px 120px 20px; text-align: center; position: relative;
-            border-bottom: 1px solid var(--border-color);
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 140px 20px 80px 20px; text-align: center; position: relative; overflow: hidden;
         }
+        #hero-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; }
+        .hero-logo-container { margin-bottom: 25px; display: inline-block; }
+        .hero-logo { height: 220px; width: auto; filter: drop-shadow(0 0 50px rgba(0, 242, 254, 0.3)); animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
 
-        header::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom, transparent 80%, var(--bg-main));
-            pointer-events: none;
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #fff 30%, #00f2fe 70%, #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
         }
+        header p { font-size: 1.2rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 35px auto; }
 
-        .hero-logo-container {
-            margin-bottom: 35px;
-            display: inline-block;
-            position: relative;
-        }
-        .hero-logo {
-            height: 280px; 
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 45px rgba(245, 158, 11, 0.45));
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        header h1 { 
-            font-size: 4rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -1.5px;
-            background: linear-gradient(135deg, #fff 40%, #00f2fe, #ec4899);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        header p { font-size: 1.25rem; max-width: 800px; margin: auto; color: var(--text-muted); line-height: 1.8; }
-
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
         .btn {
-            display: inline-flex; align-items: center; gap: 10px; margin-top: 35px; padding: 15px 35px;
-            background: linear-gradient(135deg, var(--primary), #2563eb); color: #030712; text-decoration: none;
-            border-radius: 50px; font-weight: 700; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 10px; padding: 15px 35px; border-radius: 50px;
+            font-weight: 700; text-decoration: none; transition: var(--transition); cursor: pointer; border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #2563eb); color: #030712;
             box-shadow: 0 4px 25px rgba(0, 242, 254, 0.35);
         }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px rgba(0, 242, 254, 0.6); }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
 
-        .btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px rgba(0, 242, 254, 0.6); }
-
-        /* --- SECCIONES GENERALES --- */
+        /* --- SECCIONES Y CONTENEDORES --- */
         section { padding: 100px 20px; max-width: 1200px; margin: auto; }
-        
-        .title { text-align: center; margin-bottom: 40px; }
-        .title h2 { font-size: 2.5rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-        .title p { color: var(--text-muted); margin-top: 10px; font-size: 1.05rem; }
+        .title { text-align: center; margin-bottom: 50px; }
+        .title h2 { font-size: 2.5rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+        .title p { color: var(--text-muted); margin-top: 10px; font-size: 1.1rem; }
 
-        /* --- SISTEMA DE FILTROS INTERACTIVOS --- */
-        .filter-container {
-            display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap;
-        }
+        /* FILTROS */
+        .filter-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap; }
         .filter-btn {
             background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-muted);
-            padding: 10px 24px; border-radius: 30px; font-weight: 500; cursor: pointer; transition: var(--transition);
+            padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: var(--transition);
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--text-main); color: var(--bg-main); border-color: var(--text-main);
-            transform: translateY(-2px);
-        }
+        .filter-btn:hover, .filter-btn.active { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); }
 
-        /* --- GRILLA DE SERVICIOS PREMIUM --- */
-        .services { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 30px; 
-        }
-        
+        /* GRILLA DE SERVICIOS */
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .card {
-            background: rgba(11, 19, 41, 0.4); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 40px 35px; 
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.04); 
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative; 
-            overflow: hidden;
-            opacity: 1; 
-            transform: scale(1);
-            will-change: transform, opacity, border-color;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            padding: 40px 35px; border-radius: 24px; border: 1px solid var(--border-color);
+            transition: var(--transition); position: relative; overflow: hidden; display: flex; flex-direction: column;
         }
+        .card:hover { transform: translateY(-8px); background: var(--bg-card-hover); border-color: var(--border-glow); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .card i { font-size: 2.5rem; margin-bottom: 20px; }
+        .c-tech { color: var(--tech-color); }
+        .c-design { color: var(--design-color); }
+        .c-crypto { color: var(--crypto-color); }
+        .card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; font-weight: 700; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+        .card.hidden { display: none; }
 
-        .card::before {
-            content: ''; 
-            position: absolute; 
-            inset: 0; 
-            background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.06), transparent 40%);
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .card:hover::before { opacity: 1; }
-        .card:hover { 
-            transform: translateY(-6px) scale(1.02); 
-            background: rgba(17, 28, 58, 0.55);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); 
-        }
-
-        .card.tech-card:hover { border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); }
-        .card.design-card:hover { border-color: rgba(236, 72, 153, 0.4); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.1); }
-        .card.crypto-card:hover { border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.1); }
-
-        .card i { font-size: 2.3rem; margin-bottom: 24px; display: inline-block; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .card:hover i { transform: scale(1.1) translateY(-2px); }
-
-        .c-tech { color: var(--tech-color); filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); }
-        .c-design { color: var(--design-color); filter: drop-shadow(0 0 10px rgba(236, 72, 147, 0.2)); }
-        .c-crypto { color: var(--crypto-color); filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.2)); }
-
-        .card:hover .c-tech { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)); }
-        .card:hover .c-design { filter: drop-shadow(0 0 20px rgba(236, 72, 147, 0.6)); }
-        .card:hover .c-crypto { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6)); }
-
-        .card h3 { font-size: 1.35rem; margin-bottom: 14px; color: #fff; font-weight: 600; letter-spacing: -0.3px; }
-        .card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.75; }
-        .card.hidden { display: none; opacity: 0; transform: scale(0.95); }
-
-        /* --- SECCIÓN PLANES REFERENCIALES --- */
+        /* PLANES */
         .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .price-card {
-            background: var(--bg-card); padding: 45px 30px; border-radius: 24px; text-align: center;
-            border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;
-            transition: var(--transition); position: relative;
+            background: var(--bg-card); padding: 45px 30px; border-radius: 24px; border: 1px solid var(--border-color);
+            display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); position: relative;
         }
-        .price-card.featured { border-color: rgba(0, 242, 254, 0.3); background: linear-gradient(180deg, var(--bg-card), #080f21); }
+        .price-card.featured { border-color: var(--primary); background: linear-gradient(180deg, rgba(0, 242, 254, 0.05), var(--bg-card)); }
         .price-card.featured::after {
-            content: 'RECOMENDADO'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            content: 'MÁS POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
             background: linear-gradient(135deg, var(--primary), #2563eb); color: #030712; padding: 4px 16px;
-            font-size: 0.75rem; font-weight: 700; border-radius: 20px; letter-spacing: 0.5px;
+            font-size: 0.75rem; font-weight: 800; border-radius: 20px;
         }
-        .price-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.1); }
-        .price-card h3 { color: #fff; font-size: 1.5rem; font-weight: 600; }
-        .price { font-size: 3rem; font-weight: 700; color: #fff; margin: 20px 0; letter-spacing: -1px; }
+        .price-card:hover { transform: translateY(-5px); }
+        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 20px 0; }
         .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-        
-        .price-card ul { text-align: left; list-style: none; margin: 30px 0; color: var(--text-muted); font-size: 0.95rem; }
-        .price-card ul li { margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-        .price-card ul li i { color: #10b981; font-size: 1.1rem; }
+        .price-card ul { list-style: none; margin: 25px 0; color: var(--text-muted); font-size: 0.95rem; }
+        .price-card ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .price-card ul li i { color: #10b981; }
 
-        .btn-price { background: rgba(255,255,255,0.05); color: #fff; width: 100%; padding: 14px; border-radius: 12px; box-shadow: none; font-weight: 600; border: 1px solid var(--border-color); cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block; }
-        .btn-price:hover { background: #fff; color: var(--bg-main); }
-        .price-card.featured .btn-price { background: var(--text-main); color: var(--bg-main); }
-        .price-card.featured .btn-price:hover { background: var(--primary); color: var(--bg-main); }
+        /* PREGUNTAS FRECUENTES (FAQ) */
+        .faq-accordion { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 15px; overflow: hidden; }
+        .faq-question { padding: 20px 25px; width: 100%; text-align: left; background: none; border: none; color: #fff; font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .faq-answer { padding: 0 25px 20px 25px; color: var(--text-muted); display: none; font-size: 0.95rem; line-height: 1.6; }
 
-        /* --- CONTACTO DIRECTO --- */
-        .contact { 
-            text-align: center; background: radial-gradient(circle at top left, #0e172c, var(--bg-card)); 
-            border-radius: 32px; padding: 60px 40px; border: 1px solid var(--border-color);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        /* CONTACTO Y FORMULARIO */
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--bg-card); border-radius: 32px; padding: 50px; border: 1px solid var(--border-color); }
+        .contact-form { display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
+            padding: 15px; border-radius: 12px; color: white; font-size: 0.95rem; transition: var(--transition);
         }
-        .contact h2 { font-size: 2.2rem; font-weight: 700; color: #fff; }
-        .contact-info { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 35px 0; font-size: 1.1rem; color: var(--text-muted); }
-        .contact-info span { display: flex; align-items: center; gap: 8px; transition: var(--transition); }
-        .contact-info span:hover { color: #fff; }
-        .contact-info span i { color: var(--primary); font-size: 1.2rem; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); background: rgba(255, 255, 255, 0.06); }
 
-        footer { background: #01040a; color: #4b5563; text-align: center; padding: 35px 20px; margin-top: 100px; font-size: 0.9rem; border-top: 1px solid var(--border-color); }
+        footer { background: #01040a; color: var(--text-muted); text-align: center; padding: 35px 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
 
-        /* --- WHATSAPP FLOTANTE --- */
+        /* WHATSAPP FLOTANTE */
         .whatsapp {
-            position: fixed; right: 30px; bottom: 30px; width: 65px; height: 65px;
+            position: fixed; right: 30px; bottom: 30px; width: 60px; height: 60px;
             background: #25D366; border-radius: 50%; display: flex; justify-content: center;
-            align-items: center; font-size: 35px; text-decoration: none; color: white;
+            align-items: center; font-size: 32px; color: white; text-decoration: none;
             box-shadow: 0 10px 25px rgba(37,211,102,0.4); z-index: 999; transition: var(--transition);
         }
-        .whatsapp:hover { transform: scale(1.1) rotate(10deg); background: #1ea952; }
+        .whatsapp:hover { transform: scale(1.1) rotate(10deg); }
 
-        /* Responsive Design */
-        @media(max-width:768px){
-            nav { padding: 10px 20px; }
-            .nav-links { display: none; }
-            header { padding: 160px 20px 80px 20px; }
-            header h1 { font-size: 2.6rem; }
-            header p { font-size: 1.1rem; }
-            .hero-logo { height: 180px; }
-            .title h2 { font-size: 2rem; }
-            .contact { padding: 40px 20px; }
-            .contact-info { gap: 20px; flex-direction: column; align-items: center; }
-            .splash-message { font-size: 1.2rem; }
+        /* REVEAL ANIMATION */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media(max-width:900px){
+            .contact-container { grid-template-columns: 1fr; padding: 30px; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-main); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border-color); }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
         }
     </style>
 </head>
 <body>
 
-<!-- PANTALLA DE BIENVENIDA (SPLASH SCREEN) -->
+<!-- SPLASH SCREEN -->
 <div id="splash-screen">
     <img src="logo.png" alt="Logo NewCosmo" class="splash-logo">
-    <!-- MENSAJE DE BIENVENIDA MODIFICABLE -->
     <div class="splash-message">Bienvenidos a NewCosmo</div>
     <div class="splash-loader"></div>
 </div>
 
-<!-- MENÚ DE NAVEGACIÓN FLOTANTE -->
+<!-- NAVEGACIÓN -->
 <nav>
-    <div class="nav-brand">
+    <a href="#" class="nav-brand">
         <img src="logo.png" alt="Logo NewCosmo" class="nav-logo-img">
-        <div class="nav-logo-text">NewCosmo</div>
-    </div>
-    <ul class="nav-links">
+        <span class="nav-logo-text">NewCosmo</span>
+    </a>
+    <button class="mobile-menu-btn" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links" id="nav-links">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#precios">Precios</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto">Contacto</a></li>
     </ul>
 </nav>
 
-<!-- ENCABEZADO CYBER TECH -->
+<!-- HERO HEADER -->
 <header>
-    <div class="hero-logo-container">
-        <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+        <div class="hero-logo-container">
+            <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
+        </div>
+        <h1>Ecosistema Digital de Alto Rendimiento</h1>
+        <p>Aceleramos el crecimiento de tu marca combinando Soporte Técnico especializado, Diseño de Impacto y Soluciones Web3 Blockchain de vanguardia.</p>
+        <div class="btn-group">
+            <a href="#contacto" class="btn btn-primary">Iniciar Proyecto <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
+        </div>
     </div>
-    <h1>Tecnología, Diseño & Web3 Soluciones</h1>
-    <p>Impulsamos tus ideas y resolvemos tus problemas técnicos con rendimiento premium. Desde el soporte de tus equipos hasta el despliegue de infraestructura blockchain inteligente.</p>
-    <a href="#contacto" class="btn">Solicitar Servicio Directo <i class="fa-solid fa-arrow-right"></i></a>
 </header>
 
 <main>
-    <!-- NUESTROS SERVICIOS -->
-    <section id="servicios">
+    <!-- SERVICIOS -->
+    <section id="servicios" class="reveal">
         <div class="title">
             <h2>Servicios Especializados</h2>
-            <p>Elige una categoría para filtrar las soluciones a tu medida.</p>
+            <p>Selecciona una categoría para filtrar nuestras soluciones profesionales.</p>
         </div>
 
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
+            <button class="filter-btn active" onclick="filterServices('all', this)">Todos</button>
             <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
             <button class="filter-btn" onclick="filterServices('design', this)">Diseño & Multimedia</button>
             <button class="filter-btn" onclick="filterServices('crypto', this)">Web3 & Blockchain</button>
         </div>
 
-        <div class="services" id="services-grid">
-            <!-- Soporte Técnico -->
-            <div class="card tech-card" data-category="tech">
+        <div class="services">
+            <!-- Técnico -->
+            <div class="card" data-category="tech">
                 <i class="fa-solid fa-laptop-medical c-tech"></i>
                 <h3>Formateo y Optimización</h3>
-                <p>Instalación limpia de sistemas operativos avanzados (Windows/Mac), respaldo masivo seguro de información, erradicación de malware y calibración de rendimiento óptimo.</p>
+                <p>Instalación limpia de OS (Windows/Mac), respaldo masivo seguro de información, erradicación de malware y calibración de rendimiento óptimo.</p>
             </div>
-
-            <div class="card tech-card" data-category="tech">
-                <i class="fa-solid fa-download c-tech"></i>
-                <h3>Instalación de Programas</h3>
-                <p>Configuración integral de software profesional y entornos productivos de trabajo: suites creativas, ofimática avanzada, utilitarios corporativos y activación nítida.</p>
-            </div>
-
-            <div class="card tech-card" data-category="tech">
+            <div class="card" data-category="tech">
                 <i class="fa-solid fa-shield-halved c-tech"></i>
                 <h3>Ciberseguridad & Antivirus</h3>
-                <p>Análisis profundo de vulnerabilidades, remoción de ransomware encubierto, firewalls avanzados y auditorías locales para proteger contraseñas y transacciones bancarias.</p>
+                <p>Auditoría de vulnerabilidades, eliminación de amenazas avanzadas y configuración de capas de seguridad para tus datos personales.</p>
             </div>
-
-            <div class="card tech-card" data-category="tech">
+            <div class="card" data-category="tech">
                 <i class="fa-solid fa-network-wired c-tech"></i>
                 <h3>Redes & Servidores NAS</h3>
-                <p>Configuración de enrutadores locales, cableado estructurado, repetidores WiFi estables y nubes privadas NAS locales para compartir archivos corporativos.</p>
+                <p>Implementación de redes estables, cableado estructurado y almacenamiento en la nube privada local para tu negocio.</p>
             </div>
 
-            <!-- Diseño y Multimedia -->
-            <div class="card design-card" data-category="design">
+            <!-- Diseño -->
+            <div class="card" data-category="design">
                 <i class="fa-solid fa-code c-design"></i>
                 <h3>Diseño Web Profesional</h3>
-                <p>Desarrollo y maquetación de plataformas web sofisticadas, landing pages optimizadas de alta conversión y ecommerce automatizados responsivos.</p>
+                <p>Plataformas web responsivas de alta conversión, optimizadas para motores de búsqueda (SEO) y con velocidad ultrarrápida.</p>
             </div>
-
-            <div class="card design-card" data-category="design">
-                <i class="fa-solid fa-pen-nib c-design"></i>
-                <h3>Logos e Identidad Visual</h3>
-                <p>Construcción de marcas únicas, isotipos de alto impacto, manuales normativos de marca modernos y papelería corporativa premium para destacar en el mercado.</p>
-            </div>
-
-            <div class="card design-card" data-category="design">
-                <i class="fa-solid fa-address-card c-design"></i>
-                <h3>Tarjetas de Presentación</h3>
-                <p>Modelado de tarjetas de presentación de alto nivel listas para imprentas offset comerciales de lujo o en formatos digitales inteligentes interactivos.</p>
-            </div>
-
-            <div class="card design-card" data-category="design">
-                <i class="fa-solid fa-video c-design"></i>
-                <h3>Edición Multimedia</h3>
-                <p>Postproducción audiovisual cinemática, motion graphics y edición de video vertical dinámica calibrada para retención en redes (TikTok, Reels, Shorts).</p>
-            </div>
-
-            <div class="card design-card" data-category="design">
+            <div class="card" data-category="design">
                 <i class="fa-solid fa-palette c-design"></i>
-                <h3>Diseño UI/UX de Interfaces</h3>
-                <p>Prototipado interactivo de alta fidelidad para aplicaciones móviles y softwares web, centrado en la usabilidad y conversión final del usuario comercial.</p>
+                <h3>Branding e Identidad Visual</h3>
+                <p>Diseño de logotipos únicos, manuales de marca completos y elementos visuales clave para consolidar tu presencia en el mercado.</p>
+            </div>
+            <div class="card" data-category="design">
+                <i class="fa-solid fa-video c-design"></i>
+                <h3>Edición Multimedia Pro</h3>
+                <p>Edición audiovisual dinámica y motion graphics para maximizar la retención del usuario en redes sociales (TikTok, Reels, YouTube).</p>
             </div>
 
-            <!-- Desarrollo / Web3 / Blockchain -->
-            <div class="card crypto-card" data-category="crypto">
+            <!-- Cripto -->
+            <div class="card" data-category="crypto">
                 <i class="fa-solid fa-coins c-crypto"></i>
-                <h3>Creación de Tokens Cripto</h3>
-                <p>Programación y despliegue automatizado de contratos inteligentes auditados para tokens estables o personalizados (ERC-20, BEP-20) en Ethereum, BSC o Polygon.</p>
+                <h3>Tokens Cripto & Smart Contracts</h3>
+                <p>Creación y despliegue de contratos inteligentes seguros (ERC-20, BEP-20) en cadenas como Ethereum, BNB Chain o Polygon.</p>
             </div>
-
-            <div class="card crypto-card" data-category="crypto">
+            <div class="card" data-category="crypto">
                 <i class="fa-solid fa-cubes c-crypto"></i>
-                <h3>Colecciones NFT & Arte</h3>
-                <p>Desarrollo de contratos inteligentes ERC-721A optimizados en gas, generación metadata algorítmica y acuñación de colecciones de arte digital exclusivas.</p>
+                <h3>Colecciones NFT</h3>
+                <p>Desarrollo de contratos optimizados para ahorro de gas, generación algorítmica de colecciones e integración en marketplaces.</p>
             </div>
-
-            <div class="card crypto-card" data-category="crypto">
+            <div class="card" data-category="crypto">
                 <i class="fa-solid fa-server c-crypto"></i>
-                <h3>Integraciones DApps Web3</h3>
-                <p>Desarrollo front-end conectado a billeteras cripto descentralizadas (MetaMask, WalletConnect) para pagos Web3 automatizados sin intermediarios.</p>
+                <h3>Integración DApps Web3</h3>
+                <p>Conexión de tu plataforma web con billeteras digitales (MetaMask, WalletConnect) para procesar pagos y autenticación Web3.</p>
             </div>
         </div>
     </section>
 
-    <!-- PLANES REFERENCIALES -->
-    <section id="precios">
+    <!-- PRECIOS -->
+    <section id="precios" class="reveal">
         <div class="title">
-            <h2>Planes de Inversión</h2>
-            <p>Modelos de referencia competitivos adaptados al alcance de tu proyecto comercial.</p>
+            <h2>Planes Referenciales</h2>
+            <p>Opciones transparentes diseñadas para adaptarse a tus necesidades específicas.</p>
         </div>
 
         <div class="pricing">
@@ -431,67 +313,95 @@
                     <h3>Soporte Técnico</h3>
                     <div class="price">S/ 50 <span>/ Base</span></div>
                     <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Formateo limpio de PC/Laptop</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Instalación de software y controladores</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Optimización física y lógica completa</li>
+                        <li><i class="fa-solid fa-check"></i> Formateo e instalación de OS</li>
+                        <li><i class="fa-solid fa-check"></i> Drivers & Software esencial</li>
+                        <li><i class="fa-solid fa-check"></i> Limpieza física/lógica</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20solicito%20servicio%20de%20Formateo%20e%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="btn-price">Solicitar Soporte</a>
+                <a href="#contacto" class="btn btn-secondary" style="width:100%; text-align:center;">Solicitar</a>
             </div>
 
             <div class="price-card featured">
                 <div>
-                    <h3>Diseño & Multimedia</h3>
+                    <h3>Diseño & Web</h3>
                     <div class="price">S/ 150 <span>/ Base</span></div>
                     <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Branding & Logotipos Corporativos</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Tarjetas personales de alto impacto</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Edición publicitaria de alta retención</li>
+                        <li><i class="fa-solid fa-check"></i> Identidad Visual / Branding</li>
+                        <li><i class="fa-solid fa-check"></i> Páginas Web corporativas</li>
+                        <li><i class="fa-solid fa-check"></i> Edición de Video Profesional</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Dise%C3%B1o,%20Logos%20y%20Edici%C3%B3n." target="_blank" class="btn-price">Cotizar Diseño</a>
+                <a href="#contacto" class="btn btn-primary" style="width:100%; text-align:center;">Cotizar</a>
             </div>
 
             <div class="price-card">
                 <div>
-                    <h3>Desarrollo & Web3</h3>
-                    <div class="price">Cotizar</div>
+                    <h3>Web3 & Cripto</h3>
+                    <div class="price">A medida</div>
                     <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Arquitectura web y landing pages</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Creación y deploy de tokens cripto</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Smart Contracts y Web3 DApps</li>
+                        <li><i class="fa-solid fa-check"></i> Creación de Tokens & NFT</li>
+                        <li><i class="fa-solid fa-check"></i> Smart Contracts Auditados</li>
+                        <li><i class="fa-solid fa-check"></i> Integración Web3 DApps</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20requiero%20informaci%C3%B3n%20para%20Dise%C3%B1o%20Web%20o%20Creaci%C3%B3n%20de%20Tokens%20Cripto." target="_blank" class="btn-price">Consultar Proyecto</a>
+                <a href="#contacto" class="btn btn-secondary" style="width:100%; text-align:center;">Consultar</a>
             </div>
         </div>
     </section>
 
-    <!-- CONTACTO DIRECTO -->
-    <section id="contacto">
-        <div class="contact">
-            <h2>¿Listo para digitalizar tus ideas?</h2>
-            <p style="color: var(--text-muted); margin-top: 5px;">Escríbenos directamente para asignarte un especialista de inmediato.</p>
-            
-            <div class="contact-info">
-                <span><i class="fa-solid fa-envelope"></i> newcosmo@outlook.es</span>
-                <span><i class="fa-solid fa-phone"></i> +51 999 999 999</span>
-                <span><i class="fa-solid fa-location-dot"></i> Trujillo, Perú</span>
+    <!-- FAQ -->
+    <section id="faq" class="reveal">
+        <div class="title">
+            <h2>Preguntas Frecuentes</h2>
+            <p>Resolvemos tus dudas principales de forma directa.</p>
+        </div>
+
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <button class="faq-question">¿Cuánto tiempo toma un servicio de soporte técnico? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">La mayoría de optimizaciones y formateos se completan en un plazo de 24 horas laborables.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Ofrecen soporte para proyectos en todo el Perú? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">¡Sí! Los servicios digitales (Desarrollo Web, Diseño y Blockchain) se gestionan 100% de manera remota para cualquier lugar del mundo.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Los contratos inteligentes son seguros y auditables? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Sí, utilizamos estándares optimizados y verificamos los contratos directamente en los exploradores oficiales (Etherscan, BscScan).</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="reveal">
+        <div class="contact-container">
+            <div>
+                <h2>Hablemos de tu próximo proyecto</h2>
+                <p style="color: var(--text-muted); margin: 15px 0 30px 0;">Déjanos tus datos o contáctanos por WhatsApp para recibir atención personalizada inmediata.</p>
+                
+                <div style="display:flex; flex-direction:column; gap:20px; color: var(--text-muted);">
+                    <div><i class="fa-solid fa-envelope" style="color:var(--primary)"></i> newcosmo@outlook.es</div>
+                    <div><i class="fa-solid fa-phone" style="color:var(--primary)"></i> +51 999 999 999</div>
+                    <div><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Trujillo, Perú</div>
+                </div>
             </div>
 
-            <a href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20web%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20general." target="_blank" class="btn" style="background:#25D366; color:white; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Iniciar Conversación Directa
-            </a>
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Correo Electrónico" required>
+                <textarea rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+                <button type="submit" class="btn btn-primary" style="justify-content:center;">Enviar Mensaje Directo</button>
+            </form>
         </div>
     </section>
 </main>
 
-<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20tu%20p%C3%A1gina%20web%20y%20tengo%20una%20consulta." aria-label="Contacto por WhatsApp" target="_blank">
+<a class="whatsapp" href="https://wa.me/51999999999?text=Hola,%20quisiera%20consultar%20sobre%20sus%20servicios." target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <footer>
-    © 2026 Soluciones Tecnológicas Integrales - Todos los derechos reservados.
+    © 2026 NewCosmo - Soluciones Tecnológicas & Estudio Digital. Todos los derechos reservados.
 </footer>
 
 <script>
@@ -501,41 +411,98 @@
         setTimeout(() => {
             splash.style.opacity = '0';
             splash.style.visibility = 'hidden';
-            setTimeout(() => splash.remove(), 600);
-        }, 2200); // Se extiende levemente para permitir leer el mensaje
+        }, 1800);
     });
 
+    // MENÚ RESPONSIVE
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    // FILTRO DE SERVICIOS
     function filterServices(category, element) {
-        const buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         if (element) element.classList.add('active');
 
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            const isMatch = category === 'all' || card.getAttribute('data-category') === category;
-            if (isMatch) {
+        document.querySelectorAll('.card').forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
                 card.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                });
             } else {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.95)';
                 card.classList.add('hidden');
             }
         });
     }
 
-    document.getElementById('services-grid').onmousemove = e => {
-        for(const card of document.getElementsByClassName('card')) {
-            const rect = card.getBoundingClientRect(),
-                  x = e.clientX - rect.left,
-                  y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
+    // FAQ ACCORDEON
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            const isOpen = answer.style.display === 'block';
+            document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+            answer.style.display = isOpen ? 'none' : 'block';
+        });
+    });
+
+    // REVEAL ON SCROLL
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.reveal').forEach(el => {
+            const windowHeight = window.innerHeight;
+            const revealTop = el.getBoundingClientRect().top;
+            if (revealTop < windowHeight - 100) el.classList.add('active');
+        });
+    });
+
+    // CANVAS DE PARTÍCULAS HERO
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * 1 - 0.5;
         }
-    };
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            if (this.y < 0) this.y = canvas.height;
+        }
+        draw() {
+            ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ENVÍO DE FORMULARIO DUMMY
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en breve.');
+        e.target.reset();
+    }
 </script>
 
 </body>
