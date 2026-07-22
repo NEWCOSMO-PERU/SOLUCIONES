@@ -12,8 +12,8 @@
     <style>
         :root {
             --bg-main: #030712;
-            --bg-card: rgba(11, 19, 41, 0.6);
-            --bg-card-hover: rgba(17, 28, 58, 0.85);
+            --bg-card: rgba(15, 23, 42, 0.5);
+            --bg-card-hover: rgba(30, 41, 59, 0.8);
             --primary: #00f2fe;
             --tech-color: #3b82f6;
             --design-color: #ec4899;
@@ -21,7 +21,6 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(0, 242, 254, 0.3);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -118,20 +117,75 @@
         }
         .filter-btn:hover, .filter-btn.active { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); }
 
-        /* GRILLA DE SERVICIOS */
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* --- GRILLA Y TARJETAS SUPER MODERNAS --- */
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 30px; }
+        
         .card {
-            background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            padding: 40px 35px; border-radius: 24px; border: 1px solid var(--border-color);
-            transition: var(--transition); position: relative; overflow: hidden; display: flex; flex-direction: column;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 35px; border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: var(--transition); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .card:hover { transform: translateY(-8px); background: var(--bg-card-hover); border-color: var(--border-glow); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .card i { font-size: 2.5rem; margin-bottom: 20px; }
-        .c-tech { color: var(--tech-color); }
-        .c-design { color: var(--design-color); }
-        .c-crypto { color: var(--crypto-color); }
-        .card h3 { font-size: 1.4rem; margin-bottom: 12px; color: #fff; font-weight: 700; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+
+        /* Borde superior dinámico */
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .card[data-category="tech"]::before { background: linear-gradient(90deg, transparent, var(--tech-color), transparent); }
+        .card[data-category="design"]::before { background: linear-gradient(90deg, transparent, var(--design-color), transparent); }
+        .card[data-category="tools"]::before { background: linear-gradient(90deg, transparent, var(--crypto-color), transparent); }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .card-header-wrapper {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;
+        }
+
+        .card-icon-box {
+            width: 60px; height: 60px; border-radius: 16px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.8rem; background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08); transition: var(--transition);
+        }
+
+        .card[data-category="tech"] .card-icon-box { color: var(--tech-color); box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
+        .card[data-category="design"] .card-icon-box { color: var(--design-color); box-shadow: 0 0 20px rgba(236, 72, 153, 0.15); }
+        .card[data-category="tools"] .card-icon-box { color: var(--crypto-color); box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }
+
+        .card:hover .card-icon-box { transform: scale(1.1) rotate(5deg); }
+
+        .card-badge {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            padding: 6px 14px; border-radius: 20px; background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted); border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card h3 { font-size: 1.35rem; margin-bottom: 12px; color: #fff; font-weight: 700; letter-spacing: -0.3px; }
+        .card p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.7; margin-bottom: 25px; }
+
+        .card-footer-action {
+            display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 700;
+            color: #fff; text-decoration: none; transition: var(--transition);
+            border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;
+        }
+
+        .card[data-category="tech"] .card-footer-action { color: var(--tech-color); }
+        .card[data-category="design"] .card-footer-action { color: var(--design-color); }
+        .card[data-category="tools"] .card-footer-action { color: var(--crypto-color); }
+
+        .card-footer-action i { transition: transform 0.3s ease; }
+        .card:hover .card-footer-action i { transform: translateX(6px); }
+
         .card.hidden { display: none; }
 
         /* PLANES DE COTIZACIÓN */
@@ -248,63 +302,137 @@
         <div class="services">
             <!-- Soporte Técnico -->
             <div class="card" data-category="tech">
-                <i class="fa-solid fa-laptop-medical c-tech"></i>
-                <h3>Formateo y Optimización</h3>
-                <p>Instalación limpia de sistemas operativos (Windows/Mac), respaldo masivo seguro de información, eliminación de virus y aceleración de hardware.</p>
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-laptop-medical"></i></div>
+                        <span class="card-badge">Soporte</span>
+                    </div>
+                    <h3>Formateo y Optimización</h3>
+                    <p>Instalación limpia de sistemas operativos (Windows/Mac), respaldo masivo seguro de información, eliminación de virus y aceleración de hardware.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Formateo%20y%20Optimizaci%C3%B3n." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
+
             <div class="card" data-category="tech">
-                <i class="fa-solid fa-shield-halved c-tech"></i>
-                <h3>Ciberseguridad & Antivirus</h3>
-                <p>Análisis profundo de vulnerabilidades, remoción de software malicioso y configuración de capas de protección para tus datos.</p>
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span class="card-badge">Seguridad</span>
+                    </div>
+                    <h3>Ciberseguridad & Antivirus</h3>
+                    <p>Análisis profundo de vulnerabilidades, remoción de software malicioso y configuración de capas de protección para tus datos.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Ciberseguridad." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
+
             <div class="card" data-category="tech">
-                <i class="fa-solid fa-download c-tech"></i>
-                <h3>Instalación de Programas</h3>
-                <p>Configuración integral de suites de trabajo, herramientas de diseño, herramientas de oficina corporativa y utilitarios técnicos esenciales.</p>
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-download"></i></div>
+                        <span class="card-badge">Software</span>
+                    </div>
+                    <h3>Instalación de Programas</h3>
+                    <p>Configuración integral de suites de trabajo, herramientas de diseño, herramientas de oficina corporativa y utilitarios técnicos esenciales.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <!-- Diseño y Multimedia -->
             <div class="card" data-category="design">
-                <i class="fa-solid fa-code c-design"></i>
-                <h3>Diseño Web Profesional</h3>
-                <p>Plataformas web responsivas, landing pages optimizadas para alta conversión e integraciones digitales a la medida de tu marca.</p>
-            </div>
-            <div class="card" data-category="design">
-                <i class="fa-solid fa-palette c-design"></i>
-                <h3>Branding e Identidad Visual</h3>
-                <p>Diseño de logotipos únicos, manuales de marca modernos, tarjetas de presentación de alto impacto y papelería corporativa.</p>
-            </div>
-            <div class="card" data-category="design">
-                <i class="fa-solid fa-video c-design"></i>
-                <h3>Edición Multimedia Pro</h3>
-                <p>Edición audiovisual dinámica y motion graphics adaptados para máxima retención en plataformas digitales (TikTok, Reels, YouTube).</p>
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-code"></i></div>
+                        <span class="card-badge">Web</span>
+                    </div>
+                    <h3>Diseño Web Profesional</h3>
+                    <p>Plataformas web responsivas, landing pages optimizadas para alta conversión e integraciones digitales a la medida de tu marca.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20Web." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
-            <!-- Herramientas Digitales & Crypto -->
-            <div class="card" data-category="tools">
-                <i class="fa-solid fa-coins c-crypto"></i>
-                <h3>Creación de Tokens Cripto</h3>
-                <p>Programación y despliegue automatizado de contratos inteligentes para tokens estables o personalizados (ERC-20, BEP-20) en blockchain.</p>
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-palette"></i></div>
+                        <span class="card-badge">Branding</span>
+                    </div>
+                    <h3>Branding e Identidad Visual</h3>
+                    <p>Diseño de logotipos únicos, manuales de marca modernos, tarjetas de presentación de alto impacto y papelería corporativa.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Branding." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div class="card" data-category="tools">
-                <i class="fa-solid fa-file-pdf c-crypto"></i>
-                <h3>Conversión de Documentos</h3>
-                <p>Transformación fluida de formatos corporativos manteniendo la maqueta original (PDF a Word, Excel, PowerPoint, ePub y viceversa).</p>
+
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-video"></i></div>
+                        <span class="card-badge">Video</span>
+                    </div>
+                    <h3>Edición Multimedia Pro</h3>
+                    <p>Edición audiovisual dinámica y motion graphics adaptados para máxima retención en plataformas digitales (TikTok, Reels, YouTube).</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Edici%C3%B3n%20Multimedia." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
+
+            <!-- Herramientas Digitales -->
             <div class="card" data-category="tools">
-                <i class="fa-solid fa-file-image c-crypto"></i>
-                <h3>Conversión de Imágenes</h3>
-                <p>Optimización y cambio masivo de formatos de imagen (PNG, JPG, WEBP, SVG, RAW) con alta calidad y compresión eficiente.</p>
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-coins"></i></div>
+                        <span class="card-badge">Crypto</span>
+                    </div>
+                    <h3>Creación de Tokens Cripto</h3>
+                    <p>Programación y despliegue automatizado de contratos inteligentes para tokens estables o personalizados (ERC-20, BEP-20) en blockchain.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Creaci%C3%B3n%20de%20Tokens." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
+
             <div class="card" data-category="tools">
-                <i class="fa-solid fa-qrcode c-crypto"></i>
-                <h3>Diseño de QR Personalizados</h3>
-                <p>Creación de códigos QR estilizados con tu logo, colores corporativos, alta resolución vectorizada e integración a enlaces estáticos o dinámicos.</p>
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
+                        <span class="card-badge">Utilitario</span>
+                    </div>
+                    <h3>Conversión de Documentos</h3>
+                    <p>Transformación fluida de formatos corporativos manteniendo la maqueta original (PDF a Word, Excel, PowerPoint, ePub y viceversa).</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Documentos." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
+
             <div class="card" data-category="tools">
-                <i class="fa-solid fa-key c-crypto"></i>
-                <h3>Enlaces con Contraseña</h3>
-                <p>Generación y encriptación de enlaces protegidos con clave de acceso personalizada para compartir información confidencial de forma segura.</p>
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-file-image"></i></div>
+                        <span class="card-badge">Utilitario</span>
+                    </div>
+                    <h3>Conversión de Imágenes</h3>
+                    <p>Optimización y cambio masivo de formatos de imagen (PNG, JPG, WEBP, SVG, RAW) con alta calidad y compresión eficiente.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Im%C3%A1genes." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="card" data-category="tools">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-qrcode"></i></div>
+                        <span class="card-badge">Diseño QR</span>
+                    </div>
+                    <h3>Diseño de QR Personalizados</h3>
+                    <p>Creación de códigos QR estilizados con tu logo, colores corporativos, alta resolución vectorizada e integración a enlaces estáticos o dinámicos.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20de%20QR." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="card" data-category="tools">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-key"></i></div>
+                        <span class="card-badge">Seguridad</span>
+                    </div>
+                    <h3>Enlaces con Contraseña</h3>
+                    <p>Generación y encriptación de enlaces protegidos con clave de acceso personalizada para compartir información confidencial de forma segura.</p>
+                </div>
+                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Enlaces%20con%20Contrase%C3%B1a." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
