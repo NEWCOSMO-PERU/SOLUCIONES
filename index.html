@@ -19,6 +19,7 @@
             --tech-color: #3b82f6;
             --design-color: #ec4899;
             --crypto-color: #f59e0b;
+            --peru-red: #dc2626;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
@@ -35,6 +36,7 @@
             --tech-color: #2563eb;
             --design-color: #db2777;
             --crypto-color: #d97706;
+            --peru-red: #b91c1c;
             --text-main: #0f172a;
             --text-muted: #475569;
             --border-color: rgba(0, 0, 0, 0.08);
@@ -240,6 +242,38 @@
         }
         .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); background: rgba(255, 255, 255, 0.06); }
 
+        /* --- SECCIÓN DESTACADA TOKEN CRIPTO PERU --- */
+        .token-peru-section {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, var(--bg-card) 100%);
+            border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 32px;
+            padding: 60px 40px; position: relative; overflow: hidden;
+            display: grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: center;
+            box-shadow: 0 20px 50px rgba(220, 38, 38, 0.15);
+        }
+        .token-peru-section::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .token-peru-badge {
+            display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 800;
+            color: #ef4444; background: rgba(220, 38, 38, 0.15); border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 6px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+        }
+        .token-peru-content h2 { font-size: 2.3rem; font-weight: 800; color: var(--text-main); line-height: 1.2; margin-bottom: 15px; }
+        .token-peru-content p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px; max-width: 650px; }
+        .btn-peru {
+            background: linear-gradient(135deg, #dc2626, #991b1b); color: #ffffff;
+            box-shadow: 0 4px 25px rgba(220, 38, 38, 0.4);
+        }
+        .btn-peru:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px rgba(220, 38, 38, 0.6); }
+        .token-peru-media { display: flex; justify-content: center; align-items: center; }
+        .token-peru-logo {
+            width: 100%; max-width: 240px; height: auto; object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(220, 38, 38, 0.4));
+            animation: float 5s ease-in-out infinite;
+        }
+
         footer { background: var(--bg-main); color: var(--text-muted); text-align: center; padding: 35px 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
 
         /* BANNER DE COOKIES Y LEGAL */
@@ -268,6 +302,11 @@
 
         @media(max-width:900px){
             .contact-container { grid-template-columns: 1fr; padding: 30px; }
+            .token-peru-section { grid-template-columns: 1fr; text-align: center; padding: 40px 25px; }
+            .token-peru-badge { margin: 0 auto 15px auto; }
+            .token-peru-content p { margin: 0 auto 25px auto; }
+            .token-peru-media { order: -1; }
+            .token-peru-logo { max-width: 180px; }
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-main); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border-color); }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: block; }
@@ -294,6 +333,7 @@
         <li><a href="#cotizacion">Cotización</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#token-peru" style="color: var(--peru-red);"><i class="fa-solid fa-coins"></i> Token PERU</a></li>
         <li>
             <button class="theme-toggle-btn" id="theme-toggle">
                 <i class="fa-solid fa-moon" id="theme-icon"></i> <span id="theme-text">Oscuro</span>
@@ -312,7 +352,7 @@
         <h1>Ecosistema Digital & Soluciones Tecnológicas</h1>
         <p>Potenciamos tus ideas con Soporte Técnico especializado, Diseño Multimedia Creativo y utilitarios digitales avanzados adaptados a tu medida.</p>
         <div class="btn-group">
-            <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20personalizada." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Cotizar Directo</a>
+            <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20personalizada." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Cotizar Directo</a>
             <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
         </div>
     </div>
@@ -344,7 +384,7 @@
                     <h3>Formateo de Celulares</h3>
                     <p>Restablecimiento de fábrica, eliminación de bloatware, desbloqueo de lentitud y respaldo integral de contactos, fotos y WhatsApp para Android e iOS.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Formateo%20de%20Celulares." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Formateo%20de%20Celulares." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tech">
@@ -356,7 +396,7 @@
                     <h3>Instalación de Apps Premium</h3>
                     <p>Configuración e instalación de aplicaciones especializadas, herramientas sin anuncios, reproductores multimedia avanzados y suites de productividad.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Instalaci%C3%B3n%20de%20Apps%20Premium." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Instalaci%C3%B3n%20de%20Apps%20Premium." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tech">
@@ -368,7 +408,7 @@
                     <h3>Formateo y Optimización</h3>
                     <p>Instalación limpia de sistemas operativos (Windows/Mac), respaldo masivo seguro de información, eliminación de virus y aceleración de hardware.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Formateo%20y%20Optimizaci%C3%B3n." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Formateo%20y%20Optimizaci%C3%B3n." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tech">
@@ -380,7 +420,7 @@
                     <h3>Ciberseguridad & Antivirus</h3>
                     <p>Análisis profundo de vulnerabilidades, remoción de software malicioso y configuración de capas de protección para tus datos.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Ciberseguridad." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Ciberseguridad." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tech">
@@ -392,7 +432,7 @@
                     <h3>Instalación de Programas</h3>
                     <p>Configuración integral de suites de trabajo, herramientas de diseño, herramientas de oficina corporativa y utilitarios técnicos esenciales.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <!-- Diseño y Multimedia -->
@@ -405,7 +445,7 @@
                     <h3>Auditoría de Sitios Web</h3>
                     <p>Análisis exhaustivo de velocidad, optimización SEO técnico, UX/UI y rendimiento general para detectar y solucionar problemas en tu página web.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20una%20Auditor%C3%ADa%20de%20Sitio%20Web." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20una%20Auditor%C3%ADa%20de%20Sitio%20Web." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="design">
@@ -417,7 +457,7 @@
                     <h3>Diseño de Publicaciones</h3>
                     <p>Diseño gráfico impactante para posts, historias, banners y flyers optimizados para maximizar el engagement en Instagram, Facebook y LinkedIn.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20de%20Publicaciones." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20de%20Publicaciones." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="design">
@@ -429,7 +469,7 @@
                     <h3>Manejo de Redes Sociales</h3>
                     <p>Gestión integral de tus comunidades digitales: planificación de contenidos, calendarización, respuesta a mensajes y análisis de métricas.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Manejo%20de%20Redes%20Sociales." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Manejo%20de%20Redes%20Sociales." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="design">
@@ -441,7 +481,7 @@
                     <h3>Diseño Web Profesional</h3>
                     <p>Plataformas web responsivas, landing pages optimizadas para alta conversión e integraciones digitales a la medida de tu marca.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20Web." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20Web." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="design">
@@ -453,7 +493,7 @@
                     <h3>Branding e Identidad Visual</h3>
                     <p>Diseño de logotipos únicos, manuales de marca modernos, tarjetas de presentación de alto impacto y papelería corporativa.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Branding." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Branding." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="design">
@@ -465,7 +505,7 @@
                     <h3>Edición Multimedia Pro</h3>
                     <p>Edición audiovisual dinámica y motion graphics adaptados para máxima retención en plataformas digitales (TikTok, Reels, YouTube).</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Edici%C3%B3n%20Multimedia." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Edici%C3%B3n%20Multimedia." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <!-- Herramientas Digitales -->
@@ -478,7 +518,7 @@
                     <h3>Creación de Tokens Cripto</h3>
                     <p>Programación y despliegue automatizado de contratos inteligentes para tokens estables o personalizados (ERC-20, BEP-20) en blockchain.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Creaci%C3%B3n%20de%20Tokens." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Creaci%C3%B3n%20de%20Tokens." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tools">
@@ -490,7 +530,7 @@
                     <h3>Conversión de Documentos</h3>
                     <p>Transformación fluida de formatos corporativos manteniendo la maqueta original (PDF a Word, Excel, PowerPoint, ePub y viceversa).</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Documentos." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Documentos." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tools">
@@ -502,7 +542,7 @@
                     <h3>Conversión de Imágenes</h3>
                     <p>Optimización y cambio masivo de formatos de imagen (PNG, JPG, WEBP, SVG, RAW) con alta calidad y compresión eficiente.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Im%C3%A1genes." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Im%C3%A1genes." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tools">
@@ -514,7 +554,7 @@
                     <h3>Diseño de QR Personalizados</h3>
                     <p>Creación de códigos QR estilizados con tu logo, colores corporativos, alta resolución vectorizada e integración a enlaces estáticos o dinámicos.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20de%20QR." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20de%20QR." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="card" data-category="tools">
@@ -526,7 +566,7 @@
                     <h3>Enlaces con Contraseña</h3>
                     <p>Generación y encriptación de enlaces protegidos con clave de acceso personalizada para compartir información confidencial de forma segura.</p>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20quisiera%20cotizar%20Enlaces%20con%20Contrase%C3%B1a." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Enlaces%20con%20Contrase%C3%B1a." target="_blank" class="card-footer-action">Solicitar servicio <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -549,7 +589,7 @@
                         <li><i class="fa-solid fa-check"></i> Antivirus, seguridad & optimización</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Soporte%20T%C3%A9cnico." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Servicio</a>
+                <a href="https://wa.me/51907546093?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Soporte%20T%C3%A9cnico." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Servicio</a>
             </div>
 
             <div class="price-card featured">
@@ -562,7 +602,7 @@
                         <li><i class="fa-solid fa-check"></i> Branding & Gestión de Redes Sociales</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Dise%C3%B1o%20y%20Redes%20Sociales." target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Cotizar Proyecto</a>
+                <a href="https://wa.me/51907546093?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Dise%C3%B1o%20y%20Redes%20Sociales." target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Cotizar Proyecto</a>
             </div>
 
             <div class="price-card">
@@ -575,7 +615,7 @@
                         <li><i class="fa-solid fa-check"></i> QR de marca & Enlaces seguros</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/51999999999?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Herramientas%20Digitales." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Utilitario</a>
+                <a href="https://wa.me/51907546093?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Herramientas%20Digitales." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Utilitario</a>
             </div>
         </div>
     </section>
@@ -627,6 +667,23 @@
                 <textarea rows="4" placeholder="¿Qué servicio te gustaría cotizar?" required></textarea>
                 <button type="submit" class="btn btn-primary" style="justify-content:center;">Enviar Consulta</button>
             </form>
+        </div>
+    </section>
+
+    <!-- PROYECTO DESTACADO: TOKEN PERU -->
+    <section id="token-peru" class="reveal">
+        <div class="token-peru-section">
+            <div class="token-peru-content">
+                <span class="token-peru-badge"><i class="fa-solid fa-fire-flame-curved"></i> Proyecto Ecosistema Cripto</span>
+                <h2>Conoce nuestro Token Cripto: PERU</h2>
+                <p>Impulsando la descentralización e innovación tecnológica en la región. Un activo digital moderno diseñado para potenciar microtransacciones, integración en dApps y herramientas blockchain de nueva generación.</p>
+                <a href="https://proyecto-token.github.io/PERU/" target="_blank" class="btn btn-peru">
+                    <i class="fa-solid fa-rocket"></i> Explorar Proyecto PERU
+                </a>
+            </div>
+            <div class="token-peru-media">
+                <img src="PERU.jpg" alt="Token Cripto PERU" class="token-peru-logo">
+            </div>
         </div>
     </section>
 </main>
