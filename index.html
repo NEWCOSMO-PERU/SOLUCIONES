@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- VARIABLES MODO OSCURO (POR DEFECTO) --- */
         :root {
             --bg-main: #030712;
             --bg-card: rgba(15, 23, 42, 0.5);
@@ -21,19 +22,35 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
+            --nav-bg: rgba(3, 7, 18, 0.75);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- VARIABLES MODO CLARO --- */
+        [data-theme="light"] {
+            --bg-main: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-card-hover: rgba(241, 245, 249, 1);
+            --primary: #0284c7;
+            --tech-color: #2563eb;
+            --design-color: #db2777;
+            --crypto-color: #d97706;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(248, 250, 252, 0.85);
         }
 
         html { scroll-behavior: smooth; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        body { background: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        body { background: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease; }
 
-        /* --- SPLASH SCREEN MINIMALISTA --- */
+        /* --- SPLASH SCREEN DINÁMICO --- */
         #splash-screen {
             position: fixed; inset: 0; background: var(--bg-main); z-index: 9999;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         .splash-logo {
             height: 160px; width: auto; object-fit: contain;
@@ -42,7 +59,7 @@
         }
         .splash-loader {
             margin-top: 30px; width: 40px; height: 40px;
-            border: 3px solid rgba(255, 255, 255, 0.05); border-radius: 50%;
+            border: 3px solid var(--border-color); border-radius: 50%;
             border-top-color: var(--primary); animation: spin 0.8s linear infinite;
         }
         @keyframes pulse-scale {
@@ -54,19 +71,30 @@
         /* --- MENÚ DE NAVEGACIÓN --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(3, 7, 18, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            background: var(--nav-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color); padding: 15px 5%;
             display: flex; justify-content: space-between; align-items: center;
+            transition: background 0.4s ease;
         }
         .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .nav-logo-img { height: 42px; width: auto; }
         .nav-logo-text { font-weight: 800; font-size: 1.4rem; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        
+        /* BOTÓN DE TEMA CLARO/OSCURO */
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
+            color: var(--text-main); padding: 8px 14px; border-radius: 20px; cursor: pointer;
+            display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .theme-toggle-btn:hover { background: rgba(255, 255, 255, 0.15); }
 
-        /* --- HERO HEADER CON CANVAS INTERACTIVO --- */
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO HEADER --- */
         header {
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             padding: 140px 20px 80px 20px; text-align: center; position: relative; overflow: hidden;
@@ -79,7 +107,7 @@
 
         header h1 {
             font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -1.5px;
-            background: linear-gradient(135deg, #fff 30%, #00f2fe 70%, #ec4899);
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 70%, var(--design-color));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
         }
         header p { font-size: 1.2rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 35px auto; }
@@ -90,17 +118,17 @@
             font-weight: 700; text-decoration: none; transition: var(--transition); cursor: pointer; border: none;
         }
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #2563eb); color: #030712;
+            background: linear-gradient(135deg, var(--primary), #2563eb); color: #fff;
             box-shadow: 0 4px 25px rgba(0, 242, 254, 0.35);
         }
         .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px rgba(0, 242, 254, 0.6); }
-        .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border-color); }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--text-muted); }
 
         /* --- SECCIONES Y CONTENEDORES --- */
         section { padding: 100px 20px; max-width: 1200px; margin: auto; }
         .title { text-align: center; margin-bottom: 50px; }
-        .title h2 { font-size: 2.5rem; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+        .title h2 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
         .title p { color: var(--text-muted); margin-top: 10px; font-size: 1.1rem; }
 
         /* FILTROS */
@@ -111,14 +139,14 @@
         }
         .filter-btn:hover, .filter-btn.active { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); }
 
-        /* --- GRILLA Y TARJETAS SUPER MODERNAS --- */
+        /* --- TARJETAS --- */
         .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 30px; }
         
         .card {
             background: var(--bg-card);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 35px; border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--border-color);
             transition: var(--transition); position: relative; overflow: hidden;
             display: flex; flex-direction: column; justify-content: space-between;
         }
@@ -136,40 +164,38 @@
         .card:hover {
             transform: translateY(-10px) scale(1.02);
             background: var(--bg-card-hover);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .card-header-wrapper {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;
-        }
+        .card-header-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
 
         .card-icon-box {
             width: 60px; height: 60px; border-radius: 16px;
             display: flex; justify-content: center; align-items: center;
             font-size: 1.8rem; background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08); transition: var(--transition);
+            border: 1px solid var(--border-color); transition: var(--transition);
         }
 
-        .card[data-category="tech"] .card-icon-box { color: var(--tech-color); box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
-        .card[data-category="design"] .card-icon-box { color: var(--design-color); box-shadow: 0 0 20px rgba(236, 72, 153, 0.15); }
-        .card[data-category="tools"] .card-icon-box { color: var(--crypto-color); box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }
+        .card[data-category="tech"] .card-icon-box { color: var(--tech-color); }
+        .card[data-category="design"] .card-icon-box { color: var(--design-color); }
+        .card[data-category="tools"] .card-icon-box { color: var(--crypto-color); }
 
         .card:hover .card-icon-box { transform: scale(1.1) rotate(5deg); }
 
         .card-badge {
             font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
             padding: 6px 14px; border-radius: 20px; background: rgba(255, 255, 255, 0.05);
-            color: var(--text-muted); border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted); border: 1px solid var(--border-color);
         }
 
-        .card h3 { font-size: 1.35rem; margin-bottom: 12px; color: #fff; font-weight: 700; letter-spacing: -0.3px; }
+        .card h3 { font-size: 1.35rem; margin-bottom: 12px; color: var(--text-main); font-weight: 700; letter-spacing: -0.3px; }
         .card p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.7; margin-bottom: 25px; }
 
         .card-footer-action {
             display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 700;
-            color: #fff; text-decoration: none; transition: var(--transition);
-            border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;
+            color: var(--text-main); text-decoration: none; transition: var(--transition);
+            border-top: 1px solid var(--border-color); padding-top: 20px;
         }
 
         .card[data-category="tech"] .card-footer-action { color: var(--tech-color); }
@@ -190,11 +216,11 @@
         .price-card.featured { border-color: var(--primary); background: linear-gradient(180deg, rgba(0, 242, 254, 0.05), var(--bg-card)); }
         .price-card.featured::after {
             content: 'RECOMENDADO'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary), #2563eb); color: #030712; padding: 4px 16px;
+            background: linear-gradient(135deg, var(--primary), #2563eb); color: #fff; padding: 4px 16px;
             font-size: 0.75rem; font-weight: 800; border-radius: 20px;
         }
         .price-card:hover { transform: translateY(-5px); }
-        .price-card h3 { font-size: 1.6rem; color: #fff; font-weight: 700; margin-bottom: 10px; }
+        .price-card h3 { font-size: 1.6rem; color: var(--text-main); font-weight: 700; margin-bottom: 10px; }
         .price-card ul { list-style: none; margin: 25px 0 35px 0; color: var(--text-muted); font-size: 0.95rem; }
         .price-card ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .price-card ul li i { color: #10b981; }
@@ -202,7 +228,7 @@
         /* PREGUNTAS FRECUENTES (FAQ) */
         .faq-accordion { max-width: 800px; margin: 0 auto; }
         .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 15px; overflow: hidden; }
-        .faq-question { padding: 20px 25px; width: 100%; text-align: left; background: none; border: none; color: #fff; font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .faq-question { padding: 20px 25px; width: 100%; text-align: left; background: none; border: none; color: var(--text-main); font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
         .faq-answer { padding: 0 25px 20px 25px; color: var(--text-muted); display: none; font-size: 0.95rem; line-height: 1.6; }
 
         /* CONTACTO Y FORMULARIO */
@@ -210,11 +236,22 @@
         .contact-form { display: flex; flex-direction: column; gap: 15px; }
         .contact-form input, .contact-form textarea {
             width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
-            padding: 15px; border-radius: 12px; color: white; font-size: 0.95rem; transition: var(--transition);
+            padding: 15px; border-radius: 12px; color: var(--text-main); font-size: 0.95rem; transition: var(--transition);
         }
         .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); background: rgba(255, 255, 255, 0.06); }
 
-        footer { background: #01040a; color: var(--text-muted); text-align: center; padding: 35px 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+        footer { background: var(--bg-main); color: var(--text-muted); text-align: center; padding: 35px 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+
+        /* BANNER DE COOKIES Y LEGAL */
+        #cookie-banner {
+            position: fixed; bottom: 20px; left: 20px; right: 20px; max-width: 500px;
+            background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 20px; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; gap: 12px; transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        #cookie-banner.hidden { transform: translateY(100px); opacity: 0; pointer-events: none; }
+        #cookie-banner p { font-size: 0.85rem; color: var(--text-muted); }
+        #cookie-banner .cookie-btns { display: flex; gap: 10px; justify-content: flex-end; }
 
         /* WHATSAPP FLOTANTE */
         .whatsapp {
@@ -239,7 +276,7 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
+<!-- SPLASH SCREEN DINÁMICO -->
 <div id="splash-screen">
     <img src="logo.png" alt="Logo NewCosmo" class="splash-logo">
     <div class="splash-loader"></div>
@@ -257,6 +294,11 @@
         <li><a href="#cotizacion">Cotización</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li>
+            <button class="theme-toggle-btn" id="theme-toggle">
+                <i class="fa-solid fa-moon" id="theme-icon"></i> <span id="theme-text">Oscuro</span>
+            </button>
+        </li>
     </ul>
 </nav>
 
@@ -589,6 +631,14 @@
     </section>
 </main>
 
+<!-- BANNER DE COOKIES -->
+<div id="cookie-banner">
+    <p>Utilizamos cookies para garantizar la mejor experiencia en nuestra web. Al continuar navegando, aceptas nuestra política de privacidad.</p>
+    <div class="cookie-btns">
+        <button class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;" onclick="acceptCookies()">Aceptar</button>
+    </div>
+</div>
+
 <a class="whatsapp" href="https://wa.me/51907546093?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -598,14 +648,40 @@
 </footer>
 
 <script>
-    // CONTROL DEL SPLASH SCREEN
+    // CONTROL DEL SPLASH SCREEN (Optimizado con window.onload)
     window.addEventListener('load', () => {
         const splash = document.getElementById('splash-screen');
-        setTimeout(() => {
-            splash.style.opacity = '0';
-            splash.style.visibility = 'hidden';
-        }, 1800);
+        splash.style.opacity = '0';
+        splash.style.visibility = 'hidden';
     });
+
+    // SELECTOR DE TEMA (LIGHT/DARK MODE)
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+    const htmlEl = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            htmlEl.setAttribute('data-theme', 'light');
+            themeIcon.className = 'fa-solid fa-sun';
+            themeText.textContent = 'Claro';
+        } else {
+            htmlEl.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fa-solid fa-moon';
+            themeText.textContent = 'Oscuro';
+        }
+    });
+
+    // GESTIÓN DE COOKIES
+    function acceptCookies() {
+        document.getElementById('cookie-banner').classList.add('hidden');
+        localStorage.setItem('cookiesAccepted', 'true');
+    }
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
 
     // MENÚ RESPONSIVE
     const menuToggle = document.getElementById('menu-toggle');
@@ -674,7 +750,7 @@
             if (this.y < 0) this.y = canvas.height;
         }
         draw() {
-            ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+            ctx.fillStyle = 'rgba(0, 242, 254, 0.3)';
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -690,7 +766,7 @@
     }
     animateParticles();
 
-    // ENVÍO DE FORMULARIO DUMMY
+    // ENVÍO DE FORMULARIO
     function handleFormSubmit(e) {
         e.preventDefault();
         alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en breve para brindarte tu cotización.');
