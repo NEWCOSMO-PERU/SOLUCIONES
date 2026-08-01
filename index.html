@@ -70,31 +70,79 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* --- MENÚ DE NAVEGACIÓN --- */
+        /* --- MENÚ DE NAVEGACIÓN MEJORADO --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             background: var(--nav-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color); padding: 15px 5%;
+            border-bottom: 1px solid var(--border-color); padding: 12px 5%;
             display: flex; justify-content: space-between; align-items: center;
-            transition: background 0.4s ease;
+            transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
         }
+
+        /* Efecto al hacer Scroll */
+        nav.scrolled {
+            padding: 8px 5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-bottom-color: rgba(255, 255, 255, 0.12);
+        }
+
         .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo-img { height: 42px; width: auto; }
+        .nav-logo-img { height: 40px; width: auto; transition: transform 0.3s ease; }
+        .nav-brand:hover .nav-logo-img { transform: scale(1.05); }
+
         .nav-logo-text { font-weight: 800; font-size: 1.4rem; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+
+        .nav-links a.nav-link { 
+            text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; 
+            padding: 6px 10px; border-radius: 8px; transition: var(--transition); 
+        }
+
+        .nav-links a.nav-link:hover,
+        .nav-links a.nav-link:focus-visible { 
+            color: var(--primary); background: rgba(255, 255, 255, 0.05);
+        }
         
         /* BOTÓN DE TEMA CLARO/OSCURO */
         .theme-toggle-btn {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
-            color: var(--text-main); padding: 8px 14px; border-radius: 20px; cursor: pointer;
+            color: var(--text-main); padding: 8px 16px; border-radius: 20px; cursor: pointer;
             display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.85rem;
             transition: var(--transition);
         }
-        .theme-toggle-btn:hover { background: rgba(255, 255, 255, 0.15); }
+        .theme-toggle-btn:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-1px); }
 
-        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
+        .mobile-menu-btn { 
+            display: none; background: none; border: none; color: var(--text-main); font-size: 1.5rem; 
+            cursor: pointer; padding: 5px; border-radius: 8px;
+        }
+
+        /* --- ADAPTACIÓN RESPONSIVE (MÓVIL) --- */
+        @media (max-width: 900px) {
+            .mobile-menu-btn { display: block; }
+
+            .nav-links { 
+                position: absolute; top: 100%; left: 0; width: 100%; 
+                background: var(--bg-main); flex-direction: column; align-items: stretch;
+                padding: 20px 5%; border-bottom: 1px solid var(--border-color); 
+                box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+                
+                /* Animación suave para desplegar */
+                opacity: 0; visibility: hidden; transform: translateY(-10px);
+                transition: all 0.3s ease-in-out;
+            }
+
+            .nav-links.active { 
+                opacity: 1; visibility: visible; transform: translateY(0);
+            }
+
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a.nav-link { display: block; padding: 12px; font-size: 1.05rem; }
+            
+            .theme-toggle-wrapper {
+                display: flex; justify-content: center; margin-top: 10px;
+            }
+        }
 
         /* --- HERO HEADER --- */
         header {
@@ -318,9 +366,6 @@
 
         @media(max-width:900px){
             .contact-container { grid-template-columns: 1fr; padding: 30px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-main); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border-color); }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: block; }
         }
     </style>
 </head>
@@ -332,22 +377,28 @@
     <div class="splash-loader"></div>
 </div>
 
-<!-- NAVEGACIÓN -->
-<nav>
-    <a href="#" class="nav-brand">
+<!-- NAVEGACIÓN MEJORADA -->
+<nav id="navbar">
+    <a href="#" class="nav-brand" aria-label="NewCosmo Inicio">
         <img src="logo.png" alt="Logo NewCosmo" class="nav-logo-img">
         <span class="nav-logo-text">NEWCOSMO</span>
     </a>
-    <button class="mobile-menu-btn" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+
+    <!-- Botón hamburguesa con ARIA -->
+    <button class="mobile-menu-btn" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-links">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+    </button>
+
     <ul class="nav-links" id="nav-links">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#cotizacion">Cotización</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="#proyectos">Nuestros Proyectos</a></li>
-        <li>
-            <button class="theme-toggle-btn" id="theme-toggle">
-                <i class="fa-solid fa-moon" id="theme-icon"></i> <span id="theme-text">Oscuro</span>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#cotizacion" class="nav-link">Cotización</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li><a href="#proyectos" class="nav-link">Nuestros Proyectos</a></li>
+        <li class="theme-toggle-wrapper">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Cambiar tema de color">
+                <i class="fa-solid fa-moon" id="theme-icon"></i> 
+                <span id="theme-text">Oscuro</span>
             </button>
         </li>
     </ul>
@@ -783,6 +834,56 @@
         }
     });
 
+    // CONTROL DEL MENÚ DE NAVEGACIÓN Y SCROLL
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-link');
+
+    // 1. Cambiar estado visual del menú al hacer scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // 2. Abrir / Cerrar Menú Móvil con ARIA
+    function toggleMenu() {
+        const isActive = navLinks.classList.toggle('active');
+        
+        // Cambiar ícono entre barras y "X"
+        if (isActive) {
+            menuIcon.className = 'fa-solid fa-xmark';
+            menuToggle.setAttribute('aria-expanded', 'true');
+            menuToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
+        } else {
+            menuIcon.className = 'fa-solid fa-bars';
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+        }
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // 3. Cerrar el menú automáticamente al hacer clic en un enlace
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // 4. Cerrar el menú si el usuario hace clic fuera de la navegación
+    document.addEventListener('click', (e) => {
+        if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+
     // GESTIÓN DE COOKIES
     function acceptCookies() {
         document.getElementById('cookie-banner').classList.add('hidden');
@@ -791,11 +892,6 @@
     if (localStorage.getItem('cookiesAccepted') === 'true') {
         document.getElementById('cookie-banner').classList.add('hidden');
     }
-
-    // MENÚ RESPONSIVE
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
 
     // FILTRO DE SERVICIOS
     function filterServices(category, element) {
