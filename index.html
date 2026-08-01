@@ -1,887 +1,651 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWCOSMO | Soluciones Tecnológicas & Estudio Digital Pro</title>
-    
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Servicios Tecnológicos & Soluciones Digitales</title>
+    <!-- FontAwesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
-        /* --- VARIABLES MODO OSCURO (POR DEFECTO) --- */
+        /* --- VARIABLES CSS & TEMAS --- */
         :root {
-            --bg-main: #030712;
-            --bg-card: rgba(15, 23, 42, 0.5);
-            --bg-card-hover: rgba(30, 41, 59, 0.8);
-            --primary: #00f2fe;
-            --tech-color: #3b82f6;
-            --design-color: #ec4899;
-            --crypto-color: #f59e0b;
-            --peru-red: #dc2626;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --nav-bg: rgba(3, 7, 18, 0.75);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --tech-color: #38bdf8;
+            --crypto-color: #fbbf24;
+            --design-color: #f43f5e;
+            --header-bg: rgba(15, 23, 42, 0.8);
+            --transition: all 0.3s ease;
         }
 
-        /* --- VARIABLES MODO CLARO --- */
         [data-theme="light"] {
-            --bg-main: #f8fafc;
+            --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f8fafc 100%);
             --bg-card: rgba(255, 255, 255, 0.8);
-            --bg-card-hover: rgba(241, 245, 249, 1);
-            --primary: #0284c7;
-            --tech-color: #2563eb;
-            --design-color: #db2777;
-            --crypto-color: #d97706;
-            --peru-red: #b91c1c;
-            --text-main: #0f172a;
-            --text-muted: #475569;
             --border-color: rgba(0, 0, 0, 0.08);
-            --nav-bg: rgba(248, 250, 252, 0.85);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --header-bg: rgba(255, 255, 255, 0.85);
         }
 
-        html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        /* --- ESTILOS GENERALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-        body { background: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease; }
-
-        /* --- SPLASH SCREEN DINÁMICO --- */
-        #splash-screen {
-            position: fixed; inset: 0; background: var(--bg-main); z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        .splash-logo {
-            height: 160px; width: auto; object-fit: contain;
-            filter: drop-shadow(0 0 35px rgba(0, 242, 254, 0.4));
-            animation: pulse-scale 2s infinite ease-in-out;
-        }
-        .splash-loader {
-            margin-top: 30px; width: 40px; height: 40px;
-            border: 3px solid var(--border-color); border-radius: 50%;
-            border-top-color: var(--primary); animation: spin 0.8s linear infinite;
-        }
-        @keyframes pulse-scale {
-            0%, 100% { transform: scale(0.98); opacity: 0.85; }
-            50% { transform: scale(1.03); opacity: 1; }
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* --- MENÚ DE NAVEGACIÓN --- */
-        nav {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: var(--nav-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color); padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            transition: background 0.4s ease;
-        }
-        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo-img { height: 42px; width: auto; }
-        .nav-logo-text { font-weight: 800; font-size: 1.4rem; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
-        .nav-links a:hover { color: var(--primary); }
-        
-        /* BOTÓN DE TEMA CLARO/OSCURO */
-        .theme-toggle-btn {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
-            color: var(--text-main); padding: 8px 14px; border-radius: 20px; cursor: pointer;
-            display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.85rem;
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
             transition: var(--transition);
         }
-        .theme-toggle-btn:hover { background: rgba(255, 255, 255, 0.15); }
 
-        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        /* --- HERO HEADER --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--tech-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- HEADER & NAVBAR --- */
         header {
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 140px 20px 80px 20px; text-align: center; position: relative; overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: var(--transition);
         }
-        #hero-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-        .hero-content { position: relative; z-index: 1; max-width: 900px; }
-        .hero-logo-container { margin-bottom: 25px; display: inline-block; }
-        .hero-logo { height: 220px; width: auto; filter: drop-shadow(0 0 50px rgba(0, 242, 254, 0.3)); animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
 
-        header h1 {
-            font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -1.5px;
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 70%, var(--design-color));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
         }
-        header p { font-size: 1.2rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 35px auto; }
 
-        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--border-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
         .btn {
-            display: inline-flex; align-items: center; gap: 10px; padding: 15px 35px; border-radius: 50px;
-            font-weight: 700; text-decoration: none; transition: var(--transition); cursor: pointer; border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
         }
+
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #2563eb); color: #fff;
-            box-shadow: 0 4px 25px rgba(0, 242, 254, 0.35);
+            background: var(--primary);
+            color: white;
         }
-        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px rgba(0, 242, 254, 0.6); }
-        .btn-secondary { background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid var(--border-color); }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--text-muted); }
 
-        /* --- SECCIONES Y CONTENEDORES --- */
-        section { padding: 100px 20px; max-width: 1200px; margin: auto; }
-        .title { text-align: center; margin-bottom: 50px; }
-        .title h2 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-        .title p { color: var(--text-muted); margin-top: 10px; font-size: 1.1rem; }
-
-        /* FILTROS */
-        .filter-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap; }
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-muted);
-            padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: var(--transition);
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
         }
-        .filter-btn:hover, .filter-btn.active { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); }
 
-        /* --- TARJETAS MEJORADAS --- */
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 30px; }
-        
+        /* --- GRID DE SERVICIOS --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
         .card {
             background: var(--bg-card);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 35px; border-radius: 24px;
+            backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            transition: var(--transition); position: relative; overflow: hidden;
-            display: flex; flex-direction: column; justify-content: space-between;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            border-radius: 20px;
+            padding: 30px;
             transition: var(--transition);
         }
-
-        .card[data-category="tech"]::before { background: linear-gradient(90deg, transparent, var(--tech-color), transparent); }
-        .card[data-category="design"]::before { background: linear-gradient(90deg, transparent, var(--design-color), transparent); }
-        .card[data-category="tools"]::before { background: linear-gradient(90deg, transparent, var(--crypto-color), transparent); }
 
         .card:hover {
-            transform: translateY(-8px) scale(1.01);
-            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
 
-        .card[data-category="tech"]:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 20px 35px -10px rgba(59, 130, 246, 0.25);
-        }
-        .card[data-category="design"]:hover {
-            border-color: rgba(236, 72, 153, 0.5);
-            box-shadow: 0 20px 35px -10px rgba(236, 72, 153, 0.25);
-        }
-        .card[data-category="tools"]:hover {
-            border-color: rgba(245, 158, 11, 0.5);
-            box-shadow: 0 20px 35px -10px rgba(245, 158, 11, 0.25);
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
 
-        .card-header-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+        .icon-tech { background: rgba(56, 189, 248, 0.15); color: var(--tech-color); }
+        .icon-crypto { background: rgba(251, 191, 36, 0.15); color: var(--crypto-color); }
+        .icon-design { background: rgba(244, 63, 94, 0.15); color: var(--design-color); }
 
-        .card-icon-box {
-            width: 58px; height: 58px; border-radius: 16px;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 1.75rem; background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color); transition: var(--transition);
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
         }
 
-        .card[data-category="tech"] .card-icon-box { color: var(--tech-color); background: rgba(59, 130, 246, 0.08); }
-        .card[data-category="design"] .card-icon-box { color: var(--design-color); background: rgba(236, 72, 153, 0.08); }
-        .card[data-category="tools"] .card-icon-box { color: var(--crypto-color); background: rgba(245, 158, 11, 0.08); }
-
-        .card:hover .card-icon-box { transform: scale(1.1) rotate(6deg); }
-
-        .card-badge {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            padding: 6px 12px; border-radius: 20px; background: rgba(255, 255, 255, 0.05);
-            color: var(--text-muted); border: 1px solid var(--border-color);
+        .card ul {
+            list-style: none;
         }
 
-        .card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-main); font-weight: 700; letter-spacing: -0.3px; }
-        .card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; margin-bottom: 25px; }
+        .card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
 
-        .card-footer-action {
-            display: inline-flex; align-items: center; justify-content: space-between;
-            gap: 8px; font-size: 0.88rem; font-weight: 700;
-            text-decoration: none; padding: 12px 20px;
-            border-radius: 14px; background: rgba(255, 255, 255, 0.04);
+        .card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* --- SECCIÓN VALORACIONES Y COMENTARIOS --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            transition: var(--transition); margin-top: auto;
+            padding: 25px;
+            border-radius: 20px;
+            transition: var(--transition);
         }
 
-        .card[data-category="tech"] .card-footer-action { color: var(--tech-color); }
-        .card[data-category="design"] .card-footer-action { color: var(--design-color); }
-        .card[data-category="tools"] .card-footer-action { color: var(--crypto-color); }
-
-        .card:hover .card-footer-action {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: currentColor;
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
 
-        .card-footer-action i { transition: transform 0.3s ease; }
-        .card:hover .card-footer-action i { transform: translateX(5px); }
-
-        .card-footer-action:focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
-        .card.hidden { display: none; }
-
-        /* PLANES DE COTIZACIÓN */
-        .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .price-card {
-            background: var(--bg-card); padding: 45px 30px; border-radius: 24px; border: 1px solid var(--border-color);
-            display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); position: relative;
+        .review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--tech-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #fff;
+            font-size: 1.1rem;
         }
-        .price-card.featured { border-color: var(--primary); background: linear-gradient(180deg, rgba(0, 242, 254, 0.05), var(--bg-card)); }
-        .price-card.featured::after {
-            content: 'RECOMENDADO'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary), #2563eb); color: #fff; padding: 4px 16px;
-            font-size: 0.75rem; font-weight: 800; border-radius: 20px;
+
+        .review-author h4 {
+            font-size: 1rem;
+            color: var(--text-main);
         }
-        .price-card:hover { transform: translateY(-5px); }
-        .price-card h3 { font-size: 1.6rem; color: var(--text-main); font-weight: 700; margin-bottom: 10px; }
-        .price-card ul { list-style: none; margin: 25px 0 35px 0; color: var(--text-muted); font-size: 0.95rem; }
-        .price-card ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .price-card ul li i { color: #10b981; }
 
-        /* PREGUNTAS FRECUENTES (FAQ) */
-        .faq-accordion { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 15px; overflow: hidden; }
-        .faq-question { padding: 20px 25px; width: 100%; text-align: left; background: none; border: none; color: var(--text-main); font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .faq-answer { padding: 0 25px 20px 25px; color: var(--text-muted); display: none; font-size: 0.95rem; line-height: 1.6; }
-
-        /* CONTACTO Y FORMULARIO */
-        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--bg-card); border-radius: 32px; padding: 50px; border: 1px solid var(--border-color); }
-        .contact-form { display: flex; flex-direction: column; gap: 15px; }
-        .contact-form input, .contact-form textarea {
-            width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
-            padding: 15px; border-radius: 12px; color: var(--text-main); font-size: 0.95rem; transition: var(--transition);
+        .review-stars {
+            color: var(--crypto-color);
+            font-size: 0.85rem;
+            margin-top: 3px;
         }
-        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); background: rgba(255, 255, 255, 0.06); }
 
-        /* --- SECCIÓN NUESTROS PROYECTOS --- */
-        .proyectos-section {
+        .review-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .comment-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 35px;
+        }
+
+        .star-rating-select {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .star-rating-select i.active,
+        .star-rating-select i:hover {
+            color: var(--crypto-color);
+        }
+
+        /* --- CONTACTO & FORMULARIOS --- */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 12px 18px;
+            border-radius: 12px;
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 30px 0;
             text-align: center;
-            padding: 60px 20px;
-        }
-        .proyectos-link {
-            display: inline-block;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        .proyectos-logo {
-            width: 100%;
-            max-width: 110px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.3));
-            transition: var(--transition);
-        }
-        .proyectos-link:hover .proyectos-logo {
-            transform: scale(1.1) rotate(4deg);
-            filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.6));
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        footer { background: var(--bg-main); color: var(--text-muted); text-align: center; padding: 35px 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
-
-        /* BANNER DE COOKIES Y LEGAL */
-        #cookie-banner {
-            position: fixed; bottom: 20px; left: 20px; right: 20px; max-width: 500px;
-            background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 20px; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            display: flex; flex-direction: column; gap: 12px; transition: transform 0.4s ease, opacity 0.4s ease;
+        /* --- ANIMACIONES DE DESPLAZAMIENTO --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
-        #cookie-banner.hidden { transform: translateY(100px); opacity: 0; pointer-events: none; }
-        #cookie-banner p { font-size: 0.85rem; color: var(--text-muted); }
-        #cookie-banner .cookie-btns { display: flex; gap: 10px; justify-content: flex-end; }
 
-        /* WHATSAPP FLOTANTE */
-        .whatsapp {
-            position: fixed; right: 30px; bottom: 30px; width: 60px; height: 60px;
-            background: #25D366; border-radius: 50%; display: flex; justify-content: center;
-            align-items: center; font-size: 32px; color: white; text-decoration: none;
-            box-shadow: 0 10px 25px rgba(37,211,102,0.4); z-index: 999; transition: var(--transition);
-        }
-        .whatsapp:hover { transform: scale(1.1) rotate(10deg); }
-
-        /* REVEAL ANIMATION */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @media(max-width:900px){
-            .contact-container { grid-template-columns: 1fr; padding: 30px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-main); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border-color); }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: block; }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-<!-- SPLASH SCREEN DINÁMICO -->
-<div id="splash-screen">
-    <img src="logo.png" alt="Logo NewCosmo" class="splash-logo">
-    <div class="splash-loader"></div>
-</div>
-
-<!-- NAVEGACIÓN -->
-<nav>
-    <a href="#" class="nav-brand">
-        <img src="logo.png" alt="Logo NewCosmo" class="nav-logo-img">
-        <span class="nav-logo-text">NEWCOSMO</span>
-    </a>
-    <button class="mobile-menu-btn" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
-    <ul class="nav-links" id="nav-links">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#cotizacion">Cotización</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="#proyectos">Nuestros Proyectos</a></li>
-        <li>
-            <button class="theme-toggle-btn" id="theme-toggle">
-                <i class="fa-solid fa-moon" id="theme-icon"></i> <span id="theme-text">Oscuro</span>
-            </button>
-        </li>
-    </ul>
-</nav>
-
-<!-- HERO HEADER -->
-<header>
-    <canvas id="hero-canvas"></canvas>
-    <div class="hero-content">
-        <div class="hero-logo-container">
-            <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-microchip"></i> Tech&Design
+            </a>
+            <ul class="nav-links">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#valoraciones">Opiniones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-btn" title="Cambiar Tema">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
         </div>
-        <h1>Ecosistema Digital & Soluciones Tecnológicas</h1>
-        <p>Potenciamos tus ideas con Soporte Técnico especializado, Diseño Multimedia Creativo y utilitarios digitales avanzados adaptados a tu medida.</p>
-        <div class="btn-group">
-            <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20personalizada." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Cotizar Directo</a>
-            <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
-        </div>
-    </div>
-</header>
+    </header>
 
-<main>
-    <!-- SERVICIOS -->
-    <section id="servicios" class="reveal">
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <section class="hero container reveal">
+        <h1>Soluciones Integrales Tecnológicas & Creativas</h1>
+        <p>Mantenimiento técnico, asesoría en criptoactivos y diseño gráfico profesional adaptado a tus necesidades.</p>
+        <a href="#contacto" class="btn btn-primary">Solicitar Asesoría <i class="fa-solid fa-arrow-right"></i></a>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="container reveal">
         <div class="title">
-            <h2>Servicios Especializados</h2>
-            <p>Filtra las soluciones que mejor se adapten a tu proyecto.</p>
+            <h2>Nuestros Servicios</h2>
+            <p>Especialización tecnológica y creativa de alto nivel</p>
         </div>
-
-        <div class="filter-container">
-            <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
-            <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
-            <button class="filter-btn" onclick="filterServices('design', this)">Diseño & Multimedia</button>
-            <button class="filter-btn" onclick="filterServices('tools', this)">Herramientas Digitales</button>
-        </div>
-
-        <div class="services">
-            <!-- Soporte Técnico -->
-            <div class="card" data-category="tech">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                        <span class="card-badge">Móvil</span>
-                    </div>
-                    <h3>Formateo de Celulares</h3>
-                    <p>Restablecimiento de fábrica, eliminación de bloatware, desbloqueo de lentitud y respaldo integral de contactos, fotos y WhatsApp para Android e iOS.</p>
+        <div class="services-grid">
+            
+            <!-- TARJETA 1 -->
+            <div class="card">
+                <div class="card-icon icon-tech">
+                    <i class="fa-solid fa-laptop-medical"></i>
                 </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Formateo%20de%20Celulares." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <h3>Soporte Técnico Especializado</h3>
+                <ul>
+                    <li>Formateo, optimización y limpieza profunda</li>
+                    <li>Instalación de Software técnico y licencias</li>
+                    <li>Soporte remoto para Windows/Mac</li>
+                    <li>Diagnóstico y cambio de componentes</li>
+                </ul>
             </div>
 
-            <div class="card" data-category="tech">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-crown"></i></div>
-                        <span class="card-badge">Apps</span>
-                    </div>
-                    <h3>Instalación de Apps Premium</h3>
-                    <p>Configuración e instalación de aplicaciones especializadas, herramientas sin anuncios, reproductores multimedia avanzados y suites de productividad.</p>
+            <!-- TARJETA 2 -->
+            <div class="card">
+                <div class="card-icon icon-crypto">
+                    <i class="fa-solid fa-coins"></i>
                 </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Instalaci%C3%B3n%20de%20Apps%20Premium." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <h3>Criptoactivos & Finanzas</h3>
+                <ul>
+                    <li>Asesoría para compras P2P seguras</li>
+                    <li>Configuración de Wallets frías y calientes</li>
+                    <li>Gestión y resguardo de claves privadas</li>
+                    <li>Estrategias básicas de inversión digital</li>
+                </ul>
             </div>
 
-            <div class="card" data-category="tech">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-laptop-medical"></i></div>
-                        <span class="card-badge">PC / Laptop</span>
-                    </div>
-                    <h3>Formateo y Optimización</h3>
-                    <p>Instalación limpia de sistemas operativos (Windows/Mac), respaldo masivo seguro de información, eliminación de virus y aceleración de hardware.</p>
+            <!-- TARJETA 3 -->
+            <div class="card">
+                <div class="card-icon icon-design">
+                    <i class="fa-solid fa-palette"></i>
                 </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Formateo%20y%20Optimizaci%C3%B3n." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <h3>Diseño Gráfico & Branding</h3>
+                <ul>
+                    <li>Creación de Logotipos e Identidad de Marca</li>
+                    <li>Diseño de Flyers, banners y redes sociales</li>
+                    <li>Edición de video corporativo y promocional</li>
+                    <li>Formatos optimizados para web e impresión</li>
+                </ul>
             </div>
 
-            <div class="card" data-category="tech">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                        <span class="card-badge">Seguridad</span>
-                    </div>
-                    <h3>Ciberseguridad & Antivirus</h3>
-                    <p>Análisis profundo de vulnerabilidades, remoción de software malicioso y configuración de capas de protección para tus datos.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Ciberseguridad." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="tech">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-download"></i></div>
-                        <span class="card-badge">Software</span>
-                    </div>
-                    <h3>Instalación de Programas</h3>
-                    <p>Configuración integral de suites de trabajo, herramientas de diseño, herramientas de oficina corporativa y utilitarios técnicos esenciales.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Instalaci%C3%B3n%20de%20Programas." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Diseño y Multimedia -->
-            <div class="card" data-category="design">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                        <span class="card-badge">Web SEO</span>
-                    </div>
-                    <h3>Auditoría de Sitios Web</h3>
-                    <p>Análisis exhaustivo de velocidad, optimización SEO técnico, UX/UI y rendimiento general para detectar y solucionar problemas en tu página web.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20una%20Auditor%C3%ADa%20de%20Sitio%20Web." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="design">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-icons"></i></div>
-                        <span class="card-badge">Social Media</span>
-                    </div>
-                    <h3>Diseño de Publicaciones</h3>
-                    <p>Diseño gráfico impactante para posts, historias, banners y flyers optimizados para maximizar el engagement en Instagram, Facebook y LinkedIn.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20de%20Publicaciones." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="design">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-chart-line"></i></div>
-                        <span class="card-badge">Social Media</span>
-                    </div>
-                    <h3>Manejo de Redes Sociales</h3>
-                    <p>Gestión integral de tus comunidades digitales: planificación de contenidos, calendarización, respuesta a mensajes y análisis de métricas.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Manejo%20de%20Redes%20Sociales." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="design">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-code"></i></div>
-                        <span class="card-badge">Web</span>
-                    </div>
-                    <h3>Diseño Web Profesional</h3>
-                    <p>Plataformas web responsivas, landing pages optimizadas para alta conversión e integraciones digitales a la medida de tu marca.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20Web." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="design">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-palette"></i></div>
-                        <span class="card-badge">Branding</span>
-                    </div>
-                    <h3>Branding e Identidad Visual</h3>
-                    <p>Diseño de logotipos únicos, manuales de marca modernos, tarjetas de presentación de alto impacto y papelería corporativa.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Branding." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="design">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-video"></i></div>
-                        <span class="card-badge">Video</span>
-                    </div>
-                    <h3>Edición Multimedia Pro</h3>
-                    <p>Edición audiovisual dinámica y motion graphics adaptados para máxima retención en plataformas digitales (TikTok, Reels, YouTube).</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Edici%C3%B3n%20Multimedia." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Herramientas Digitales -->
-            <div class="card" data-category="tools">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-coins"></i></div>
-                        <span class="card-badge">Crypto</span>
-                    </div>
-                    <h3>Creación de Tokens Cripto</h3>
-                    <p>Programación y despliegue automatizado de contratos inteligentes para tokens estables o personalizados (ERC-20, BEP-20) en blockchain.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Creaci%C3%B3n%20de%20Tokens." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="tools">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
-                        <span class="card-badge">Utilitario</span>
-                    </div>
-                    <h3>Conversión de Documentos</h3>
-                    <p>Transformación fluida de formatos corporativos manteniendo la maqueta original (PDF a Word, Excel, PowerPoint, ePub y viceversa).</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Documentos." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="tools">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-file-image"></i></div>
-                        <span class="card-badge">Utilitario</span>
-                    </div>
-                    <h3>Conversión de Imágenes</h3>
-                    <p>Optimización y cambio masivo de formatos de imagen (PNG, JPG, WEBP, SVG, RAW) con alta calidad y compresión eficiente.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Conversi%C3%B3n%20de%20Im%C3%A1genes." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="tools">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-qrcode"></i></div>
-                        <span class="card-badge">Diseño QR</span>
-                    </div>
-                    <h3>Diseño de QR Personalizados</h3>
-                    <p>Creación de códigos QR estilizados con tu logo, colores corporativos, alta resolución vectorizada e integración a enlaces estáticos o dinámicos.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Dise%C3%B1o%20de%20QR." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="card" data-category="tools">
-                <div>
-                    <div class="card-header-wrapper">
-                        <div class="card-icon-box"><i class="fa-solid fa-key"></i></div>
-                        <span class="card-badge">Seguridad</span>
-                    </div>
-                    <h3>Enlaces con Contraseña</h3>
-                    <p>Generación y encriptación de enlaces protegidos con clave de acceso personalizada para compartir información confidencial de forma segura.</p>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20cotizar%20Enlaces%20con%20Contrase%C3%B1a." target="_blank" class="card-footer-action">
-                    <span>Solicitar servicio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
         </div>
     </section>
 
-    <!-- COTIZACIÓN -->
-    <section id="cotizacion" class="reveal">
+    <!-- SECCIÓN VALORACIONES Y COMENTARIOS -->
+    <section id="valoraciones" class="container reveal">
         <div class="title">
-            <h2>Solicita tu Cotización</h2>
-            <p>Selecciona la categoría que necesitas y comunícate directamente con nosotros.</p>
+            <h2>Opiniones de Nuestros Clientes</h2>
+            <p>Conoce la experiencia de quienes ya han confiado en nuestros servicios.</p>
         </div>
 
-        <div class="pricing">
-            <div class="price-card">
-                <div>
-                    <h3>Soporte Técnico & Móvil</h3>
-                    <p style="color:var(--text-muted); font-size: 0.9rem;">Soluciones físicas y lógicas para PC, laptops y smartphones.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-check"></i> Formateo de celulares & PC/Laptops</li>
-                        <li><i class="fa-solid fa-check"></i> Instalación de Apps Premium & Software</li>
-                        <li><i class="fa-solid fa-check"></i> Antivirus, seguridad & optimización</li>
-                    </ul>
+        <!-- Tarjetas de Reseñas Existentes -->
+        <div class="reviews-grid" id="reviews-container">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">CG</div>
+                    <div class="review-author">
+                        <h4>Carlos Gutiérrez</h4>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Soporte%20T%C3%A9cnico." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Servicio</a>
+                <p>"Excelente servicio de formateo y optimización para mi laptop de trabajo. Quedó rapidísima y guardaron toda mi información intacta."</p>
             </div>
 
-            <div class="price-card featured">
-                <div>
-                    <h3>Diseño & Social Media</h3>
-                    <p style="color:var(--text-muted); font-size: 0.9rem;">Proyectos creativos y gestión integral de marca digital.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-check"></i> Diseño Web & Auditorías Técnicas SEO</li>
-                        <li><i class="fa-solid fa-check"></i> Diseño de Publicaciones & Reels</li>
-                        <li><i class="fa-solid fa-check"></i> Branding & Gestión de Redes Sociales</li>
-                    </ul>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">MA</div>
+                    <div class="review-author">
+                        <h4>María Alarcón</h4>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Dise%C3%B1o%20y%20Redes%20Sociales." target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Cotizar Proyecto</a>
-            </div>
-
-            <div class="price-card">
-                <div>
-                    <h3>Herramientas Digitales</h3>
-                    <p style="color:var(--text-muted); font-size: 0.9rem;">Servicios utilitarios y creación de contratos blockchain.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-check"></i> Creación de Tokens Cripto</li>
-                        <li><i class="fa-solid fa-check"></i> Conversión de formatos masivos</li>
-                        <li><i class="fa-solid fa-check"></i> QR de marca & Enlaces seguros</li>
-                    </ul>
-                </div>
-                <a href="https://wa.me/51907546093?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20Herramientas%20Digitales." target="_blank" class="btn btn-secondary" style="width:100%; justify-content:center;">Cotizar Utilitario</a>
+                <p>"Nos diseñaron la línea gráfica de publicaciones para Instagram y el cambio en interacción fue inmediato. ¡100% recomendados!"</p>
             </div>
         </div>
-    </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="reveal">
-        <div class="title">
-            <h2>Preguntas Frecuentes</h2>
-            <p>Resolvemos tus dudas principales de forma rápida.</p>
-        </div>
-
-        <div class="faq-accordion">
-            <div class="faq-item">
-                <button class="faq-question">¿Cómo solicito una cotización personalizada? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="faq-answer">Simplemente haz clic en el botón "Cotizar" de la sección correspondiente o presiona el botón flotante de WhatsApp para comunicarte con un asesor directo.</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">¿Qué incluye la Auditoría de Sitios Web? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="faq-answer">Evaluamos tiempos de carga, rendimiento móvil, errores de indexación SEO, experiencia de usuario (UX) y seguridad para entregarte un reporte detallado con recomendaciones de solución.</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">¿Se pierde la información al formatear un celular? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="faq-answer">Si lo requieres, realizamos una copia de seguridad (backup) previa de tus contactos, fotos, documentos y chats para restaurar todo de forma segura después del formateo.</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">¿Incluyen la redacción de contenidos (copywriting) para las redes sociales? <i class="fa-solid fa-chevron-down"></i></button>
-                <div class="faq-answer">Sí, en los planes de manejo de redes sociales nos encargamos del diseño visual, los textos atractivos (copies) y los hashtags estratégicos para cada publicación.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="reveal">
-        <div class="contact-container">
-            <div>
-                <h2>Hablemos de tu próximo proyecto</h2>
-                <p style="color: var(--text-muted); margin: 15px 0 30px 0;">Envíanos tus datos o escríbenos directamente por WhatsApp para recibir asistencia inmediata.</p>
+        <!-- Formulario para dejar un comentario/valoración -->
+        <div class="comment-form-container">
+            <h3 style="margin-bottom: 15px; text-align: center;">Déjanos tu Comentario</h3>
+            
+            <form class="contact-form" onsubmit="handleCommentSubmit(event)">
+                <input type="text" id="comment-name" placeholder="Tu Nombre" required>
                 
-                <div style="display:flex; flex-direction:column; gap:20px; color: var(--text-muted);">
-                    <div><i class="fa-solid fa-envelope" style="color:var(--primary)"></i> www.newcosmo@outlook.es</div>
-                    <div><i class="fa-solid fa-phone" style="color:var(--primary)"></i> +51907546093</div>
-                    <div><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Trujillo, Perú</div>
+                <div style="margin-top: 5px;">
+                    <label style="font-size: 0.88rem; color: var(--text-muted); display: block; margin-bottom: 5px;">Tu Valoración:</label>
+                    <div class="star-rating-select" id="star-selector">
+                        <i class="fa-solid fa-star active" data-rating="1"></i>
+                        <i class="fa-solid fa-star active" data-rating="2"></i>
+                        <i class="fa-solid fa-star active" data-rating="3"></i>
+                        <i class="fa-solid fa-star active" data-rating="4"></i>
+                        <i class="fa-solid fa-star active" data-rating="5"></i>
+                    </div>
                 </div>
-            </div>
 
-            <form class="contact-form" onsubmit="handleFormSubmit(event)">
-                <input type="text" placeholder="Tu Nombre" required>
-                <input type="email" placeholder="Correo Electrónico" required>
-                <textarea rows="4" placeholder="¿Qué servicio te gustaría cotizar?" required></textarea>
-                <button type="submit" class="btn btn-primary" style="justify-content:center;">Enviar Consulta</button>
+                <textarea id="comment-text" rows="3" placeholder="Escribe tu opinión sobre el servicio..." required></textarea>
+                
+                <button type="submit" class="btn btn-primary" style="justify-content:center;">Publicar Opinión</button>
             </form>
         </div>
     </section>
 
-    <!-- SECCIÓN NUESTROS PROYECTOS -->
-    <section id="proyectos" class="reveal proyectos-section">
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto" class="container reveal">
         <div class="title">
-            <h2>Nuestros Proyectos</h2>
+            <h2>Contacto Directo</h2>
+            <p>¿Tienes dudas o necesitas una cotización rápida?</p>
         </div>
-        <a href="https://proyecto-token.github.io/PERU/" target="_blank" class="proyectos-link" title="Visitar Proyecto Token PERU">
-            <img src="PERU.png" alt="Proyecto Token PERU" class="proyectos-logo">
-        </a>
+        <div class="comment-form-container">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensaje enviado con éxito.');">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <textarea rows="4" placeholder="¿En qué te podemos ayudar?" required></textarea>
+                <button type="submit" class="btn btn-primary" style="justify-content:center;">Enviar Mensaje</button>
+            </form>
+        </div>
     </section>
-</main>
 
-<!-- BANNER DE COOKIES -->
-<div id="cookie-banner">
-    <p>Utilizamos cookies para garantizar la mejor experiencia en nuestra web. Al continuar navegando, aceptas nuestra política de privacidad.</p>
-    <div class="cookie-btns">
-        <button class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;" onclick="acceptCookies()">Aceptar</button>
-    </div>
-</div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Tech&Design. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
-<a class="whatsapp" href="https://wa.me/51907546093?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
+    <!-- INTERACTIVIDAD CON JAVASCRIPT -->
+    <script>
+        // 1. CAMBIO DE TEMA CLARO / OSCURO
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIcon = themeBtn.querySelector('i');
 
-<footer>
-    © 2026 NewCosmo - Soluciones Tecnológicas & Estudio Digital. Todos los derechos reservados.
-</footer>
-
-<script>
-    // CONTROL DEL SPLASH SCREEN
-    window.addEventListener('load', () => {
-        const splash = document.getElementById('splash-screen');
-        splash.style.opacity = '0';
-        splash.style.visibility = 'hidden';
-    });
-
-    // SELECTOR DE TEMA (LIGHT/DARK MODE)
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const themeText = document.getElementById('theme-text');
-    const htmlEl = document.documentElement;
-
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = htmlEl.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-            htmlEl.setAttribute('data-theme', 'light');
-            themeIcon.className = 'fa-solid fa-sun';
-            themeText.textContent = 'Claro';
-        } else {
-            htmlEl.setAttribute('data-theme', 'dark');
-            themeIcon.className = 'fa-solid fa-moon';
-            themeText.textContent = 'Oscuro';
-        }
-    });
-
-    // GESTIÓN DE COOKIES
-    function acceptCookies() {
-        document.getElementById('cookie-banner').classList.add('hidden');
-        localStorage.setItem('cookiesAccepted', 'true');
-    }
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-        document.getElementById('cookie-banner').classList.add('hidden');
-    }
-
-    // MENÚ RESPONSIVE
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-
-    // FILTRO DE SERVICIOS
-    function filterServices(category, element) {
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        if (element) element.classList.add('active');
-
-        document.querySelectorAll('.card').forEach(card => {
-            if (category === 'all' || card.getAttribute('data-category') === category) {
-                card.classList.remove('hidden');
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.body.removeAttribute('data-theme');
+                themeIcon.className = 'fa-solid fa-moon';
             } else {
-                card.classList.add('hidden');
+                document.body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fa-solid fa-sun';
             }
         });
-    }
 
-    // FAQ ACCORDEON
-    document.querySelectorAll('.faq-question').forEach(button => {
-        button.addEventListener('click', () => {
-            const answer = button.nextElementSibling;
-            const isOpen = answer.style.display === 'block';
-            document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-            answer.style.display = isOpen ? 'none' : 'block';
+        // 2. SELECCIÓN DE ESTRELLAS EN FORMULARIO
+        let currentRating = 5;
+        const stars = document.querySelectorAll('#star-selector i');
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                currentRating = parseInt(star.getAttribute('data-rating'));
+                stars.forEach((s, index) => {
+                    if (index < currentRating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
         });
-    });
 
-    // REVEAL ON SCROLL
-    window.addEventListener('scroll', () => {
-        document.querySelectorAll('.reveal').forEach(el => {
-            const windowHeight = window.innerHeight;
-            const revealTop = el.getBoundingClientRect().top;
-            if (revealTop < windowHeight - 100) el.classList.add('active');
-        });
-    });
+        // 3. PUBLICAR COMENTARIO DINÁMICAMENTE
+        function handleCommentSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('comment-name').value;
+            const text = document.getElementById('comment-text').value;
+            const container = document.getElementById('reviews-container');
+            
+            // Generar iniciales para el avatar
+            const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            
+            // Generar estrellas HTML
+            let starsHtml = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < currentRating) {
+                    starsHtml += '<i class="fa-solid fa-star"></i> ';
+                } else {
+                    starsHtml += '<i class="fa-regular fa-star"></i> ';
+                }
+            }
 
-    // CANVAS DE PARTÍCULAS HERO
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
+            // Crear la nueva tarjeta
+            const newCard = document.createElement('div');
+            newCard.className = 'review-card';
+            newCard.innerHTML = `
+                <div class="review-header">
+                    <div class="review-avatar">${initials || 'U'}</div>
+                    <div class="review-author">
+                        <h4>${name}</h4>
+                        <div class="review-stars">${starsHtml}</div>
+                    </div>
+                </div>
+                <p>"${text}"</p>
+            `;
 
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.5;
-            this.speedX = Math.random() * 1 - 0.5;
-            this.speedY = Math.random() * 1 - 0.5;
+            // Insertar al inicio de las opiniones
+            container.prepend(newCard);
+            
+            alert('¡Gracias por tu valoración!');
+            e.target.reset();
+            
+            // Resetear estrellas a 5 por defecto
+            currentRating = 5;
+            stars.forEach(s => s.classList.add('active'));
         }
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.x > canvas.width) this.x = 0;
-            if (this.x < 0) this.x = canvas.width;
-            if (this.y > canvas.height) this.y = 0;
-            if (this.y < 0) this.y = canvas.height;
+
+        // 4. ANIMACIÓN DE REVELADO AL HACER SCROLL
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
         }
-        draw() {
-            ctx.fillStyle = 'rgba(0, 242, 254, 0.3)';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
 
-    for (let i = 0; i < 50; i++) particles.push(new Particle());
-
-    function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
-        requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // ENVÍO DE FORMULARIO
-    function handleFormSubmit(e) {
-        e.preventDefault();
-        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en breve para brindarte tu cotización.');
-        e.target.reset();
-    }
-</script>
-
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Ejecutar al cargar la página
+    </script>
 </body>
 </html>
