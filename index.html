@@ -127,7 +127,6 @@
                 padding: 20px 5%; border-bottom: 1px solid var(--border-color); 
                 box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
                 
-                /* Animación suave para desplegar */
                 opacity: 0; visibility: hidden; transform: translateY(-10px);
                 transition: all 0.3s ease-in-out;
             }
@@ -421,6 +420,28 @@
 </header>
 
 <main>
+    <!-- SECCIÓN CONTADOR DE ESTADÍSTICAS -->
+    <section id="estadisticas" class="reveal" style="padding: 50px 20px; background: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); max-width: 100%;">
+        <div style="max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center;">
+            <div>
+                <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">+500</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Equipos Optimizados</p>
+            </div>
+            <div>
+                <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--design-color);">+100</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Proyectos Digitales</p>
+            </div>
+            <div>
+                <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--crypto-color);">99%</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Satisfacción de Clientes</p>
+            </div>
+            <div>
+                <h3 style="font-size: 2.5rem; font-weight: 800; color: #10b981;">24/7</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Soporte Técnico Ágil</p>
+            </div>
+        </div>
+    </section>
+
     <!-- SERVICIOS -->
     <section id="servicios" class="reveal">
         <div class="title">
@@ -854,7 +875,6 @@
     function toggleMenu() {
         const isActive = navLinks.classList.toggle('active');
         
-        // Cambiar ícono entre barras y "X"
         if (isActive) {
             menuIcon.className = 'fa-solid fa-xmark';
             menuToggle.setAttribute('aria-expanded', 'true');
