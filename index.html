@@ -79,7 +79,6 @@
             transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efecto al hacer Scroll */
         nav.scrolled {
             padding: 8px 5%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -103,7 +102,6 @@
             color: var(--primary); background: rgba(255, 255, 255, 0.05);
         }
         
-        /* BOTÓN DE TEMA CLARO/OSCURO */
         .theme-toggle-btn {
             background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
             color: var(--text-main); padding: 8px 16px; border-radius: 20px; cursor: pointer;
@@ -117,30 +115,20 @@
             cursor: pointer; padding: 5px; border-radius: 8px;
         }
 
-        /* --- ADAPTACIÓN RESPONSIVE (MÓVIL) --- */
         @media (max-width: 900px) {
             .mobile-menu-btn { display: block; }
-
             .nav-links { 
                 position: absolute; top: 100%; left: 0; width: 100%; 
                 background: var(--bg-main); flex-direction: column; align-items: stretch;
                 padding: 20px 5%; border-bottom: 1px solid var(--border-color); 
                 box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
-                
                 opacity: 0; visibility: hidden; transform: translateY(-10px);
                 transition: all 0.3s ease-in-out;
             }
-
-            .nav-links.active { 
-                opacity: 1; visibility: visible; transform: translateY(0);
-            }
-
+            .nav-links.active { opacity: 1; visibility: visible; transform: translateY(0); }
             .nav-links li { width: 100%; text-align: center; }
             .nav-links a.nav-link { display: block; padding: 12px; font-size: 1.05rem; }
-            
-            .theme-toggle-wrapper {
-                display: flex; justify-content: center; margin-top: 10px;
-            }
+            .theme-toggle-wrapper { display: flex; justify-content: center; margin-top: 10px; }
         }
 
         /* --- HERO HEADER --- */
@@ -274,14 +262,9 @@
         .card-footer-action i { transition: transform 0.3s ease; }
         .card:hover .card-footer-action i { transform: translateX(5px); }
 
-        .card-footer-action:focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
-        }
-
         .card.hidden { display: none; }
 
-        /* --- NUEVA SECCIÓN: ESTADÍSTICAS MODERNAS (IMPACTO) --- */
+        /* --- SECCIÓN 6 ESTADÍSTICAS MODERNAS (IMPACTO) --- */
         .stats-section {
             padding: 40px 20px 80px 20px;
             max-width: 1200px;
@@ -289,8 +272,13 @@
         }
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+        }
+        @media(min-width: 900px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         .stat-card {
             background: var(--bg-card);
@@ -298,7 +286,7 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 30px 20px;
+            padding: 35px 25px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -314,43 +302,44 @@
             transition: var(--transition);
         }
         .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.1);
+            transform: translateY(-6px);
+            border-color: rgba(0, 242, 254, 0.35);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.12);
         }
         .stat-card:hover::after {
             opacity: 1;
         }
         .stat-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 15px auto;
-            border-radius: 14px;
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px auto;
+            border-radius: 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             color: var(--primary);
             transition: var(--transition);
         }
         .stat-card:hover .stat-icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1) rotate(6deg);
             background: rgba(0, 242, 254, 0.1);
+            color: var(--primary);
         }
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             background: linear-gradient(135deg, var(--text-main), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         .stat-label {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
         }
 
@@ -456,7 +445,6 @@
         <span class="nav-logo-text">NEWCOSMO</span>
     </a>
 
-    <!-- Botón hamburguesa con ARIA -->
     <button class="mobile-menu-btn" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-links">
         <i class="fa-solid fa-bars" id="menu-icon"></i>
     </button>
@@ -753,7 +741,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CONTADOR DE ESTADÍSTICAS MODERNO (UBICADA ANTES DE COTIZACIÓN) -->
+    <!-- SECCIÓN DE 6 ESTADÍSTICAS MODERNAS (UBICADA ANTES DE COTIZACIÓN) -->
     <section class="stats-section reveal">
         <div class="stats-grid">
             <div class="stat-card">
@@ -775,6 +763,16 @@
                 <div class="stat-icon"><i class="fa-solid fa-headset"></i></div>
                 <div class="stat-number">24/7</div>
                 <div class="stat-label">Soporte Técnico Ágil</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Seguridad y Respaldo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="stat-number">&lt; 24h</div>
+                <div class="stat-label">Tiempo de Respuesta</div>
             </div>
         </div>
     </section>
@@ -939,7 +937,6 @@
     const navLinks = document.getElementById('nav-links');
     const navLinksItems = document.querySelectorAll('.nav-link');
 
-    // 1. Cambiar estado visual del menú al hacer scroll
     window.addEventListener('scroll', () => {
         if (window.scrollY > 30) {
             navbar.classList.add('scrolled');
@@ -948,10 +945,8 @@
         }
     });
 
-    // 2. Abrir / Cerrar Menú Móvil con ARIA
     function toggleMenu() {
         const isActive = navLinks.classList.toggle('active');
-        
         if (isActive) {
             menuIcon.className = 'fa-solid fa-xmark';
             menuToggle.setAttribute('aria-expanded', 'true');
@@ -965,7 +960,6 @@
 
     menuToggle.addEventListener('click', toggleMenu);
 
-    // 3. Cerrar el menú automáticamente al hacer clic en un enlace
     navLinksItems.forEach(link => {
         link.addEventListener('click', () => {
             if (navLinks.classList.contains('active')) {
@@ -974,7 +968,6 @@
         });
     });
 
-    // 4. Cerrar el menú si el usuario hace clic fuera de la navegación
     document.addEventListener('click', (e) => {
         if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
             toggleMenu();
