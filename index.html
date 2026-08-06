@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" data-theme="dark">
 <head>
@@ -282,6 +281,79 @@
 
         .card.hidden { display: none; }
 
+        /* --- NUEVA SECCIÓN: ESTADÍSTICAS MODERNAS (IMPACTO) --- */
+        .stats-section {
+            padding: 40px 20px 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(0, 242, 254, 0.08), transparent 70%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.1);
+        }
+        .stat-card:hover::after {
+            opacity: 1;
+        }
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px auto;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        .stat-card:hover .stat-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(0, 242, 254, 0.1);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--text-main), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
         /* PLANES DE COTIZACIÓN */
         .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .price-card {
@@ -421,28 +493,6 @@
 </header>
 
 <main>
-    <!-- SECCIÓN CONTADOR DE ESTADÍSTICAS -->
-    <section id="estadisticas" class="reveal" style="padding: 50px 20px; background: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); max-width: 100%;">
-        <div style="max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center;">
-            <div>
-                <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">+500</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Equipos Optimizados</p>
-            </div>
-            <div>
-                <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--design-color);">+100</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Proyectos Digitales</p>
-            </div>
-            <div>
-                <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--crypto-color);">99%</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Satisfacción de Clientes</p>
-            </div>
-            <div>
-                <h3 style="font-size: 2.5rem; font-weight: 800; color: #10b981;">24/7</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Soporte Técnico Ágil</p>
-            </div>
-        </div>
-    </section>
-
     <!-- SERVICIOS -->
     <section id="servicios" class="reveal">
         <div class="title">
@@ -699,6 +749,32 @@
                     <span>Solicitar servicio</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTADOR DE ESTADÍSTICAS MODERNO (UBICADA ANTES DE COTIZACIÓN) -->
+    <section class="stats-section reveal">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="stat-number">+500</div>
+                <div class="stat-label">Equipos Optimizados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-rocket"></i></div>
+                <div class="stat-number">+100</div>
+                <div class="stat-label">Proyectos Digitales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-face-smile"></i></div>
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Satisfacción de Clientes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Soporte Técnico Ágil</div>
             </div>
         </div>
     </section>
