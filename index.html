@@ -376,27 +376,123 @@
         }
         .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); background: rgba(255, 255, 255, 0.06); }
 
-        /* --- SECCIÓN NUESTROS PROYECTOS --- */
+        /* --- SECCIÓN NUESTROS PROYECTOS MEJORADA --- */
         .proyectos-section {
-            text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
         }
-        .proyectos-link {
-            display: inline-block;
+        .proyecto-card-wrapper {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
             transition: var(--transition);
-            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        .proyecto-card-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--peru-red), transparent);
+        }
+        .proyecto-card-wrapper:hover {
+            transform: translateY(-6px);
+            border-color: rgba(220, 38, 38, 0.4);
+            box-shadow: 0 20px 45px rgba(220, 38, 38, 0.15);
+            background: var(--bg-card-hover);
+        }
+        .proyecto-info h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+        .proyecto-info p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        .proyecto-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .proyecto-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(220, 38, 38, 0.08);
+            color: var(--peru-red);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+        .proyecto-visual {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 240px;
+        }
+        .proyecto-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.08), transparent 70%);
+            pointer-events: none;
         }
         .proyectos-logo {
             width: 100%;
-            max-width: 110px;
+            max-width: 140px;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.3));
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.35));
             transition: var(--transition);
         }
-        .proyectos-link:hover .proyectos-logo {
-            transform: scale(1.1) rotate(4deg);
-            filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.6));
+        .proyecto-visual:hover .proyectos-logo {
+            transform: scale(1.08) rotate(3deg);
+            filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.6));
+        }
+        .btn-proyecto {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--peru-red), #991b1b);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+            transition: var(--transition);
+        }
+        .btn-proyecto:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(220, 38, 38, 0.5);
+        }
+
+        @media(max-width: 768px) {
+            .proyecto-card-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
         }
 
         footer { background: var(--bg-main); color: var(--text-muted); text-align: center; padding: 35px 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
@@ -471,7 +567,7 @@
         <div class="hero-logo-container">
             <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
         </div>
-        <h1>Soluciones Tecnológicas</h1>
+        <h1>Ecosistema Digital & Soluciones Tecnológicas</h1>
         <p>Potenciamos tus ideas con Soporte Técnico especializado, Diseño Multimedia Creativo y utilitarios digitales avanzados adaptados a tu medida.</p>
         <div class="btn-group">
             <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20personalizada." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Cotizar Directo</a>
@@ -741,7 +837,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE 6 ESTADÍSTICAS MODERNAS (UBICADA ANTES DE COTIZACIÓN) -->
+    <!-- SECCIÓN 6 ESTADÍSTICAS MODERNAS -->
     <section class="stats-section reveal">
         <div class="stats-grid">
             <div class="stat-card">
@@ -876,14 +972,35 @@
         </div>
     </section>
 
-    <!-- SECCIÓN NUESTROS PROYECTOS -->
+    <!-- SECCIÓN NUESTROS PROYECTOS MEJORADA -->
     <section id="proyectos" class="reveal proyectos-section">
         <div class="title">
             <h2>Nuestros Proyectos</h2>
+            <p>Explora nuestras plataformas y desarrollos destacados más recientes.</p>
         </div>
-        <a href="https://proyecto-token.github.io/PERU/" target="_blank" class="proyectos-link" title="Visitar Proyecto Token PERU">
-            <img src="PERU.png" alt="Proyecto Token PERU" class="proyectos-logo">
-        </a>
+        
+        <div class="proyecto-card-wrapper">
+            <div class="proyecto-info">
+                <span class="proyecto-badge" style="display:inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 6px 14px; border-radius: 20px; background: rgba(220, 38, 38, 0.1); color: var(--peru-red); border: 1px solid rgba(220, 38, 38, 0.2); margin-bottom: 15px;">Plataforma Blockchain / Web</span>
+                <h3>Token PERU Ecosistema</h3>
+                <p>Desarrollo integral de plataforma web descentralizada y despliegue de contratos inteligentes orientados a la economía digital y la innovación tecnológica en el país.</p>
+                
+                <div class="proyecto-tags">
+                    <span class="proyecto-tag">Smart Contracts</span>
+                    <span class="proyecto-tag">Web3</span>
+                    <span class="proyecto-tag">UI/UX Moderno</span>
+                </div>
+
+                <a href="https://proyecto-token.github.io/PERU/" target="_blank" class="btn-proyecto">
+                    <span>Visitar Sitio Web</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="proyecto-visual">
+                <img src="PERU.png" alt="Proyecto Token PERU" class="proyectos-logo">
+            </div>
+        </div>
     </section>
 </main>
 
