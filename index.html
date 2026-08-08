@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWCOSMO | Soluciones Tecnológicas</title>
+    <title>NEWCOSMO | Soluciones Tecnológicas Pro</title>
     
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -70,7 +70,7 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* --- MENÚ DE NAVEGACIÓN MEJORADO --- */
+        /* --- MENÚ DE NAVEGACIÓN --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             background: var(--nav-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -176,7 +176,7 @@
         }
         .filter-btn:hover, .filter-btn.active { background: var(--text-main); color: var(--bg-main); border-color: var(--text-main); }
 
-        /* --- TARJETAS MEJORADAS --- */
+        /* --- TARJETAS --- */
         .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 30px; }
         
         .card {
@@ -199,23 +199,11 @@
         .card[data-category="design"]::before { background: linear-gradient(90deg, transparent, var(--design-color), transparent); }
         .card[data-category="tools"]::before { background: linear-gradient(90deg, transparent, var(--crypto-color), transparent); }
 
-        .card:hover {
-            transform: translateY(-8px) scale(1.01);
-            background: var(--bg-card-hover);
-        }
+        .card:hover { transform: translateY(-8px) scale(1.01); background: var(--bg-card-hover); }
 
-        .card[data-category="tech"]:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 20px 35px -10px rgba(59, 130, 246, 0.25);
-        }
-        .card[data-category="design"]:hover {
-            border-color: rgba(236, 72, 153, 0.5);
-            box-shadow: 0 20px 35px -10px rgba(236, 72, 153, 0.25);
-        }
-        .card[data-category="tools"]:hover {
-            border-color: rgba(245, 158, 11, 0.5);
-            box-shadow: 0 20px 35px -10px rgba(245, 158, 11, 0.25);
-        }
+        .card[data-category="tech"]:hover { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 20px 35px -10px rgba(59, 130, 246, 0.25); }
+        .card[data-category="design"]:hover { border-color: rgba(236, 72, 153, 0.5); box-shadow: 0 20px 35px -10px rgba(236, 72, 153, 0.25); }
+        .card[data-category="tools"]:hover { border-color: rgba(245, 158, 11, 0.5); box-shadow: 0 20px 35px -10px rgba(245, 158, 11, 0.25); }
 
         .card-header-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
 
@@ -243,84 +231,34 @@
 
         .card.hidden { display: none; }
 
-        /* --- SECCIÓN ESTADÍSTICAS MODERNAS --- */
-        .stats-section {
-            padding: 40px 20px 80px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        @media(min-width: 900px) {
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+        /* --- SECCIÓN ESTADÍSTICAS --- */
+        .stats-section { padding: 40px 20px 80px 20px; max-width: 1200px; margin: auto; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        @media(min-width: 900px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+        
         .stat-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 35px 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            background: var(--bg-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color); border-radius: 24px; padding: 35px 25px; text-align: center;
+            position: relative; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
         .stat-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: radial-gradient(circle at top, rgba(0, 242, 254, 0.08), transparent 70%);
-            opacity: 0;
-            transition: var(--transition);
+            opacity: 0; transition: var(--transition);
         }
-        .stat-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0, 242, 254, 0.35);
-            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.12);
-        }
-        .stat-card:hover::after {
-            opacity: 1;
-        }
+        .stat-card:hover { transform: translateY(-6px); border-color: rgba(0, 242, 254, 0.35); box-shadow: 0 20px 40px rgba(0, 242, 254, 0.12); }
+        .stat-card:hover::after { opacity: 1; }
         .stat-icon {
-            width: 58px;
-            height: 58px;
-            margin: 0 auto 18px auto;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: var(--primary);
-            transition: var(--transition);
+            width: 58px; height: 58px; margin: 0 auto 18px auto; border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary); transition: var(--transition);
         }
-        .stat-card:hover .stat-icon {
-            transform: scale(1.1) rotate(6deg);
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--primary);
-        }
+        .stat-card:hover .stat-icon { transform: scale(1.1) rotate(6deg); background: rgba(0, 242, 254, 0.1); color: var(--primary); }
         .stat-number {
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            background: linear-gradient(135deg, var(--text-main), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            font-size: 2.8rem; font-weight: 800; letter-spacing: -1.5px;
+            background: linear-gradient(135deg, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;
         }
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 600;
-        }
+        .stat-label { color: var(--text-muted); font-size: 1rem; font-weight: 600; }
 
         /* PLANES DE COTIZACIÓN */
         .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -340,7 +278,7 @@
         .price-card ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .price-card ul li i { color: #10b981; }
 
-        /* PREGUNTAS FRECUENTES (FAQ) CON TRANSICIÓN SUAVE */
+        /* FAQ ACCORDION */
         .faq-accordion { max-width: 800px; margin: 0 auto; }
         .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 15px; overflow: hidden; }
         .faq-question { padding: 20px 25px; width: 100%; text-align: left; background: none; border: none; color: var(--text-main); font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
@@ -349,7 +287,7 @@
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), padding 0.3s ease; padding: 0 25px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
         .faq-answer.open { max-height: 300px; padding: 0 25px 20px 25px; transition: max-height 0.4s ease-in-out, padding 0.3s ease; }
 
-        /* CONTACTO Y FORMULARIO */
+        /* CONTACTO */
         .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--bg-card); border-radius: 32px; padding: 50px; border: 1px solid var(--border-color); }
         .contact-form { display: flex; flex-direction: column; gap: 15px; }
         .contact-form input, .contact-form textarea {
@@ -369,79 +307,37 @@
         #toast-msg.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* --- SECCIÓN NUESTROS PROYECTOS --- */
-        .proyectos-section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
+        .proyectos-section { padding: 80px 20px; max-width: 1200px; margin: auto; }
         .proyecto-card-wrapper {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 28px;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: var(--bg-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color); border-radius: 28px; padding: 40px;
+            display: flex; flex-direction: column; gap: 25px; justify-content: center; align-items: center;
+            position: relative; overflow: hidden; transition: var(--transition); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
         .proyecto-card-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 3px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
             background: linear-gradient(90deg, transparent, var(--peru-red), transparent);
         }
         .proyecto-card-wrapper:hover {
-            transform: translateY(-6px);
-            border-color: rgba(220, 38, 38, 0.4);
-            box-shadow: 0 20px 45px rgba(220, 38, 38, 0.15);
-            background: var(--bg-card-hover);
+            transform: translateY(-6px); border-color: rgba(220, 38, 38, 0.4);
+            box-shadow: 0 20px 45px rgba(220, 38, 38, 0.15); background: var(--bg-card-hover);
         }
         .proyecto-visual {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 240px;
-            width: 100%;
-            text-decoration: none;
+            background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-color); border-radius: 20px;
+            padding: 40px; display: flex; justify-content: center; align-items: center; position: relative;
+            overflow: hidden; min-height: 240px; width: 100%; text-decoration: none;
         }
         .proyecto-visual::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(220, 38, 38, 0.08), transparent 70%);
-            pointer-events: none;
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.08), transparent 70%); pointer-events: none;
         }
         .proyectos-logo {
-            width: 100%;
-            max-width: 140px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.35));
-            transition: var(--transition);
+            width: 100%; max-width: 140px; height: auto; object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.35)); transition: var(--transition);
         }
         .proyecto-visual:hover .proyectos-logo {
-            transform: scale(1.08) rotate(3deg);
-            filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.6));
+            transform: scale(1.08) rotate(3deg); filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.6));
         }
-
-        @media(max-width: 768px) {
-            .proyecto-card-wrapper { padding: 30px 20px; }
-        }
-
-        footer { background: var(--bg-main); color: var(--text-muted); text-align: center; padding: 35px 20px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
 
         /* BANNER DE COOKIES */
         #cookie-banner {
@@ -469,10 +365,15 @@
 
         @media(max-width:900px){
             .contact-container { grid-template-columns: 1fr; padding: 30px; }
+            .proyecto-card-wrapper { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
+
+<!-- SDK DE FACEBOOK (Plugin Oficial) -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v18.0"></script>
 
 <!-- SPLASH SCREEN DINÁMICO -->
 <div id="splash-screen">
@@ -480,7 +381,7 @@
     <div class="splash-loader"></div>
 </div>
 
-<!-- NAVEGACIÓN MEJORADA -->
+<!-- NAVEGACIÓN -->
 <nav id="navbar">
     <a href="#" class="nav-brand" aria-label="NewCosmo Inicio">
         <img src="logo.png" alt="Logo NewCosmo" class="nav-logo-img">
@@ -494,9 +395,10 @@
     <ul class="nav-links" id="nav-links">
         <li><a href="#servicios" class="nav-link">Servicios</a></li>
         <li><a href="#cotizacion" class="nav-link">Cotización</a></li>
+        <li><a href="#proyectos" class="nav-link">Nuestros Proyectos</a></li>
+        <li><a href="#facebook" class="nav-link">Facebook</a></li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
         <li><a href="#contacto" class="nav-link">Contacto</a></li>
-        <li><a href="#proyectos" class="nav-link">Nuestros Proyectos</a></li>
         <li class="theme-toggle-wrapper">
             <button class="theme-toggle-btn" id="theme-toggle" aria-label="Cambiar tema de color">
                 <i class="fa-solid fa-moon" id="theme-icon"></i> 
@@ -719,7 +621,7 @@
         </div>
     </section>
 
-    <!-- ESTADÍSTICAS MODERNAS -->
+    <!-- ESTADÍSTICAS -->
     <section class="stats-section reveal">
         <div class="stats-grid">
             <div class="stat-card">
@@ -804,6 +706,47 @@
         </div>
     </section>
 
+    <!-- NUESTROS PROYECTOS -->
+    <section id="proyectos" class="reveal proyectos-section">
+        <div class="title">
+            <h2>NUESTROS PROYECTOS</h2>
+        </div>
+        <div class="proyecto-card-wrapper">
+            <a href="https://proyecto-token.github.io/PERU/" target="_blank" class="proyecto-visual" aria-label="Ir a la web de Proyecto Token PERU">
+                <img src="PERU.png" alt="Proyecto Token PERU" class="proyectos-logo" loading="lazy">
+            </a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN FACEBOOK PAGE -->
+    <section id="facebook" class="reveal">
+        <div class="title">
+            <h2>Únete a nuestra Comunidad</h2>
+            <p>Síguenos en Facebook para enterarte de novedades, promociones y contenido exclusivo.</p>
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+            <div style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: 24px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; max-width: 500px; width: 100%; display: flex; justify-content: center;">
+                
+                <!-- Reemplazar 'tu-pagina-aqui' por el enlace real de la Fanpage de Facebook -->
+                <div class="fb-page" 
+                    data-href="https://www.facebook.com/tu-pagina-aqui" 
+                    data-tabs="timeline" 
+                    data-width="500" 
+                    data-height="500" 
+                    data-small-header="false" 
+                    data-adapt-container-width="true" 
+                    data-hide-cover="false" 
+                    data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/tu-pagina-aqui" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/tu-pagina-aqui">Cargando Facebook...</a>
+                    </blockquote>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section id="faq" class="reveal">
         <div class="title">
@@ -853,18 +796,6 @@
             </form>
         </div>
     </section>
-
-    <!-- SECCIÓN NUESTROS PROYECTOS (LOGO CLICKEABLE HACIA PÁGINA WEB) -->
-    <section id="proyectos" class="reveal proyectos-section">
-        <div class="title">
-            <h2>NUESTROS PROYECTOS</h2>
-        </div>
-        <div class="proyecto-card-wrapper">
-            <a href="https://proyecto-token.github.io/PERU/" target="_blank" class="proyecto-visual" aria-label="Ir a la web de Proyecto Token PERU">
-                <img src="PERU.png" alt="Proyecto Token PERU" class="proyectos-logo" loading="lazy">
-            </a>
-        </div>
-    </section>
 </main>
 
 <!-- NOTIFICACIÓN TOAST -->
@@ -882,24 +813,23 @@
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
+<!-- FOOTER MODERNO Y ESTRUCTURADO -->
 <footer style="background: var(--bg-main); border-top: 1px solid var(--border-color); padding: 50px 20px 30px; color: var(--text-muted); font-size: 0.9rem;">
     <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 30px; border-bottom: 1px solid var(--border-color);">
-        <!-- BRAND -->
         <div style="display: flex; align-items: center; gap: 12px;">
             <img src="logo.png" alt="NewCosmo" style="height: 32px; width: auto;">
             <span style="font-weight: 800; font-size: 1.2rem; background: linear-gradient(135deg, var(--primary), #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NEWCOSMO</span>
         </div>
         
-        <!-- LINKS RÁPIDOS -->
         <div style="display: flex; gap: 20px; flex-wrap: wrap;">
             <a href="#servicios" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Servicios</a>
             <a href="#cotizacion" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Cotización</a>
             <a href="#proyectos" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Proyectos</a>
+            <a href="#facebook" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Facebook</a>
             <a href="#contacto" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Contacto</a>
         </div>
     </div>
 
-    <!-- COPYRIGHT Y LEGAL -->
     <div style="max-width: 1200px; margin: 25px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; font-size: 0.85rem;">
         <p>© 2026 <strong>NewCosmo</strong>. Todos los derechos reservados.</p>
         <p style="color: var(--text-muted);">Soluciones Tecnológicas <span style="color: var(--primary);">•</span> Estudio Digital</p>
@@ -992,7 +922,7 @@
         });
     }
 
-    // FAQ ACCORDEON
+    // FAQ ACCORDION
     document.querySelectorAll('.faq-question').forEach(button => {
         button.addEventListener('click', () => {
             const answer = button.nextElementSibling;
@@ -1021,7 +951,7 @@
         });
     });
 
-    // CANVAS DE PARTÍCULAS OPTIMIZADO (INTERSECTION OBSERVER)
+    // CANVAS DE PARTÍCULAS OPTIMIZADO
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
