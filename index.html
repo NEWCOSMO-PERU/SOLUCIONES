@@ -474,6 +474,260 @@
             .whatsapp-tooltip { display: none; } /* Ocultar tooltip en móviles pequeños para evitar estorbar */
         }
 
+    </style>
+</head>
+<body>
+
+<!-- SDK DE FACEBOOK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v18.0"></script>
+
+<!-- SPLASH SCREEN DINÁMICO -->
+<div id="splash-screen">
+    <img src="logo.png" alt="Logo NewCosmo" class="splash-logo">
+    <div class="splash-loader"></div>
+</div>
+
+<!-- NAVEGACIÓN -->
+<nav id="navbar">
+    <a href="#" class="nav-brand" aria-label="NewCosmo Inicio">
+        <img src="logo.png" alt="Logo NewCosmo" class="nav-logo-img">
+        <span class="nav-logo-text">NEWCOSMO</span>
+    </a>
+
+    <button class="mobile-menu-btn" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-links">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="https://newcosmo-peru.github.io/STORE/" target="_blank" rel="noopener noreferrer" class="nav-link">Tienda</a></li>
+        <li><a href="#facebook" class="nav-link">Facebook</a></li>
+        <li><a href="#proyectos" class="nav-link">Nuestros Proyectos</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#cotizacion" class="nav-link">Cotización</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li class="theme-toggle-wrapper">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Cambiar tema de color">
+                <i class="fa-solid fa-moon" id="theme-icon"></i> 
+                <span id="theme-text">Oscuro</span>
+            </button>
+        </li>
+    </ul>
+</nav>
+
+<!-- HERO HEADER -->
+<header>
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+        <div class="hero-logo-container">
+            <img src="logo.png" alt="NewCosmo Core" class="hero-logo">
+        </div>
+        <h1>Soluciones Tecnológicas</h1>
+        <p>Potenciamos tus ideas con Soporte Técnico especializado, Diseño Multimedia Creativo y utilitarios digitales avanzados adaptados a tu medida.</p>
+        <div class="btn-group">
+            <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20solicitar%20una%20cotizaci%C3%B3n%20personalizada." target="_blank" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Cotizar Directo</a>
+            <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- SERVICIOS -->
+    <section id="servicios" class="reveal">
+        <div class="title">
+            <h2>Servicios Especializados</h2>
+            <p>Filtra las soluciones que mejor se adapten a tu proyecto.</p>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterServices('all', this)">Todos los servicios</button>
+            <button class="filter-btn" onclick="filterServices('tech', this)">Soporte Técnico</button>
+            <button class="filter-btn" onclick="filterServices('design', this)">Diseño & Multimedia</button>
+            <button class="filter-btn" onclick="filterServices('tools', this)">Herramientas Digitales</button>
+        </div>
+
+        <div class="services">
+            <!-- Soporte Técnico -->
+            <div class="card" data-category="tech">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <span class="card-badge">Móvil</span>
+                    </div>
+                    <h3>Formateo de Celulares</h3>
+                    <p>Restablecimiento de fábrica, eliminación de bloatware, desbloqueo de lentitud y respaldo integral de contactos, fotos y WhatsApp para Android e iOS.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tech">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-crown"></i></div>
+                        <span class="card-badge">Apps</span>
+                    </div>
+                    <h3>Instalación de Apps Premium</h3>
+                    <p>Configuración e instalación de aplicaciones especializadas, herramientas sin anuncios, reproductores multimedia avanzados y suites de productividad.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tech">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-laptop-medical"></i></div>
+                        <span class="card-badge">PC / Laptop</span>
+                    </div>
+                    <h3>Formateo y Optimización</h3>
+                    <p>Instalación limpia de sistemas operativos (Windows/Mac), respaldo masivo seguro de información, eliminación de virus y aceleración de hardware.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tech">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span class="card-badge">Seguridad</span>
+                    </div>
+                    <h3>Ciberseguridad & Antivirus</h3>
+                    <p>Análisis profundo de vulnerabilidades, remoción de software malicioso y configuración de capas de protección para tus datos.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tech">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-download"></i></div>
+                        <span class="card-badge">Software</span>
+                    </div>
+                    <h3>Instalación de Programas</h3>
+                    <p>Configuración integral de suites de trabajo, herramientas de diseño, herramientas de oficina corporativa y utilitarios técnicos esenciales.</p>
+                </div>
+            </div>
+
+            <!-- Diseño y Multimedia -->
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <span class="card-badge">Web SEO</span>
+                    </div>
+                    <h3>Auditoría de Sitios Web</h3>
+                    <p>Análisis exhaustivo de velocidad, optimización SEO técnico, UX/UI y rendimiento general para detectar y solucionar problemas en tu página web.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-icons"></i></div>
+                        <span class="card-badge">Social Media</span>
+                    </div>
+                    <h3>Diseño de Publicaciones</h3>
+                    <p>Diseño gráfico impactante para posts, historias, banners y flyers optimizados para maximizar el engagement en Instagram, Facebook y LinkedIn.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                        <span class="card-badge">Social Media</span>
+                    </div>
+                    <h3>Manejo de Redes Sociales</h3>
+                    <p>Gestión integral de tus comunidades digitales: planificación de contenidos, calendarización, respuesta a mensajes y análisis de métricas.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-code"></i></div>
+                        <span class="card-badge">Web</span>
+                    </div>
+                    <h3>Diseño Web Profesional</h3>
+                    <p>Plataformas web responsivas, landing pages optimizadas para alta conversión e integraciones digitales a la medida de tu marca.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-palette"></i></div>
+                        <span class="card-badge">Branding</span>
+                    </div>
+                    <h3>Branding e Identidad Visual</h3>
+                    <p>Diseño de logotipos únicos, manuales de marca modernos, tarjetas de presentación de alto impacto y papelería corporativa.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="design">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-video"></i></div>
+                        <span class="card-badge">Video</span>
+                    </div>
+                    <h3>Edición Multimedia Pro</h3>
+                    <p>Edición audiovisual dinámica y motion graphics adaptados para máxima retención en plataformas digitales (TikTok, Reels, YouTube).</p>
+                </div>
+            </div>
+
+            <!-- Herramientas Digitales -->
+            <div class="card" data-category="tools">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-coins"></i></div>
+                        <span class="card-badge">Crypto</span>
+                    </div>
+                    <h3>Creación de Tokens Cripto</h3>
+                    <p>Programación y despliegue automatizado de contratos inteligentes para tokens estables o personalizados (ERC-20, BEP-20) en blockchain.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tools">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
+                        <span class="card-badge">Utilitario</span>
+                    </div>
+                    <h3>Conversión de Documentos</h3>
+                    <p>Transformación fluida de formatos corporativos manteniendo la maqueta original (PDF a Word, Excel, PowerPoint, ePub y viceversa).</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tools">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-file-image"></i></div>
+                        <span class="card-badge">Utilitario</span>
+                    </div>
+                    <h3>Conversión de Imágenes</h3>
+                    <p>Optimización y cambio masivo de formatos de imagen (PNG, JPG, WEBP, SVG, RAW) con alta calidad y compresión eficiente.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tools">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-qrcode"></i></div>
+                        <span class="card-badge">Diseño QR</span>
+                    </div>
+                    <h3>Diseño de QR Personalizados</h3>
+                    <p>Creación de códigos QR estilizados con tu logo, colores corporativos, alta resolución vectorizada e integración a enlaces estáticos o dinámicos.</p>
+                </div>
+            </div>
+
+            <div class="card" data-category="tools">
+                <div>
+                    <div class="card-header-wrapper">
+                        <div class="card-icon-box"><i class="fa-solid fa-key"></i></div>
+                        <span class="card-badge">Seguridad</span>
+                    </div>
+                    <h3>Enlaces con Contraseña</h3>
+                    <p>Generación y encriptación de enlaces protegidos con clave de acceso personalizada para compartir información confidencial de forma segura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- SECCIÓN FACEBOOK (UNETE A NUESTRA COMUNIDAD) -->
