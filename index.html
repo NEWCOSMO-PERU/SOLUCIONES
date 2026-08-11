@@ -473,6 +473,49 @@
             .proyecto-card-wrapper { padding: 30px 20px; }
             .whatsapp-tooltip { display: none; } /* Ocultar tooltip en móviles pequeños para evitar estorbar */
         }
+
+        /* --- SECCIÓN VENTA DE ARTÍCULOS TECNOLÓGICOS --- */
+        .store-section { padding: 100px 20px; max-width: 1200px; margin: auto; }
+        .store-banner {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.08), rgba(37, 99, 235, 0.08));
+            border: 1px solid rgba(0, 242, 254, 0.18); border-radius: 28px; padding: 45px 35px;
+            margin-bottom: 35px; text-align: center; position: relative; overflow: hidden;
+        }
+        .store-banner::before {
+            content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%;
+            background: rgba(0, 242, 254, 0.08); filter: blur(10px); top: -150px; right: -80px;
+        }
+        .store-banner h3 { font-size: 1.8rem; margin-bottom: 10px; position: relative; }
+        .store-banner p { color: var(--text-muted); max-width: 720px; margin: 0 auto; position: relative; }
+        .products-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;
+        }
+        .product-card {
+            background: var(--bg-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color); border-radius: 24px; padding: 25px;
+            display: flex; flex-direction: column; justify-content: space-between; min-height: 310px;
+            transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-7px); background: var(--bg-card-hover);
+            border-color: rgba(0, 242, 254, 0.35); box-shadow: 0 20px 40px rgba(0, 242, 254, 0.10);
+        }
+        .product-visual {
+            height: 125px; border-radius: 18px; background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-color); display: flex; align-items: center;
+            justify-content: center; margin-bottom: 20px; color: var(--primary); font-size: 3.2rem;
+        }
+        .product-tag {
+            display: inline-flex; width: fit-content; padding: 5px 10px; border-radius: 15px;
+            background: rgba(0, 242, 254, 0.08); color: var(--primary); border: 1px solid rgba(0,242,254,0.16);
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px;
+        }
+        .product-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+        .product-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.55; margin-bottom: 20px; }
+        .product-actions { display: flex; gap: 10px; }
+        .product-actions .btn { flex: 1; justify-content: center; padding: 11px 14px; font-size: 0.82rem; }
+        .store-note { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 25px; }
+
     </style>
 </head>
 <body>
@@ -500,6 +543,7 @@
 
     <ul class="nav-links" id="nav-links">
         <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#tienda" class="nav-link">Tienda</a></li>
         <li><a href="#facebook" class="nav-link">Facebook</a></li>
         <li><a href="#proyectos" class="nav-link">Nuestros Proyectos</a></li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
@@ -725,6 +769,108 @@
                 </div>
             </div>
         </div>
+    </section>
+
+
+    <!-- VENTA DE ARTÍCULOS TECNOLÓGICOS -->
+    <section id="tienda" class="reveal store-section">
+        <div class="title">
+            <h2>Venta de Artículos Tecnológicos</h2>
+            <p>Equipos, accesorios y soluciones tecnológicas para complementar tus necesidades.</p>
+        </div>
+
+        <div class="store-banner">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Tecnología a tu alcance</h3>
+            <p>Consulta disponibilidad, modelos y precios. Te asesoramos para elegir el artículo adecuado y coordinamos tu compra directamente por WhatsApp.</p>
+        </div>
+
+        <div class="products-grid">
+            <article class="product-card">
+                <div>
+                    <div class="product-visual"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <span class="product-tag">Móviles</span>
+                    <h3>Smartphones</h3>
+                    <p>Celulares de diferentes marcas y gamas, sujetos a disponibilidad.</p>
+                </div>
+                <div class="product-actions">
+                    <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20consultar%20por%20smartphones%20disponibles." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div>
+                    <div class="product-visual"><i class="fa-solid fa-headphones"></i></div>
+                    <span class="product-tag">Accesorios</span>
+                    <h3>Audio y Audífonos</h3>
+                    <p>Audífonos, auriculares y accesorios de audio para uso diario.</p>
+                </div>
+                <div class="product-actions">
+                    <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20consultar%20por%20aud%C3%ADfonos%20y%20productos%20de%20audio%20disponibles." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div>
+                    <div class="product-visual"><i class="fa-solid fa-keyboard"></i></div>
+                    <span class="product-tag">Periféricos</span>
+                    <h3>Teclados y Mouse</h3>
+                    <p>Periféricos para oficina, estudio, gaming y productividad.</p>
+                </div>
+                <div class="product-actions">
+                    <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20consultar%20por%20teclados%20y%20mouse%20disponibles." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div>
+                    <div class="product-visual"><i class="fa-solid fa-hard-drive"></i></div>
+                    <span class="product-tag">Almacenamiento</span>
+                    <h3>Memorias y Discos</h3>
+                    <p>Memorias USB, tarjetas, SSD y otras opciones de almacenamiento.</p>
+                </div>
+                <div class="product-actions">
+                    <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20consultar%20por%20memorias,%20USB,%20SSD%20y%20discos%20disponibles." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div>
+                    <div class="product-visual"><i class="fa-solid fa-network-wired"></i></div>
+                    <span class="product-tag">Conectividad</span>
+                    <h3>Redes y Adaptadores</h3>
+                    <p>Adaptadores, cables y accesorios para mejorar tu conectividad.</p>
+                </div>
+                <div class="product-actions">
+                    <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20consultar%20por%20productos%20de%20redes%20y%20adaptadores." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div>
+                    <div class="product-visual"><i class="fa-solid fa-bolt"></i></div>
+                    <span class="product-tag">Energía</span>
+                    <h3>Cargadores y Power Banks</h3>
+                    <p>Cargadores, cables, adaptadores y baterías portátiles para tus dispositivos.</p>
+                </div>
+                <div class="product-actions">
+                    <a href="https://wa.me/51907546093?text=Hola,%20quisiera%20consultar%20por%20cargadores,%20cables%20y%20power%20banks%20disponibles." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <p class="store-note"><i class="fa-solid fa-circle-info"></i> Los productos, marcas, modelos y precios pueden variar según disponibilidad.</p>
     </section>
 
     <!-- SECCIÓN FACEBOOK (UNETE A NUESTRA COMUNIDAD) -->
@@ -1010,6 +1156,7 @@
         
         <div style="display: flex; gap: 20px; flex-wrap: wrap;">
             <a href="#servicios" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Servicios</a>
+            <a href="#tienda" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Tienda</a>
             <a href="#facebook" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Facebook</a>
             <a href="#proyectos" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Proyectos</a>
             <a href="#faq" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Servicios FAQ</a>
