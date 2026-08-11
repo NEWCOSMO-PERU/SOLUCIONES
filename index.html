@@ -393,9 +393,9 @@
     </button>
 
     <ul class="nav-links" id="nav-links">
+        <li><a href="#facebook" class="nav-link">Comunidad</a></li>
         <li><a href="#servicios" class="nav-link">Servicios</a></li>
-        <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-        <li><a href="#facebook" class="nav-link">Facebook</a></li>
+        <li><a href="#proyectos" class="nav-link">Nuestros Proyectos</a></li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
         <li><a href="#cotizacion" class="nav-link">Cotización</a></li>
         <li><a href="#contacto" class="nav-link">Contacto</a></li>
@@ -425,6 +425,167 @@
 </header>
 
 <main>
+    <!-- SECCIÓN FACEBOOK (BOTÓN ESTILO BANNER 3D) - AHORA ANTES DE SERVICIOS -->
+    <section id="facebook" class="reveal" style="padding: 60px 20px;">
+        <div class="title" style="margin-bottom: 35px;">
+            <h2 style="font-size: 2rem;">Únete a nuestra Comunidad</h2>
+            <p style="font-size: 0.95rem;">Conéctate con nosotros en nuestra página oficial de Facebook.</p>
+        </div>
+
+        <!-- ESTILOS EXCLUSIVOS DEL BOTÓN BANNER 3D -->
+        <style>
+            .fb-banner-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 10px;
+            }
+
+            .fb-banner-btn {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                text-decoration: none;
+                padding: 10px;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                cursor: pointer;
+            }
+
+            .fb-banner-btn:hover {
+                transform: scale(1.05) translateY(-3px);
+            }
+
+            /* Rombo con Icono 3D */
+            .fb-icon-diamond {
+                position: relative;
+                z-index: 3;
+                width: 76px;
+                height: 76px;
+                background: linear-gradient(135deg, #1877f2, #0d52b5);
+                transform: rotate(45deg);
+                border-radius: 18px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 
+                    -4px 4px 15px rgba(0, 0, 0, 0.3),
+                    inset 2px -2px 5px rgba(0, 0, 0, 0.4),
+                    inset -2px 2px 6px rgba(255, 255, 255, 0.4);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                flex-shrink: 0;
+            }
+
+            .fb-icon-diamond i {
+                transform: rotate(-45deg);
+                color: #ffffff;
+                font-size: 2.3rem;
+                filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.3));
+            }
+
+            /* Contenedor Derecho (Píldoras) */
+            .fb-banner-body {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                margin-left: -32px;
+                z-index: 1;
+            }
+
+            /* Etiqueta Superior (FOLLOW) */
+            .fb-follow-tag {
+                position: relative;
+                z-index: 2;
+                align-self: flex-start;
+                margin-left: 30px;
+                margin-bottom: -10px;
+                background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+                color: #0b3c85;
+                font-size: 0.72rem;
+                font-weight: 800;
+                letter-spacing: 1.5px;
+                padding: 5px 18px 7px 22px;
+                border-radius: 12px 12px 0 0;
+                box-shadow: 
+                    0 -3px 8px rgba(0,0,0,0.15),
+                    inset 0 1px 1px rgba(255,255,255,0.9);
+                border: 1px solid rgba(255,255,255,0.6);
+                border-bottom: none;
+                text-transform: uppercase;
+            }
+
+            /* Píldora Principal (NAME) */
+            .fb-name-pill {
+                position: relative;
+                z-index: 1;
+                background: linear-gradient(180deg, #1877f2 0%, #0a4da3 100%);
+                color: #ffffff;
+                padding: 12px 30px 12px 45px;
+                border-radius: 25px;
+                font-weight: 800;
+                font-size: 1rem;
+                letter-spacing: 1.2px;
+                box-shadow: 
+                    0 10px 20px rgba(0, 0, 0, 0.25),
+                    inset 0 2px 2px rgba(255, 255, 255, 0.35),
+                    inset 0 -3px 5px rgba(0, 0, 0, 0.4);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            .fb-name-pill span {
+                font-weight: 400;
+                opacity: 0.9;
+            }
+
+            /* Sombra base 3D */
+            .fb-banner-btn::after {
+                content: '';
+                position: absolute;
+                bottom: 2px;
+                left: 15%;
+                width: 75%;
+                height: 12px;
+                background: rgba(0, 0, 0, 0.35);
+                border-radius: 50%;
+                filter: blur(8px);
+                z-index: 0;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            .fb-banner-btn:hover::after {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+
+            @media (max-width: 480px) {
+                .fb-icon-diamond { width: 62px; height: 62px; }
+                .fb-icon-diamond i { font-size: 1.8rem; }
+                .fb-name-pill { font-size: 0.85rem; padding: 10px 20px 10px 38px; }
+                .fb-follow-tag { font-size: 0.65rem; padding: 4px 14px 6px 18px; margin-left: 24px; }
+            }
+        </style>
+
+        <!-- ESTRUCTURA DEL BANNER -->
+        <div class="fb-banner-wrapper">
+            <a href="https://web.facebook.com/NewcosmoSoluciones" target="_blank" rel="noopener noreferrer" class="fb-banner-btn" aria-label="Visitar Facebook de Newcosmo Soluciones">
+                <div class="fb-icon-diamond">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <div class="fb-banner-body">
+                    <div class="fb-follow-tag">FOLLOW</div>
+                    <div class="fb-name-pill">
+                        <span>@</span>NewcosmoSoluciones
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
     <!-- SERVICIOS -->
     <section id="servicios" class="reveal">
         <div class="title">
@@ -669,167 +830,6 @@
         </div>
     </section>
 
-   <!-- SECCIÓN FACEBOOK (BOTÓN ESTILO BANNER 3D) -->
-<section id="facebook" class="reveal" style="padding: 60px 20px;">
-    <div class="title" style="margin-bottom: 35px;">
-        <h2 style="font-size: 2rem;">Únete a nuestra Comunidad</h2>
-        <p style="font-size: 0.95rem;">Conéctate con nosotros en nuestra página oficial de Facebook.</p>
-    </div>
-
-    <!-- ESTILOS EXCLUSIVOS DEL BOTÓN BANNER 3D -->
-    <style>
-        .fb-banner-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            padding: 10px;
-        }
-
-        .fb-banner-btn {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            padding: 10px;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-        }
-
-        .fb-banner-btn:hover {
-            transform: scale(1.05) translateY(-3px);
-        }
-
-        /* Rombo con Icono 3D */
-        .fb-icon-diamond {
-            position: relative;
-            z-index: 3;
-            width: 76px;
-            height: 76px;
-            background: linear-gradient(135deg, #1877f2, #0d52b5);
-            transform: rotate(45deg);
-            border-radius: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 
-                -4px 4px 15px rgba(0, 0, 0, 0.3),
-                inset 2px -2px 5px rgba(0, 0, 0, 0.4),
-                inset -2px 2px 6px rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            flex-shrink: 0;
-        }
-
-        .fb-icon-diamond i {
-            transform: rotate(-45deg);
-            color: #ffffff;
-            font-size: 2.3rem;
-            filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.3));
-        }
-
-        /* Contenedor Derecho (Píldoras) */
-        .fb-banner-body {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            margin-left: -32px;
-            z-index: 1;
-        }
-
-        /* Etiqueta Superior (FOLLOW) */
-        .fb-follow-tag {
-            position: relative;
-            z-index: 2;
-            align-self: flex-start;
-            margin-left: 30px;
-            margin-bottom: -10px;
-            background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
-            color: #0b3c85;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            padding: 5px 18px 7px 22px;
-            border-radius: 12px 12px 0 0;
-            box-shadow: 
-                0 -3px 8px rgba(0,0,0,0.15),
-                inset 0 1px 1px rgba(255,255,255,0.9);
-            border: 1px solid rgba(255,255,255,0.6);
-            border-bottom: none;
-            text-transform: uppercase;
-        }
-
-        /* Píldora Principal (NAME) */
-        .fb-name-pill {
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(180deg, #1877f2 0%, #0a4da3 100%);
-            color: #ffffff;
-            padding: 12px 30px 12px 45px;
-            border-radius: 25px;
-            font-weight: 800;
-            font-size: 1rem;
-            letter-spacing: 1.2px;
-            box-shadow: 
-                0 10px 20px rgba(0, 0, 0, 0.25),
-                inset 0 2px 2px rgba(255, 255, 255, 0.35),
-                inset 0 -3px 5px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .fb-name-pill span {
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        /* Sombra base 3D */
-        .fb-banner-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 15%;
-            width: 75%;
-            height: 12px;
-            background: rgba(0, 0, 0, 0.35);
-            border-radius: 50%;
-            filter: blur(8px);
-            z-index: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .fb-banner-btn:hover::after {
-            transform: scale(0.9);
-            opacity: 0.6;
-        }
-
-        @media (max-width: 480px) {
-            .fb-icon-diamond { width: 62px; height: 62px; }
-            .fb-icon-diamond i { font-size: 1.8rem; }
-            .fb-name-pill { font-size: 0.85rem; padding: 10px 20px 10px 38px; }
-            .fb-follow-tag { font-size: 0.65rem; padding: 4px 14px 6px 18px; margin-left: 24px; }
-        }
-    </style>
-
-    <!-- ESTRUCTURA DEL BANNER -->
-    <div class="fb-banner-wrapper">
-        <a href="https://web.facebook.com/NewcosmoSoluciones" target="_blank" rel="noopener noreferrer" class="fb-banner-btn" aria-label="Visitar Facebook de Newcosmo Soluciones">
-            <div class="fb-icon-diamond">
-                <i class="fa-brands fa-facebook-f"></i>
-            </div>
-            <div class="fb-banner-body">
-                <div class="fb-follow-tag">FOLLOW</div>
-                <div class="fb-name-pill">
-                    <span>@</span>NewcosmoSoluciones
-                </div>
-            </div>
-        </a>
-    </div>
-</section>
-
     <!-- FAQ -->
     <section id="faq" class="reveal">
         <div class="title">
@@ -857,7 +857,7 @@
         </div>
     </section>
 
-    <!-- COTIZACIÓN (AHORA UBICADA DEBAJO DE FAQ) -->
+    <!-- COTIZACIÓN -->
     <section id="cotizacion" class="reveal">
         <div class="title">
             <h2>Solicita tu Cotización</h2>
@@ -954,9 +954,9 @@
         </div>
         
         <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <a href="#facebook" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Comunidad</a>
             <a href="#servicios" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Servicios</a>
             <a href="#proyectos" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Proyectos</a>
-            <a href="#facebook" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Facebook</a>
             <a href="#faq" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">FAQ</a>
             <a href="#cotizacion" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Cotización</a>
             <a href="#contacto" style="color: var(--text-muted); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Contacto</a>
